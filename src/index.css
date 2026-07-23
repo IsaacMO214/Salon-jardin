@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  
+  --color-forest-50: #f4f8f4;
+  --color-forest-100: #e4efe4;
+  --color-forest-200: #c9dec9;
+  --color-forest-300: #9fc19f;
+  --color-forest-400: #6ea06e;
+  --color-forest-500: #497f49;
+  --color-forest-600: #376337;
+  --color-forest-700: #2d502d;
+  --color-forest-800: #264126;
+  --color-forest-900: #213721;
+  --color-forest-950: #101d10;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #ffffff;
+  color: #1e291e;
+}
+
+.doodle-leaves-bg {
+  background-color: transparent;
+}
+
+h1, h2, h3, h4, .title-font {
+  font-family: var(--font-serif);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest-200);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest-300);
+}
+
+/* Custom scrollbars for modal and sticky sidebar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-forest-500);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-forest-400);
+}

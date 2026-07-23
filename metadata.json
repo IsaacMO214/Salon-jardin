@@ -1,0 +1,6 @@
+{
+  "name": "Jardín Fantasy - Salón de Eventos",
+  "description": "Sitio web elegante y minimalista para el salón de eventos con jardín Operadora de Fiestas Fantasy, incluyendo panel de administración de contenidos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

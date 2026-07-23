@@ -1,0 +1,850 @@
+{
+  "banner": {
+    "imagenUrl": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=1600",
+    "imagenesUrl": [
+      "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1600",
+      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&q=80&w=1600"
+    ],
+    "slogan": "Una fiesta mágica, única e inolvidable"
+  },
+  "redesSociales": {
+    "instagram": "https://www.instagram.com/fantasysalonde_fiestas/",
+    "facebook": "https://www.facebook.com/Fantasysalonjardin",
+    "whatsapp": "55 3607 3700"
+  },
+  "nosotros": {
+    "descripcion": "Operadora de Fiestas Fantasy es un negocio familiar que tiene más de 25 años de experiencia organizando eventos sociales en el municipio de Nezahualcóyotl. Desde que empezaron en el año 2000, la empresa ha ido creciendo y mejorando para ofrecer un servicio completo, donde se encargan de todo lo necesario para que el anfitrión disfrute de su fiesta sin estresarse por la comida o la música. El negocio se caracteriza por su buena atención, creatividad y por mantener sus instalaciones seguras y limpias para las familias.",
+    "mision": "Nuestro compromiso es cuidar cada detalle en los eventos de principio a fin diferenciándonos en nuestra organización, atención, amenización, y alimentos que brinda Fantasy creando 'Una fiesta mágica, única e inolvidable'.",
+    "vision": "Ser una empresa líder en el giro, reconocida por ofrecer experiencias inolvidables y personalizadas que combinan diversión con creatividad, buscando expandir nuestros servicios para abarcar eventos familiares y sociales que destacan en la organización de eventos al integrar un ambiente único que inspire momentos mágicos.",
+    "valores": [
+      {
+        "titulo": "Confianza",
+        "descripcion": "Crear un ambiente seguro y agradable donde los adultos y niños puedan disfrutar plenamente, garantizando un servicio de calidad."
+      },
+      {
+        "titulo": "Respeto",
+        "descripcion": "Tratar con amabilidad y cortesía a todos los clientes, proveedores y trabajadores, valorando sus ideas y necesidades."
+      },
+      {
+        "titulo": "Compromiso",
+        "descripcion": "Cumplir con la filosofía cultural, desde la calidad del servicio hasta los tiempos establecidos para cada evento."
+      },
+      {
+        "titulo": "Responsabilidad",
+        "descripcion": "Asegurar que el evento sea ejecutado de manera profesional y que las instalaciones cumplan con los estándares de seguridad y limpieza."
+      },
+      {
+        "titulo": "Humildad",
+        "descripcion": "Estar siempre abiertos a escuchar sugerencias y aprender de las experiencias para mejorar continuamente nuestros servicios."
+      },
+      {
+        "titulo": "Honradez",
+        "descripcion": "Ofrecer claridad y transparencia en los servicios incluidos y cualquier información relacionada con el evento."
+      },
+      {
+        "titulo": "Sensibilidad",
+        "descripcion": "Entender las necesidades y expectativas de los clientes, adaptándonos para crear experiencias únicas que respondan a sus deseos."
+      },
+      {
+        "titulo": "Solidaridad",
+        "descripcion": "Brindar apoyo y colaboración tanto a clientes como trabajadores, fomentando un espíritu de unidad en cada evento."
+      },
+      {
+        "titulo": "Honestidad",
+        "descripcion": "Actuar con integridad en todas nuestras interacciones, asegurando que lo que ofrecemos es lo que realmente entregamos."
+      },
+      {
+        "titulo": "Tolerancia",
+        "descripcion": "Respetar las diferencias culturales, de gustos y preferencias, adaptándonos a las necesidades de cada cliente sin prejuicios."
+      }
+    ],
+    "slogan": "Una fiesta mágica, única e inolvidable",
+    "direccion": "Calle San Rafael #254 Col. Vicente Villada Cd. Nezahualcóyotl. Edo. de México",
+    "telefonos": [
+      "55 3607 3700",
+      "56 3047 9364",
+      "55 5102 5998"
+    ]
+  },
+  "eventos": [
+    {
+      "id": "bodas",
+      "nombre": "Bodas",
+      "descripcion": "En Jardín Fantasy sabemos que una boda es uno de los momentos más importantes de la vida. Por eso, durante 26 años hemos acompañado a cientos de familias, cuidando cada detalle para que disfruten una celebración llena de emociones y recuerdos inolvidables.",
+      "icono": "Heart",
+      "fotos": [
+        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "xv-anos",
+      "nombre": "XV Años",
+      "descripcion": "Los XV años son una celebración única e irrepetible. En Jardín Fantasy ponemos a tu disposición un espacio elegante y nuestro equipo de profesionales para que vivas una noche llena de magia, color y recuerdos que durarán toda la vida.",
+      "icono": "Crown",
+      "fotos": [
+        "/uploads/1784739161241-441eb528e6e461c0.jpg",
+        "/uploads/1784739226460-b1ee3ecec4b41a65.jpg"
+      ]
+    },
+    {
+      "id": "graduaciones",
+      "nombre": "Graduaciones",
+      "descripcion": "Celebrar el esfuerzo y los logros de toda una etapa merece un escenario a la altura. En Jardín Fantasy te ofrecemos el espacio y el servicio perfecto para que este momento de orgullo quede grabado en la memoria de todos.",
+      "icono": "GraduationCap",
+      "fotos": [
+        "/uploads/1784740239167-03c40f3136c9c634.mp4"
+      ]
+    },
+    {
+      "id": "bautizos",
+      "nombre": "Bautizos",
+      "descripcion": "El bautizo es el primer gran regalo de la fe. En Jardín Fantasy te brindamos un espacio íntimo y elegante para recibir con alegría y amor este momento tan especial junto a tu familia y seres queridos.",
+      "icono": "Droplet",
+      "fotos": [
+        "https://images.unsplash.com/photo-1510253585002-3c2854619b0d?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1507504038482-7621abf83863?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "baby-shower",
+      "nombre": "Baby Shower",
+      "descripcion": "La llegada de un nuevo integrante merece una celebración llena de ilusión. Nuestro equipo se encarga de todos los detalles para que disfrutes este momento mágico rodeada del cariño de quienes más te quieren.",
+      "icono": "Gift",
+      "fotos": [
+        "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1520853607312-688a72b55f36?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "presentaciones",
+      "nombre": "Presentaciones",
+      "descripcion": "La presentación de tu pequeña es un instante irrepetible. En Jardín Fantasy creamos el ambiente perfecto para que este acto lleno de ternura quede grabado en el corazón de toda la familia para siempre.",
+      "icono": "Sparkles",
+      "fotos": [
+        "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "comuniones",
+      "nombre": "Comuniones",
+      "descripcion": "La primera comunión es un hito espiritual y familiar de gran significado. Confía en Jardín Fantasy para celebrarlo con la solemnidad, el cariño y el servicio de calidad que este día merece.",
+      "icono": "BookOpen",
+      "fotos": [
+        "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1471967183377-be0706cca604?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "new-evt-1784739372380",
+      "nombre": "Cumpleaños",
+      "descripcion": "Celebra tu cumpleaños en un espacio lleno de magia y alegría. En nuestro salón, cada detalle está pensado para crear momentos inolvidables junto a quienes más quieres.",
+      "icono": "PartyPopper",
+      "fotos": [
+        "/uploads/1784739457856-a22c09176985a847.jpg",
+        "/uploads/1784739488041-f8dfa1fe132a1c83.jpg",
+        "/uploads/1784739586576-37e7d4b1827c6921.jpg"
+      ]
+    }
+  ],
+  "menus": [
+    {
+      "id": "menu-infantil",
+      "nombre": "Menú Infantil Tradicional",
+      "tipo": "tradicional",
+      "conCategorias": false,
+      "items": [
+        "Pollo a la Kentucky con ensalada o papas.",
+        "Pizza Hawaiana.",
+        "Pizza de Pepperoni.",
+        "Flautitas de pollo con lechuga, crema y queso.",
+        "Nota: Todos los bocadillos mencionados van acompañados de rico espagueti."
+      ],
+      "salseados": [],
+      "fotos": [
+        "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=600"
+      ]
+    },
+    {
+      "id": "buffet-infantil",
+      "nombre": "Buffet Infantil Completo",
+      "tipo": "tradicional",
+      "conCategorias": false,
+      "items": [
+        "Pizza Hawaiana.",
+        "Pizza de Pepperoni.",
+        "Papas a la francesa.",
+        "Pechuga empanizada.",
+        "Spaguetti.",
+        "Jícama, naranja y/o sandía con chile 'miguelito'.",
+        "Gelatina de sabores."
+      ],
+      "salseados": [],
+      "fotos": [
+        "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&q=80&w=600"
+      ]
+    },
+    {
+      "id": "comida-2-tiempos",
+      "nombre": "Menús de 2 Tiempos",
+      "tipo": "tiempo",
+      "numTiempos": 2,
+      "items": [
+        "Opción 1: [1er Tiempo] Sopa Milpa (Tradicional sopa italiana elaborada con vegetales frescos, pasta corta y un toque de hierbas aromáticas) - [2do Tiempo] Pollo enchilado (Jugoso pollo bañado en salsa de cacahuate al estilo mexicano con un toque picante) - [Guarnición] Codito a la Hawaiana (Pasta corta con trozos de jamón y piña, en crema fresca.) - [Salseado]",
+        "Opción 2: [1er Tiempo] Crema Parmentier (Clásica receta francesa de papa y poro, servida caliente con un toque de mantequilla) - [2do Tiempo] Pollo Coloradito (Piezas de polo en adobo tradicional de Oaxaca, a base de chiles secos y especias) - [Guarnición] Ensalada de zanahoria (Crujiente zanahoria ralada, mezclada con crema fresca, pasas y nuez en trozos.)",
+        "Opción 3: [1er Tiempo] Sopa Tarasca (Cremosa mezcla de frijoles y chile pasilla, ligeramente especiada, servida con juliana de tortilla crujiente, y un toque de crema y queso.) - [2do Tiempo] Pechuga Cordon Bleu (Suprema de pechuga rellena de jamón y queso empanizada al dorado perfecto, servida con salsa a elegir.) - [Guarnición] Ensalada de la casa (Fresca combinación de 3 lechugas, arándanos y ajonjolí tostado, con aderezo de chabacano) - [Salseado]",
+        "Opción 4: [1er Tiempo] Farfalle en salsa de tomate y albahaca (Pasta perfectamente cocida, servida con salsa de jitomate y pimientos, decorada con albahaca fresca y queso parmesano) - [2do Tiempo] Solomillo de cerdo (Tierna pieza de solomillo de cerdo, sazonada con una mezcla de finas hierbas, bañado en salsa de su preferencia.) - [Guarnición] Vegetales a la mantequilla (Variedad de vegetales frescos salteados suavemente en mantequilla, servidos calientes.) - [Salseado]",
+        "Opción 5: [1er Tiempo] Crema Conde (Delicada crema de frijoles selectos finamente licuada, acompañada de crema, queso y tortilla crocante) - [2do Tiempo] Lomo de cerdo en adobo (Medallón de cerdo cocido en adobo de chiles, ajo y especias aromáticas) - [Guarnición] Gratinado de papas con queso (Rebanadas de papa con textura perfecta, bañadas en salsa cremosa, coronadas con queso gratinado y perejil.)",
+        "Opción 6: [1er Tiempo] Caldo Xóchilt (Sopa caliente de verduras frescas con granos de maíz, garbanzos y calabaza.) - [2do Tiempo] Cochinita pibil (Carne de cerdo marinada en achiote y jugo de naranja agria, servida con cebolla morada encurtida) - [Guarnición] Arroz Blanco (Arroz cocido al vapor, suave y esponjoso con un toque de color.)"
+      ],
+      "salseados": [
+        "BBQ",
+        "Nuez",
+        "Champiñón",
+        "Chipotle",
+        "3 Chiles"
+      ],
+      "fotos": [
+        "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=600"
+      ]
+    },
+    {
+      "id": "comida-3-tiempos",
+      "nombre": "Menús de 3 Tiempos",
+      "tipo": "tiempo",
+      "numTiempos": 3,
+      "items": [
+        "Opción 1: [1er Tiempo] Sopa Minestrone (Tradicional sopa italiana elaborada con vegetales frescos, pasta corta y un toque de hierbas aromáticas) - [2do Tiempo] Ensalada griega (Crujiente mix de lechugas, espinacas, manzana y nueces tostadas con un aderezo de frutos rojos) - [3er Tiempo] Pollo en salsa poblana (Jugosas piezas de pollo en salsa cremosa de chile poblano, con un delicado toque de elote y especias.) - [Guarnición] Arroz blanco (Clásico arroz blanco al vapor, de textura ligera con verduras ideal como acompañamiento.) - [Salseado]",
+        "Opción 2: [1er Tiempo] Crema de elote (Suave crema elaborada con granos de maíz tierno, realzada con un toque de mantequilla y finas hierbas.) - [2do Tiempo] Fusilli a la jardinera (Pasta al dente, acompañada de un colorido salteado de vegetales frescos y aceite de oliva) - [3er Tiempo] Pechuga Cordon Bleu (Pechuga de pollo rellena de jamón y queso, empanizada o dorada cocida perfectamente con un toque de salsa a elegir.) - [Guarnición] Papas gratinadas (Rebanadas de papa con textura perfecta, bañadas en salsa cremosa, coronadas con queso gratinado y perejil) - [Salseado]",
+        "Opción 3: [1er Tiempo] Caldo Xóchilt (Un clásico de la cocina mexicana, preparado con un suave consomé de pollo y verduras.) - [2do Tiempo] Espagueti Alfredo (Clásica pasta cocida, salteada en mantequilla con un delicado toque de queso parmesano y crema) - [3er Tiempo] Lomo de cerdo en adobo (Lomo de cerdo marinado y cocinado en adobo de chiles y especias, con un sabor tradicional de Oaxaca.) - [Guarnición] Puré de papa (Elaborado con papas frescas y mantequilla dorada, perfecto para acompañar)",
+        "Opción 4: [1er Tiempo] Crema poblana (Sabor suave del chile poblano asado y elote, con un toque de crema fresca.) - [2do Tiempo] Farfalle a la Boloñesa (Pasta en forma de moño acompañada de una salsa rica y concentrada de carne, tomate y finas hierbas.) - [3er Tiempo] Medallón de Cerdo Asado (Medallón de cerdo asado, con hierbas aromáticas acompañado de una delicada salsa a elegir) - [Guarnición] Ensalada de la casa (Fresca combinación de 3 lechugas, arándanos y ajonjolí tostado, con aderezo de chabacano) - [Salseado]",
+        "Opción 5: [1er Tiempo] Sopa Azteca (Combinación de caldo de jitomate con chiles secos, servida con crujientes tiras de tortilla, cubos de queso fresco y un toque de crema.) - [2do Tiempo] Sopecitos de maíz (Mini sopes de maíz con frijoles, lechuga y queso acompañados de salsa roja y salsa verde.) - [3er Tiempo] Bistec a la parrilla (Jugoso bistec a la parrilla, acompañado de nopal asado, cebollitas cambray y papas a la francesa con un toque fresco de guacamole.)",
+        "Opción 6: [1er Tiempo] Crema Parmentier (Clásica crema de papa francesa, enriquecida con mantequilla y un delicado toque de crema.) - [2do Tiempo] Ensalada Griega clásica (MIx de lechugas frescas, espinaca, manzana, zanahoria y almendra con vinagreta de frambuesa.) - [3er Tiempo] Filete de res (Jugoso filete de res, acompañado de una cremosa salsa de champiñones. Una opción clásica y elegante para tu celebración.) - [Guarnición] Salteado de verduras (Ligera y colorida selección de verduras frescas salteadas al dente, con un toque de aceite de oliva.) - [Salseado]"
+      ],
+      "salseados": [
+        "BBQ",
+        "Nuez",
+        "Champiñón",
+        "Chipotle",
+        "3 Chiles"
+      ],
+      "fotos": [
+        "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600",
+        "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80&w=600"
+      ]
+    },
+    {
+      "id": "taquiza-parrillada",
+      "nombre": "Taquiza",
+      "tipo": "tradicional",
+      "conCategorias": true,
+      "items": [
+        "Pollo: Pollo Pibil, Tinga, Pechuga con rajas y champiñones, Tortitas en salsa roja/verde, Pollo en mole verde/rojo.",
+        "Res: Bistec a la mexicana, en chile pasilla, en salsa verde con calabazas, en jitomate con papas, Picadillo, Alambre con quesillo, Ropa vieja.",
+        "Cerdo: Longaniza con papas o nopales, Chicharrón en salsa verde/roja, Cochinita Pibil, Puntas en mole verde o salsa morita.",
+        "Vegetariano: Rajas con papas o crema, Alambre vegetariano, Cochinita de setas, Sopecitos de frijol, Timbal de esquites.",
+        "Otros: Salchichas a la mexicana o en chipotle, Enfrijoladas con chorizo."
+      ],
+      "salseados": [],
+      "fotos": [
+        "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&q=80&w=600"
+      ]
+    },
+    {
+      "id": "menu-1784753297665",
+      "nombre": "Parrillada",
+      "tipo": "tradicional",
+      "conCategorias": true,
+      "items": [
+        "Carnes: Chori queso, Alambre, Fajitas de pollo en chipote, Suadero, Pastor",
+        "Guarniciones: Nopales con queso, Frijoles charros, Ensalada de lechuga"
+      ],
+      "salseados": [],
+      "fotos": [
+        "/uploads/1784753342883-99dcc033eca329b0.jpg"
+      ]
+    },
+    {
+      "id": "menu-1784754021089",
+      "nombre": "Guarniciones",
+      "tipo": "tradicional",
+      "conCategorias": true,
+      "items": [
+        "Pollo: Ensaladas de nopales, Nopales en escabeche, Nopales con guajillo y elote, Nopales con queso",
+        "Res: Frijoles charros, Frijoles refritos con queso",
+        "Cerdo: Arroz blanco con verdura (elote y zanahoria), Arroz verde con elote",
+        "Vegetariano: Arroz blanco con rajas de poblano y granos de elote, Arroz verde con grano de elote, Arroz rojo con elote y zanahoria",
+        "Otros: Ensalada de lechuga"
+      ],
+      "salseados": [],
+      "fotos": [
+        "/uploads/1784754381954-181feccb7452e026.jpg"
+      ]
+    }
+  ],
+  "paquetes_sociales": [
+    {
+      "id": "social-paquete1",
+      "nombre": "Paquete 1",
+      "precio": 437,
+      "horas": 6,
+      "servicios": [
+        "Batucada de bienvenida",
+        "Camerino (vestidor) privado",
+        "Mesa principal decorada con arco de follaje y flores",
+        "Mesas redondas y sillas tiffany acojinadas",
+        "Mantelería selecta y montaje de gala",
+        "Planeador y coordinador de evento profesional",
+        "Dj con música mezclada durante todo el evento",
+        "Luces audiorítmicas (robóticas) profesionales",
+        "Pista de cristal iluminada",
+        "Pantalla gigante para proyección de videos",
+        "Área de juegos con personal para la supervisión de los niños",
+        "Capitán de meseros (maestro de ceremonias) y personal de meseros",
+        "Personal para el cuidado de sus autos (cuota sugerida)",
+        "Invitaciones digitales personalizadas",
+        "2 vitroleros de agua de sabor a elegir",
+        "Amenización de comida con saxofonista, violinista o baile folklórico",
+        "Vasos, plaque y loza elegante",
+        "Refresco, agua mineral y hielo ilimitado durante el evento",
+        "Servicio de Bar (Bar service)",
+        "Batucada de cierre (con globos salchicha y lluvia de papelitos de colores) y amenización del pastel"
+      ],
+      "menus": [
+        "comida-2-tiempos"
+      ],
+      "fotos": [
+        "/uploads/1784738044721-defadfe7cf8db4c3.png"
+      ]
+    },
+    {
+      "id": "social-paquete2",
+      "nombre": "Paquete 2",
+      "precio": 545,
+      "horas": 7,
+      "servicios": [
+        "Batucada de bienvenida",
+        "Camerino (vestidor) privado",
+        "Mesa principal decorada con arco de follaje y flores",
+        "Mesas redondas y sillas tiffany acojinadas",
+        "Mantelería selecta y montaje de gala",
+        "Planeador y coordinador de evento profesional",
+        "Dj con música mezclada durante todo el evento",
+        "Luces audiorítmicas (robóticas) profesionales",
+        "Pista de cristal iluminada",
+        "Pantalla gigante para proyección de videos",
+        "Área de juegos con personal para la supervisión de los niños",
+        "Capitán de meseros (maestro de ceremonias) y personal de meseros",
+        "Personal para el cuidado de sus autos (cuota sugerida)",
+        "Invitaciones digitales personalizadas",
+        "2 vitroleros de agua de sabor a elegir",
+        "Amenización de comida con saxofonista, violinista o baile folklórico",
+        "Vasos, plaque y loza elegante",
+        "Refresco, agua mineral y hielo ilimitado durante el evento",
+        "Servicio de Bar (Bar service)",
+        "Batucada de cierre (con globos salchicha y lluvia de papelitos de colores) y amenización del pastel",
+        "Servicio de cámara 360° durante 2 horas",
+        "Álbum digital en USB (con más de 150 archivos fotográficos)"
+      ],
+      "menus": [
+        "comida-3-tiempos",
+        "taquiza-parrillada"
+      ],
+      "fotos": [
+        "/uploads/1784738067227-709e10d9b8ac7ecf.png"
+      ]
+    },
+    {
+      "id": "social-paquete3",
+      "nombre": "Paquete 3",
+      "precio": 700,
+      "horas": 8,
+      "servicios": [
+        "Batucada de bienvenida",
+        "Camerino (vestidor) privado",
+        "Mesa principal decorada con arco de follaje y flores",
+        "Mesas redondas y sillas tiffany acojinadas",
+        "Mantelería selecta y montaje de gala",
+        "Planeador y coordinador de evento profesional",
+        "Dj con música mezclada durante todo el evento",
+        "Luces audiorítmicas (robóticas) profesionales",
+        "Pista de cristal iluminada",
+        "Pantalla gigante para proyección de videos",
+        "Área de juegos con personal para la supervisión de los niños",
+        "Capitán de meseros (maestro de ceremonias) y personal de meseros",
+        "Personal para el cuidado de sus autos (cuota sugerida)",
+        "Invitaciones digitales personalizadas",
+        "2 vitroleros de agua de sabor a elegir",
+        "Amenización de comida con saxofonista, violinista o baile folklórico",
+        "Vasos, plaque y loza elegante",
+        "Refresco, agua mineral y hielo ilimitado durante el evento",
+        "Servicio de Bar (Bar service)",
+        "Batucada de cierre (con globos salchicha y lluvia de papelitos de colores) y amenización del pastel",
+        "Servicio de cámara 360° durante 2 horas",
+        "Álbum digital en USB (con más de 150 archivos fotográficos)",
+        "Álbum impreso de alta calidad",
+        "Tornamesa de chilaquiles o pozole para el cierre de evento",
+        "Grupo versátil musical en vivo durante 2 horas"
+      ],
+      "menus": [
+        "comida-3-tiempos",
+        "taquiza-parrillada"
+      ],
+      "fotos": [
+        "/uploads/1784738206203-d093802690a78b30.png"
+      ]
+    }
+  ],
+  "paquetes_infantiles": [
+    {
+      "id": "infantil-lunes-viernes",
+      "nombre": "Paquete Lunes a Viernes",
+      "precio": 256,
+      "horas": 6,
+      "tipoServicio": "salon",
+      "servicios": [
+        "Servicio de salón privado con áreas limpias",
+        "Juegos (Castillo de princesas, futbolito, alberca de pelotas, resbaladilla, tobogán, brincolín)",
+        "Mesas con sillas infantiles y mesas de adultos con manteles de color a elegir",
+        "Espectacular bienvenida con un regalo luminoso y mini batucada con personaje exclusivo (Mickey, Donald, Minnie, Goofy, Toy Story, Princesas, Super Héroes, Paw Patrol, etc.)",
+        "Coordinación y amenización del evento con Dj como maestro de ceremonias",
+        "Luces audio rítmicas espectaculares",
+        "Música mezclada durante todo el evento (infantil, ambiental, bailable)",
+        "Juegos y dinámicas organizadas para niños y adultos",
+        "Pantalla gigante para videos musicales y películas infantiles",
+        "Personal mixto para organización (meseros y nana de apoyo para supervisión)",
+        "Espectacular batucada con lluvia de papeles de colores y globos",
+        "Área de juegos con personal dedicado",
+        "Acceso y uso libre de cocina",
+        "Invitaciones y boletos digitales de cortesía",
+        "Foto familiar conmemorativa del evento"
+      ],
+      "menus": [],
+      "fotos": [
+        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "infantil-basico",
+      "nombre": "Paquete Básico Fin de Semana",
+      "precio": 359,
+      "horas": 6,
+      "tipoServicio": "salon_alimentos",
+      "servicios": [
+        "Servicio de salón privado con áreas limpias",
+        "Juegos (Castillo de princesas, futbolito, alberca de pelotas, resbaladilla, tobogán, brincolín)",
+        "Mesas con sillas infantiles y mesas de adultos con manteles de color a elegir",
+        "Espectacular bienvenida con un regalo luminoso y mini batucada con personaje exclusivo (Mickey, Donald, Minnie, Goofy, Toy Story, Princesas, Super Héroes, Paw Patrol, etc.)",
+        "Coordinación y amenización del evento con Dj como maestro de ceremonias",
+        "Luces audio rítmicas espectaculares",
+        "Música mezclada durante todo el evento (infantil, ambiental, bailable)",
+        "Juegos y dinámicas organizadas para niños y adultos",
+        "Pantalla gigante para videos musicales y películas infantiles",
+        "Personal mixto para organización (meseros y nana de apoyo para supervisión)",
+        "Espectacular batucada con lluvia de papeles de colores y globos",
+        "Área de juegos con personal dedicado",
+        "Acceso y uso libre de cocina",
+        "Invitaciones y boletos digitales de cortesía",
+        "Foto familiar conmemorativa del evento",
+        "Refresco y hielo ilimitado durante todo el evento",
+        "Dos vitroleros de agua fresca de sabor a elegir"
+      ],
+      "menus": [
+        "menu-infantil",
+        "comida-2-tiempos"
+      ],
+      "fotos": [
+        "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "infantil-descanses",
+      "nombre": "Paquete Descanses",
+      "precio": 383,
+      "horas": 6,
+      "tipoServicio": "salon_alimentos",
+      "servicios": [
+        "Servicio de salón privado con áreas limpias",
+        "Juegos (Castillo de princesas, futbolito, alberca de pelotas, resbaladilla, tobogán, brincolín)",
+        "Mesas con sillas infantiles y mesas de adultos con manteles de color a elegir",
+        "Espectacular bienvenida con un regalo luminoso y mini batucada con personaje exclusivo (Mickey, Donald, Minnie, Goofy, Toy Story, Princesas, Super Héroes, Paw Patrol, etc.)",
+        "Coordinación y amenización del evento con Dj como maestro de ceremonias",
+        "Luces audio rítmicas espectaculares",
+        "Música mezclada durante todo el evento (infantil, ambiental, bailable)",
+        "Juegos y dinámicas organizadas para niños y adultos",
+        "Pantalla gigante para videos musicales y películas infantiles",
+        "Personal mixto para organización (meseros y nana de apoyo para supervisión)",
+        "Espectacular batucada con lluvia de papeles de colores y globos",
+        "Área de juegos con personal dedicado",
+        "Acceso y uso libre de cocina",
+        "Invitaciones y boletos digitales de cortesía",
+        "Foto familiar conmemorativa del evento",
+        "Ideal para papás que quieren descansar y disfrutar el banquete completo"
+      ],
+      "menus": [
+        "buffet-infantil",
+        "taquiza-parrillada"
+      ],
+      "fotos": [
+        "https://images.unsplash.com/photo-1471967183377-be0706cca604?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "infantil-sorprendas",
+      "nombre": "Paquete Sorprendas",
+      "precio": 456,
+      "horas": 6,
+      "tipoServicio": "salon_alimentos",
+      "servicios": [
+        "Servicio de salón privado con áreas limpias",
+        "Juegos (Castillo de princesas, futbolito, alberca de pelotas, resbaladilla, tobogán, brincolín)",
+        "Mesas con sillas infantiles y mesas de adultos con manteles de color a elegir",
+        "Espectacular bienvenida con un regalo luminoso y mini batucada con personaje exclusivo (Mickey, Donald, Minnie, Goofy, Toy Story, Princesas, Super Héroes, Paw Patrol, etc.)",
+        "Coordinación y amenización del evento con Dj como maestro de ceremonias",
+        "Luces audio rítmicas espectaculares",
+        "Música mezclada durante todo el evento (infantil, ambiental, bailable)",
+        "Juegos y dinámicas organizadas para niños y adultos",
+        "Pantalla gigante para videos musicales y películas infantiles",
+        "Personal mixto para organización (meseros y nana de apoyo para supervisión)",
+        "Espectacular batucada con lluvia de papeles de colores y globos",
+        "Área de juegos con personal dedicado",
+        "Acceso y uso libre de cocina",
+        "Invitaciones y boletos digitales de cortesía",
+        "Foto familiar conmemorativa del evento",
+        "Piñata completa con dulces y regalos del salón",
+        "Espectacular Show Fantasy con personajes y dinámicas exclusivas"
+      ],
+      "menus": [
+        "buffet-infantil",
+        "taquiza-parrillada"
+      ],
+      "fotos": [
+        "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=800"
+      ]
+    },
+    {
+      "id": "infantil-especial",
+      "nombre": "Paquete Especial Todo Incluido",
+      "precio": 576,
+      "horas": 6,
+      "tipoServicio": "salon_alimentos",
+      "servicios": [
+        "Servicio de salón privado con áreas limpias",
+        "Juegos (Castillo de princesas, futbolito, alberca de pelotas, resbaladilla, tobogán, brincolín)",
+        "Mesas con sillas infantiles y mesas de adultos con manteles de color a elegir",
+        "Espectacular bienvenida con un regalo luminoso y mini batucada con personaje exclusivo (Mickey, Donald, Minnie, Goofy, Toy Story, Princesas, Super Héroes, Paw Patrol, etc.)",
+        "Coordinación y amenización del evento con Dj como maestro de ceremonias",
+        "Luces audio rítmicas espectaculares",
+        "Música mezclada durante todo el evento (infantil, ambiental, bailable)",
+        "Juegos y dinámicas organizadas para niños y adultos",
+        "Pantalla gigante para videos musicales y películas infantiles",
+        "Personal mixto para organización (meseros y nana de apoyo para supervisión)",
+        "Espectacular batucada con lluvia de papeles de colores y globos",
+        "Área de juegos con personal dedicado",
+        "Acceso y uso libre de cocina",
+        "Invitaciones y boletos digitales de cortesía",
+        "Foto familiar conmemorativa del evento",
+        "Piñata completa de dulces y regalos de primera",
+        "Espectacular Show Fantasy con personajes",
+        "Cristalería elegante incluida",
+        "Video USB con la reseña completa del evento",
+        "Mesa de dulces decorada temática para niños"
+      ],
+      "menus": [
+        "buffet-infantil",
+        "taquiza-parrillada"
+      ],
+      "fotos": [
+        "https://images.unsplash.com/photo-1545232979-8bf34eb9757b?auto=format&fit=crop&q=80&w=800"
+      ]
+    }
+  ],
+  "shows": [
+    {
+      "id": "show-mickey",
+      "nombre": "Show de Mickey y sus amigos",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Interactúa con Mickey, Minnie, Goofy y Donald en una aventura musical para chicos y grandes con bailes, concursos y batucada infantil.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1566737236500-c8ac43014a67?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    {
+      "id": "show-toystory",
+      "nombre": "Show de Toy Story",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Woody, Buzz Lightyear y Jessie cobran vida para jugar, bailar e integrar a todos los invitados en una aventura espacial.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1558060370-d644479cb6f7?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1531651008558-ed1740375b39?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-superheroes",
+      "nombre": "Show de Súper Héroes",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Los héroes más icónicos de los cómics salvan la fiesta con espectaculares acrobacias, dinámicas de entrenamiento y batalla final.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1568832359672-e36cf5d74f54?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-frozen",
+      "nombre": "Show de Frozen",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Una mágica nevada con Elsa, Anna y el tierno Olaf en una hermosa obra musical con canciones cantadas en vivo e iluminación especial.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1543589077-47d81606c1bf?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-encanto",
+      "nombre": "Show de Encanto",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Llena de color e ilusión tu fiesta con el encanto y las melodías vibrantes de la familia Madrigal.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-princesas",
+      "nombre": "Show de Princesas",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Cenicienta, Bella y Ariel en un hermoso cuento de hadas cantado en vivo con coronación para la festejada.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-spiderman",
+      "nombre": "Show de Spiderman",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Acrobacias y entrenamiento de telarañas del héroe favorito de los niños en un emocionante show interactivo.",
+      "fotos": [
+        "/uploads/1784738233081-5108765784b9caec.mp4",
+        "/uploads/1784738237862-fe70c6127afb70b7.mp4",
+        "/uploads/1784738243624-b3a4a2a0213a917d.mp4",
+        "/uploads/1784738247544-8e4fa226fefd62cc.jpg",
+        "/uploads/1784738251171-eb41fcf8f8183ce5.jpg",
+        "/uploads/1784738254651-6c93001695e15087.jpg"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-blanca-nieves",
+      "nombre": "Show de Blanca Nieves",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "El clásico cuento de hadas cobra vida con Blanca Nieves y divertidas dinámicas teatrales para los niños.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-payasos",
+      "nombre": "Show de Payasos Elegantes",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Malabares, chistes familiares, magia de comedia y dinámicas sanas y muy divertidas para reír a carcajadas.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1541252260730-0412e8e2108e?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-bely-beto",
+      "nombre": "Show Bely y Beto",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Canta y baila las divertidas canciones de Bely, Beto, Pepo y sus amigos en un espectáculo desbordante de energía.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1472653431158-6364773b2a5c?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-demon-huntrix",
+      "nombre": "Show Demon Hunter",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Gran espectáculo temático con personajes fantásticos, efectos de luces y batucada luminosa.",
+      "fotos": [
+        "/uploads/1784739012902-8a3a420820cc1d74.mp4"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-mario-bross",
+      "nombre": "Show Mario Bross",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Acompaña a Mario, Luigi y la Princesa Peach en el Reino Champiñón con retos físicos, monedas y diversión.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": ""
+    },
+    {
+      "id": "show-mago",
+      "nombre": "Show de Mago Farid",
+      "precio": 5500,
+      "duracion": "1 Hora",
+      "descripcion": "Ilusionismo profesional, aparición de palomas, magia interactiva con niños y papás, e increíbles sorpresas.",
+      "fotos": [
+        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=800",
+        "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&q=80&w=800"
+      ],
+      "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    }
+  ],
+  "servicios_adicionales": [
+    {
+      "nombre": "Piñata completa con dulces y juguetes",
+      "precio": 1800,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Álbum impreso premium (100 fotos)",
+      "precio": 3200,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Álbum digital completo de fotos",
+      "precio": 2800,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Paquete Fotográfico Extra",
+      "precio": 4200,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Video USB con reseña y edición",
+      "precio": 6500,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Recepción con personaje especial (1 hr)",
+      "precio": 750,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Pastel de bodas o cumpleaños",
+      "precio": 0,
+      "descripcion": "Contáctanos para cotizar un precio ideal para ti.",
+      "sinPrecioFijo": true,
+      "tipoCobro": "cotizacion"
+    },
+    {
+      "nombre": "Mantelería Francesa (100 personas)",
+      "precio": 2000,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Derecho de pista para show externo",
+      "precio": 850,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Hora extra de servicio del salón",
+      "precio": 4800,
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Mesa de dulces / Carrito de snacks (p/p, mín. 100)",
+      "precio": 55,
+      "descripcion": "Mínimo para 100 personas.",
+      "tipoCobro": "persona"
+    },
+    {
+      "nombre": "Descorche",
+      "precio": 1950,
+      "descripcion": "Mínimo 100 personas",
+      "tipoCobro": "evento"
+    },
+    {
+      "nombre": "Descorche",
+      "precio": 2850,
+      "descripcion": "Para más de 150 personas.",
+      "tipoCobro": "evento"
+    }
+  ],
+  "testimonios": [
+    {
+      "id": "test-1",
+      "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-wedding-couple-dancing-under-fairy-lights-42525-large.mp4"
+    },
+    {
+      "id": "test-2",
+      "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-dancing-at-a-glamorous-party-34185-large.mp4"
+    },
+    {
+      "id": "test-3",
+      "videoUrl": "https://assets.mixkit.co/videos/preview/mixkit-children-having-fun-at-a-birthday-party-43026-large.mp4"
+    }
+  ],
+  "reglamento": {
+    "precioApartado": 2500,
+    "objetosProhibidos": [
+      "Huevos de harina y/o confetti.",
+      "Basuka de papeles metálicos.",
+      "Espumas de aerosol.",
+      "Piñatas rellenas con confetti."
+    ],
+    "reglas": [
+      "Los niños de 3 años de edad en adelante pagan boleto completo.",
+      "El depósito de apartado no es reembolsable en caso de cancelación.",
+      "No se permite el acceso con mascotas.",
+      "Cualquier daño ocasionado a las instalaciones, áreas verdes o juegos será responsabilidad del anfitrión."
+    ]
+  },
+  "usuarios": [
+    {
+      "id": "admin-user",
+      "username": "admin",
+      "passwordHash": "1b0b00ba894f6bbf9cd37ea142da0026d257b93a9feb5ab55d9b8798e61997b9"
+    }
+  ],
+  "galeria": [
+    {
+      "id": "gal-1784738300098",
+      "url": "/uploads/1784738299094-a7f7667b93b445da.mp4",
+      "categoria": "salon"
+    },
+    {
+      "id": "gal-1784738314024",
+      "url": "/uploads/1784738313659-23cd250961f97982.mp4",
+      "categoria": "salon"
+    }
+  ]
+}
