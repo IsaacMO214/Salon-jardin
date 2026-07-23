@@ -1,20 +1,80 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Salón Jardín
 
-# Run and deploy your AI Studio app
+Sistema de gestión para salón de eventos con panel administrativo.
 
-This contains everything you need to run your app locally.
+## Tecnologías
 
-View your app in AI Studio: https://ai.studio/apps/f7997164-18ed-4c84-9856-2c2e26c5f82c
+- **Frontend:** React 19 + TypeScript + Vite + Tailwind CSS 4
+- **Backend:** Express + TypeScript
+- **Base de datos:** MySQL
+- **Autenticación:** JWT + bcrypt
 
-## Run Locally
+## Requisitos
 
-**Prerequisites:**  Node.js
+- Node.js 18+
+- MySQL 8+
+- npm
 
+## Configuración inicial
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1. Clona el repositorio:
+   ```bash
+   git clone <url-del-repositorio>
+   cd Salon-jardin
+   ```
+
+2. Instala dependencias:
+   ```bash
+   npm install
+   ```
+
+3. Configura variables de entorno:
+   ```bash
+   cp .env.example .env
+   ```
+   Edita `.env` con tus credenciales de MySQL y una clave secreta para JWT.
+
+4. Crea la base de datos MySQL:
+   ```bash
+   mysql -u root -p < server/schema.sql
+   ```
+
+5. Inicia el servidor de desarrollo:
+   ```bash
+   npm run dev
+   ```
+
+6. Abre `http://localhost:3000` en el navegador.
+
+## Scripts disponibles
+
+| Comando | Descripción |
+|---------|-------------|
+| `npm run dev` | Inicia servidor de desarrollo |
+| `npm run build` | Compila frontend y backend para producción |
+| `npm start` | Inicia servidor en producción |
+| `npm run lint` | Verifica tipos con TypeScript |
+
+## Estructura del proyecto
+
+```
+Salon-jardin/
+├── server/           # Backend Express
+│   ├── routes/       # Rutas API
+│   ├── auth.ts       # Autenticación JWT
+│   ├── config.ts     # Configuración
+│   ├── db.ts         # Conexión MySQL
+│   ├── schema.sql    # Esquema de base de datos
+│   ├── validation.ts # Validaciones
+│   └── index.ts      # Punto de entrada
+├── src/              # Frontend React
+│   ├── admin/        # Panel administrativo
+│   ├── api/          # Cliente API
+│   ├── components/   # Componentes React
+│   └── main.tsx      # Punto de entrada
+├── data/             # Datos locales (JSON)
+├── uploads/          # Archivos subidos
+├── package.json
+├── vite.config.ts
+└── tsconfig.json
+```
