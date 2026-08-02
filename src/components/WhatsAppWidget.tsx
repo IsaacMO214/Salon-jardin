@@ -47,19 +47,19 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
             className="absolute bottom-16 right-0 w-[360px] sm:w-[380px] bg-white border border-slate-100 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[500px]"
           >
             {/* Header */}
-            <div className="bg-[#008a64] p-5 text-white flex items-center justify-between relative">
+            <div className="bg-fantasy-purple-700 p-5 text-white flex items-center justify-between relative">
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <div className="w-12 h-12 bg-white/10 backdrop-blur-xs border border-white/20 rounded-full flex items-center justify-center text-white">
                     <Sparkles className="w-6 h-6 text-white" />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-[#008a64] rounded-full animate-pulse" />
+                  <span className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-fantasy-pink-400 border-2 border-fantasy-purple-700 rounded-full animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="font-serif text-lg font-bold tracking-tight text-white leading-tight">Jardín Fantasy</h3>
+                  <h3 className="text-lg font-bold tracking-tight text-white leading-tight">Jardín Fantasy</h3>
                   <div className="flex items-center gap-1.5 mt-0.5">
-                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
-                    <span className="text-[10px] text-emerald-250 uppercase font-bold tracking-wider">Asesores en línea</span>
+                    <span className="w-1.5 h-1.5 bg-fantasy-pink-400 rounded-full" />
+                    <span className="text-[10px] text-fantasy-pink-200 uppercase font-bold tracking-wider">Asesores en línea</span>
                   </div>
                 </div>
               </div>
@@ -76,7 +76,7 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
             <div className="p-4 bg-slate-50 grow overflow-y-auto space-y-4 max-h-[300px] custom-scrollbar">
               {/* Automated Assistant Message */}
               <div className="flex gap-2.5 items-start">
-                <div className="w-8 h-8 rounded-full bg-emerald-100 border border-emerald-200 text-emerald-700 font-bold flex items-center justify-center text-xs shrink-0 select-none">
+                <div className="w-8 h-8 rounded-full bg-fantasy-purple-100 border border-fantasy-purple-200 text-fantasy-purple-700 font-bold flex items-center justify-center text-xs shrink-0 select-none">
                   F
                 </div>
                 <div className="bg-white border border-slate-150 rounded-2xl p-4 shadow-xs text-xs text-slate-700 leading-relaxed max-w-[85%]">
@@ -91,33 +91,33 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
                 
                 <button
                   onClick={() => handleQuickAction("Hola, me gustaría cotizar una fiesta infantil en Salón Jardín Fantasy.")}
-                  className="w-full flex items-center gap-3 bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-slate-300 rounded-xl px-4 py-3 text-xs font-bold text-slate-700 transition-all cursor-pointer text-left shadow-xs hover:shadow-sm"
+                  className="w-full flex items-center gap-3 bg-white hover:bg-fantasy-purple-50/50 border border-slate-200/80 hover:border-fantasy-purple-200 rounded-xl px-4 py-3 text-xs font-bold text-slate-700 transition-all cursor-pointer text-left shadow-xs hover:shadow-sm"
                 >
-                  <Sparkles className="w-4 h-4 text-orange-500 shrink-0" />
+                  <Sparkles className="w-4 h-4 text-fantasy-pink-500 shrink-0" />
                   <span>Cotizar Fiesta Infantil</span>
                 </button>
 
                 <button
                   onClick={() => handleQuickAction("Hola, me gustaría cotizar un evento social en Salón Jardín Fantasy.")}
-                  className="w-full flex items-center gap-3 bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-slate-300 rounded-xl px-4 py-3 text-xs font-bold text-slate-700 transition-all cursor-pointer text-left shadow-xs hover:shadow-sm"
+                  className="w-full flex items-center gap-3 bg-white hover:bg-fantasy-purple-50/50 border border-slate-200/80 hover:border-fantasy-purple-200 rounded-xl px-4 py-3 text-xs font-bold text-slate-700 transition-all cursor-pointer text-left shadow-xs hover:shadow-sm"
                 >
-                  <Sparkles className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <Sparkles className="w-4 h-4 text-fantasy-purple-500 shrink-0" />
                   <span>Cotizar Evento Social</span>
                 </button>
 
                 <button
                   onClick={() => handleQuickAction("Hola, me gustaría consultar la disponibilidad de fechas para mi evento en Salón Jardín Fantasy.")}
-                  className="w-full flex items-center gap-3 bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-slate-300 rounded-xl px-4 py-3 text-xs font-bold text-slate-700 transition-all cursor-pointer text-left shadow-xs hover:shadow-sm"
+                  className="w-full flex items-center gap-3 bg-white hover:bg-fantasy-purple-50/50 border border-slate-200/80 hover:border-fantasy-purple-200 rounded-xl px-4 py-3 text-xs font-bold text-slate-700 transition-all cursor-pointer text-left shadow-xs hover:shadow-sm"
                 >
-                  <Calendar className="w-4 h-4 text-blue-500 shrink-0" />
+                  <Calendar className="w-4 h-4 text-fantasy-blue-500 shrink-0" />
                   <span>Consultar Disponibilidad</span>
                 </button>
 
                 <button
                   onClick={() => handleQuickAction("Hola, tengo algunas preguntas generales sobre el Salón Jardín Fantasy.")}
-                  className="w-full flex items-center gap-3 bg-white hover:bg-slate-50 border border-slate-200/80 hover:border-slate-300 rounded-xl px-4 py-3 text-xs font-bold text-slate-700 transition-all cursor-pointer text-left shadow-xs hover:shadow-sm"
+                  className="w-full flex items-center gap-3 bg-white hover:bg-fantasy-purple-50/50 border border-slate-200/80 hover:border-fantasy-purple-200 rounded-xl px-4 py-3 text-xs font-bold text-slate-700 transition-all cursor-pointer text-left shadow-xs hover:shadow-sm"
                 >
-                  <HelpCircle className="w-4 h-4 text-purple-500 shrink-0" />
+                  <HelpCircle className="w-4 h-4 text-fantasy-purple-400 shrink-0" />
                   <span>Preguntas Generales</span>
                 </button>
               </div>
@@ -131,14 +131,14 @@ export default function WhatsAppWidget({ phone }: WhatsAppWidgetProps) {
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Escribe tu mensaje aquí..."
-                className="grow bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white transition-colors"
+                className="grow bg-slate-50 border border-slate-200 rounded-full px-4 py-2 text-xs font-medium text-slate-800 placeholder-slate-400 focus:outline-none focus:border-fantasy-purple-500 focus:bg-white transition-colors"
               />
               <button
                 type="submit"
                 disabled={!message.trim()}
                 className={`p-2.5 rounded-full transition-all flex items-center justify-center shrink-0 ${
                   message.trim()
-                    ? "bg-emerald-50 text-emerald-600 hover:bg-emerald-100 cursor-pointer"
+                    ? "bg-fantasy-purple-50 text-fantasy-purple-600 hover:bg-fantasy-purple-100 cursor-pointer"
                     : "bg-slate-50 text-slate-300 cursor-not-allowed"
                 }`}
                 title="Enviar mensaje"

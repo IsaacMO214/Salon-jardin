@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Plus, X, Trash2, Edit2, Calendar, Users, FileText, Save } from "lucide-react";
+import { Plus, X, Trash2, Edit2, Calendar, Users, FileText, Save, ArrowLeft, Image as ImageIcon, Music } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { AppData, Show, ServicioAdicional } from "../types";
 import MediaUploader from "../components/ui/MediaUploader";
@@ -23,6 +23,7 @@ export default function AdminShows({
   const [additionalList, setAdditionalList] = useState([...data.servicios_adicionales]);
   const [editingShow, setEditingShow] = useState<Show | null>(null);
   const [editingService, setEditingService] = useState<{ index?: number; nombre: string; precio: number; descripcion?: string; sinPrecioFijo?: boolean; tipoCobro?: 'evento' | 'persona' | 'cotizacion' } | null>(null);
+  const [activeView, setActiveView] = useState<"menu" | "shows" | "galeria">("menu");
 
   const isDuplicateShowName = Boolean(
     editingShow &&
@@ -60,8 +61,8 @@ export default function AdminShows({
       showStatus("Error: El precio del show debe estar entre $0 y $10,000 MXN.");
       return;
     }
-    if (editingShow.nombre && editingShow.nombre.length > 30) {
-      showStatus("Error: El nombre excede el límite de 30 caracteres.");
+    if (editingShow.nombre && editingShow.nombre.length > 100) {
+      showStatus("Error: El nombre excede el límite de 100 caracteres.");
       return;
     }
     if (editingShow.descripcion && editingShow.descripcion.length > 300) {
@@ -108,8 +109,8 @@ export default function AdminShows({
       showStatus("Error: El precio del servicio debe estar entre $0 y $10,000 MXN.");
       return;
     }
-    if (editingService.nombre && editingService.nombre.length > 30) {
-      showStatus("Error: El nombre excede el límite de 30 caracteres.");
+    if (editingService.nombre && editingService.nombre.length > 100) {
+      showStatus("Error: El nombre excede el límite de 100 caracteres.");
       return;
     }
     if (editingService.descripcion && editingService.descripcion.length > 300) {
@@ -156,15 +157,55 @@ export default function AdminShows({
 
   return (
     <div className="space-y-8">
-      <h3 className="text-xl font-bold text-zinc-100 pb-2 border-b border-zinc-800">Gestionar Shows y Servicios Adicionales</h3>
-      <div className="space-y-4">
+      {activeView === "menu" && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+          <button
+            onClick={() => setActiveView("shows")}
+            className="flex flex-col items-center justify-center p-10 bg-zinc-800/40 hover:bg-zinc-800/80 border border-zinc-700/80 hover:border-fantasy-purple-500 rounded-3xl transition-all group cursor-pointer"
+          >
+            <div className="w-20 h-20 rounded-full bg-fantasy-purple-950 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-fantasy-purple-900/20">
+              <Music className="w-10 h-10 text-fantasy-purple-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-zinc-100 mb-2 text-center">Administrar Shows y Servicios</h3>
+            <p className="text-sm text-zinc-400 text-center max-w-[250px]">
+              Agrega, edita o elimina espectáculos infantiles y servicios adicionales.
+            </p>
+          </button>
+          
+          <button
+            onClick={() => setActiveView("galeria")}
+            className="flex flex-col items-center justify-center p-10 bg-zinc-800/40 hover:bg-zinc-800/80 border border-zinc-700/80 hover:border-fantasy-pink-500 rounded-3xl transition-all group cursor-pointer"
+          >
+            <div className="w-20 h-20 rounded-full bg-fantasy-pink-950 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg shadow-fantasy-pink-900/20">
+              <ImageIcon className="w-10 h-10 text-fantasy-pink-400" />
+            </div>
+            <h3 className="text-2xl font-bold text-zinc-100 mb-2 text-center">Administrar Fotos de Shows</h3>
+            <p className="text-sm text-zinc-400 text-center max-w-[250px]">
+              Sube y gestiona la galería unificada de fotos y videos para los espectáculos.
+            </p>
+          </button>
+        </div>
+      )}
+
+      {activeView === "shows" && (
+        <div className="space-y-8">
+          <button 
+            onClick={() => setActiveView("menu")}
+            className="flex items-center gap-2 text-xs font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer mb-2"
+          >
+            <ArrowLeft className="w-4 h-4" /> Volver al menú
+          </button>
+          <div className="flex justify-between items-center pb-2 border-b border-zinc-800">
+            <h3 className="text-xl font-bold text-zinc-100">Gestionar Shows y Servicios Adicionales</h3>
+          </div>
+          <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-800">
           <div className="flex items-center gap-2.5">
             <h4 className="font-bold text-sm sm:text-base text-zinc-100 uppercase tracking-wider">Espectáculos Infantiles</h4>
-            <span className="bg-emerald-950/80 text-emerald-400 border border-emerald-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold">{showsList.length}</span>
+            <span className="bg-fantasy-purple-950/80 text-fantasy-purple-400 border border-fantasy-purple-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold">{showsList.length}</span>
           </div>
           {!editingShow && !editingService && (
-            <button type="button" onClick={() => setEditingShow({ id: "show-" + Date.now(), nombre: "", precio: 5500, duracion: "1 Hora", descripcion: "", fotos: [], videoUrl: "" })} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 hover:bg-emerald-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm self-start sm:self-auto">
+            <button type="button" onClick={() => setEditingShow({ id: "show-" + Date.now(), nombre: "", precio: 5500, duracion: "1 Hora", descripcion: "", fotos: [], videoUrl: "" })} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-fantasy-purple-950/90 border border-fantasy-purple-500/50 text-fantasy-purple-300 hover:bg-fantasy-purple-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm self-start sm:self-auto">
               <Plus className="w-3.5 h-3.5" /> Agregar Show
             </button>
           )}
@@ -176,7 +217,7 @@ export default function AdminShows({
                 <div className="space-y-1.5 min-w-0 flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                     <h5 className="font-bold text-sm text-zinc-100 leading-snug break-words flex-1">{show.nombre}</h5>
-                    <span className="font-extrabold text-xs text-emerald-400 shrink-0 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-md self-start">${show.precio.toLocaleString("es-MX")} MXN</span>
+                    <span className="font-extrabold text-xs text-fantasy-purple-400 shrink-0 bg-fantasy-purple-950/60 border border-fantasy-purple-500/30 px-2.5 py-1 rounded-md self-start">${show.precio.toLocaleString("es-MX")} MXN</span>
                   </div>
                   {show.descripcion && (<p className="text-xs text-zinc-400 leading-relaxed">{show.descripcion}</p>)}
                 </div>
@@ -191,41 +232,111 @@ export default function AdminShows({
       </div>
 
       {/* Servicios Adicionales */}
-      <div className="space-y-4 pt-6 border-t border-zinc-800">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-800">
-          <div className="flex items-center gap-2.5">
-            <h4 className="font-bold text-sm sm:text-base text-zinc-100 uppercase tracking-wider">Servicios Adicionales</h4>
-            <span className="bg-emerald-950/80 text-emerald-400 border border-emerald-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold">{additionalList.length}</span>
+        <div className="space-y-4 pt-6 border-t border-zinc-800">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-800">
+            <div className="flex items-center gap-2.5">
+              <h4 className="font-bold text-sm sm:text-base text-zinc-100 uppercase tracking-wider">Servicios Adicionales</h4>
+              <span className="bg-fantasy-purple-950/80 text-fantasy-purple-400 border border-fantasy-purple-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold">{additionalList.length}</span>
+            </div>
+            {!editingShow && !editingService && (
+              <button type="button" onClick={() => setEditingService({ index: -1, nombre: "", precio: 0, descripcion: "", sinPrecioFijo: false, tipoCobro: 'evento' })} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-fantasy-purple-950/90 border border-fantasy-purple-500/50 text-fantasy-purple-300 hover:bg-fantasy-purple-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm self-start sm:self-auto">
+                <Plus className="w-3.5 h-3.5" /> Agregar Servicio
+              </button>
+            )}
           </div>
-          {!editingShow && !editingService && (
-            <button type="button" onClick={() => setEditingService({ index: -1, nombre: "", precio: 0, descripcion: "", sinPrecioFijo: false, tipoCobro: 'evento' })} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 hover:bg-emerald-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm self-start sm:self-auto">
-              <Plus className="w-3.5 h-3.5" /> Agregar Servicio
-            </button>
+          {additionalList.length === 0 ? (<p className="text-xs text-zinc-500 italic py-4">No hay servicios adicionales registrados.</p>) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              {additionalList.map((service, idx) => { const inferredTipo = service.tipoCobro || (service.sinPrecioFijo || service.precio === 0 ? 'cotizacion' : ((service.nombre.toLowerCase().includes('p/p') || service.nombre.toLowerCase().includes('persona') || (service.descripcion || '').toLowerCase().includes('p/p') || (service.descripcion || '').toLowerCase().includes('persona')) ? 'persona' : 'evento')); return (
+                <div key={idx} className="p-4 rounded-xl border border-zinc-800 bg-zinc-800/40 hover:border-zinc-700 transition-colors flex justify-between items-start gap-3">
+                  <div className="space-y-1.5 min-w-0 flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                      <h5 className="font-bold text-sm text-zinc-100 leading-snug break-words flex-1">{service.nombre}</h5>
+                      {service.sinPrecioFijo || service.precio === 0 ? (<span className="font-bold text-xs text-fantasy-pink-300 shrink-0 bg-fantasy-pink-950/70 border border-fantasy-pink-500/40 px-2.5 py-1 rounded-md self-start">Sin precio fijo</span>) : (<span className="font-extrabold text-xs text-fantasy-purple-400 shrink-0 bg-fantasy-purple-950/60 border border-fantasy-purple-500/30 px-2.5 py-1 rounded-md self-start">${service.precio.toLocaleString("es-MX")} MXN</span>)}
+                    </div>
+                    {service.descripcion && (<p className="text-xs text-zinc-400 leading-relaxed">{service.descripcion}</p>)}
+                    <div className="pt-1">
+                      {inferredTipo === 'persona' ? (<span className="text-[10px] font-bold text-fantasy-purple-300 bg-fantasy-purple-950/80 border border-fantasy-purple-500/30 px-2.5 py-0.5 rounded-md inline-flex items-center gap-1"><Users className="w-3 h-3 text-fantasy-purple-400" />Por Persona</span>) : inferredTipo === 'cotizacion' ? (<span className="text-[10px] font-bold text-fantasy-pink-300 bg-fantasy-pink-950/80 border border-fantasy-pink-500/30 px-2.5 py-0.5 rounded-md inline-flex items-center gap-1"><FileText className="w-3 h-3 text-fantasy-pink-400" />Cotización</span>) : (<span className="text-[10px] font-bold text-fantasy-purple-300 bg-fantasy-purple-950/80 border border-fantasy-purple-500/30 px-2.5 py-0.5 rounded-md inline-flex items-center gap-1"><Calendar className="w-3 h-3 text-fantasy-purple-400" />Por Evento</span>)}
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1 shrink-0 pt-0.5">
+                    <button type="button" onClick={() => setEditingService({ index: idx, ...service, tipoCobro: inferredTipo })} className="p-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 rounded-lg transition-colors cursor-pointer" title="Editar servicio"><Edit2 className="w-3.5 h-3.5" /></button>
+                    <button type="button" onClick={() => handleDeleteService(idx)} className="p-1.5 bg-zinc-800 hover:bg-red-950/80 text-zinc-400 hover:text-red-300 border border-zinc-700 hover:border-red-500/50 rounded-lg transition-colors cursor-pointer" title="Eliminar servicio"><Trash2 className="w-3.5 h-3.5" /></button>
+                  </div>
+                </div>
+              ); })}
+            </div>
           )}
         </div>
-        {additionalList.length === 0 ? (<p className="text-xs text-zinc-500 italic py-4">No hay servicios adicionales registrados.</p>) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-            {additionalList.map((service, idx) => { const inferredTipo = service.tipoCobro || (service.sinPrecioFijo || service.precio === 0 ? 'cotizacion' : ((service.nombre.toLowerCase().includes('p/p') || service.nombre.toLowerCase().includes('persona') || (service.descripcion || '').toLowerCase().includes('p/p') || (service.descripcion || '').toLowerCase().includes('persona')) ? 'persona' : 'evento')); return (
-              <div key={idx} className="p-4 rounded-xl border border-zinc-800 bg-zinc-800/40 hover:border-zinc-700 transition-colors flex justify-between items-start gap-3">
-                <div className="space-y-1.5 min-w-0 flex-1">
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
-                    <h5 className="font-bold text-sm text-zinc-100 leading-snug break-words flex-1">{service.nombre}</h5>
-                    {service.sinPrecioFijo || service.precio === 0 ? (<span className="font-bold text-xs text-amber-300 shrink-0 bg-amber-950/70 border border-amber-500/40 px-2.5 py-1 rounded-md self-start">Sin precio fijo</span>) : (<span className="font-extrabold text-xs text-emerald-400 shrink-0 bg-emerald-950/60 border border-emerald-500/30 px-2.5 py-1 rounded-md self-start">${service.precio.toLocaleString("es-MX")} MXN</span>)}
-                  </div>
-                  {service.descripcion && (<p className="text-xs text-zinc-400 leading-relaxed">{service.descripcion}</p>)}
-                  <div className="pt-1">
-                    {inferredTipo === 'persona' ? (<span className="text-[10px] font-bold text-emerald-300 bg-emerald-950/80 border border-emerald-500/30 px-2.5 py-0.5 rounded-md inline-flex items-center gap-1"><Users className="w-3 h-3 text-emerald-400" />Por Persona</span>) : inferredTipo === 'cotizacion' ? (<span className="text-[10px] font-bold text-amber-300 bg-amber-950/80 border border-amber-500/30 px-2.5 py-0.5 rounded-md inline-flex items-center gap-1"><FileText className="w-3 h-3 text-amber-400" />Cotización</span>) : (<span className="text-[10px] font-bold text-emerald-300 bg-emerald-950/80 border border-emerald-500/30 px-2.5 py-0.5 rounded-md inline-flex items-center gap-1"><Calendar className="w-3 h-3 text-emerald-400" />Por Evento</span>)}
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 shrink-0 pt-0.5">
-                  <button type="button" onClick={() => setEditingService({ index: idx, ...service, tipoCobro: inferredTipo })} className="p-1.5 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 rounded-lg transition-colors cursor-pointer" title="Editar servicio"><Edit2 className="w-3.5 h-3.5" /></button>
-                  <button type="button" onClick={() => handleDeleteService(idx)} className="p-1.5 bg-zinc-800 hover:bg-red-950/80 text-zinc-400 hover:text-red-300 border border-zinc-700 hover:border-red-500/50 rounded-lg transition-colors cursor-pointer" title="Eliminar servicio"><Trash2 className="w-3.5 h-3.5" /></button>
-                </div>
-              </div>
-            ); })}
-          </div>
-        )}
       </div>
+      )}
+
+      {activeView === "galeria" && (
+        <div className="space-y-5">
+          <button 
+            onClick={() => setActiveView("menu")}
+            className="flex items-center gap-2 text-xs font-bold text-zinc-400 hover:text-white transition-colors cursor-pointer mb-2"
+          >
+            <ArrowLeft className="w-4 h-4" /> Volver al menú
+          </button>
+          
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-zinc-800">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-fantasy-purple-950 border border-fantasy-purple-500/40 rounded-xl text-fantasy-purple-400">
+                <ImageIcon className="w-5 h-5" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-zinc-100">Galería Compartida de Shows</h4>
+                <p className="text-[10px] text-zinc-400 mt-0.5">
+                  Fotos y videos compartidos para la sección de shows · {data.galeria.filter(g => g.categoria === 'shows').length} archivos
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-zinc-800/40 border border-zinc-700/80 p-5 rounded-2xl space-y-4 mb-4">
+            <MediaUploader
+              onUploadSuccess={async (url) => {
+                const itemToAdd = { id: "gal-" + Date.now(), url, categoria: "shows" };
+                const ok = await apiCall("/api/admin/galeria/save", { item: itemToAdd });
+                if (ok) {
+                  showStatus("¡Archivo subido y agregado a la galería con éxito!");
+                }
+              }}
+              accept="image/*,video/*"
+              mode="dropzone"
+              label="Subir fotos o videos a la galería de shows"
+              token={token}
+            />
+          </div>
+
+          {data.galeria.filter(g => g.categoria === 'shows').length > 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {data.galeria.filter(g => g.categoria === 'shows').map((g) => (
+                <div key={g.id} className="group relative rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 aspect-square">
+                  {g.url.match(/\.(mp4|webm|ogg)$/i) ? (
+                    <video src={g.url} className="w-full h-full object-cover" muted playsInline />
+                  ) : (
+                    <img src={g.url} alt="" className="w-full h-full object-cover" />
+                  )}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <button
+                      onClick={() => {
+                          onRequestConfirmation("Eliminar de Galería", "¿Seguro que deseas eliminar este archivo?", async () => {
+                              await apiCall(`/api/admin/galeria/delete/${g.id}`, {});
+                          });
+                      }}
+                      className="p-2 bg-red-600 hover:bg-red-500 text-white rounded-lg shadow-lg cursor-pointer transform hover:scale-110 transition-all"
+                      title="Eliminar de la galería"
+                    >
+                      <Trash2 className="w-5 h-5" />
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* MODAL EDITING SHOW */}
       {editingShow && (
@@ -247,18 +358,18 @@ export default function AdminShows({
                   className={`w-full border rounded-xl px-3.5 py-2 text-xs font-semibold focus:outline-none transition-colors ${
                     isDuplicateShowName
                       ? "bg-red-950/30 border-red-500 focus:border-red-400 text-red-200"
-                      : "bg-zinc-800 border-zinc-700 text-zinc-100 placeholder-zinc-500 focus:border-emerald-500"
+                      : "bg-zinc-800 border-zinc-700 text-zinc-100 placeholder-zinc-500 focus:border-fantasy-purple-500"
                   }`}
                 />
                 <AnimatePresence>
-                {(editingShow.nombre || '').length > 30 && (
+                {(editingShow.nombre || '').length > 100 && (
                   <motion.p
                     initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
                     className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm"
                   >
-                    <span>⚠️</span> El nombre no puede exceder los 30 caracteres.
+                    <span>⚠️</span> El nombre no puede exceder los 100 caracteres.
                   </motion.p>
                 )}
               </AnimatePresence>
@@ -288,7 +399,7 @@ export default function AdminShows({
                   className={`w-full border rounded-xl px-3.5 py-2 text-xs font-bold transition-colors focus:outline-none ${
                     (editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0
                       ? "bg-red-950/30 border-red-500 focus:border-red-400 text-red-200"
-                      : "bg-zinc-800 border-zinc-700 text-emerald-400 placeholder-zinc-500 focus:border-emerald-500"
+                      : "bg-zinc-800 border-zinc-700 text-fantasy-purple-400 placeholder-zinc-500 focus:border-fantasy-purple-500"
                   }`}
                 />
                 <AnimatePresence>
@@ -307,7 +418,7 @@ export default function AdminShows({
               </div>
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">Descripción Breve</label>
-                <textarea rows={3} value={editingShow.descripcion || ''} onChange={(e) => setEditingShow({ ...editingShow, descripcion: e.target.value })} placeholder="Ej. Incluye animación interactiva, personajes caracterizados y regalos para el festejado." className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500" />
+                <textarea rows={3} value={editingShow.descripcion || ''} onChange={(e) => setEditingShow({ ...editingShow, descripcion: e.target.value })} placeholder="Ej. Incluye animación interactiva, personajes caracterizados y regalos para el festejado." className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500" />
                 
                 <AnimatePresence>
                   {(editingShow.descripcion || '').length > 300 && (
@@ -322,25 +433,15 @@ export default function AdminShows({
                   )}
                 </AnimatePresence>
               </div>
-              <div>
-                <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">Galería</label>
-                <p className="text-[11px] text-zinc-400 mb-2">Sube imágenes y videos para mostrar en la galería interactiva del show.</p>
-                {(editingShow.fotos || []).length > 0 && (
-                  <div className="grid grid-cols-3 gap-2 mb-3">
-                    {(editingShow.fotos || []).map((foto, idx) => { const isVideo = foto.match(/\.(mp4|webm|ogg|mov)$/i) || foto.includes('data:video'); return (<div key={idx} className="relative group border border-zinc-700 rounded-xl overflow-hidden h-20 bg-zinc-950 flex items-center justify-center">{isVideo ? (<video src={foto} className="w-full h-full object-cover" muted />) : (<img src={foto} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />)}<button type="button" onClick={() => { setEditingShow({ ...editingShow, fotos: (editingShow.fotos || []).filter((_, i) => i !== idx) }); }} className="absolute top-1 right-1 bg-red-600 text-white p-1 rounded-md cursor-pointer z-10" title="Eliminar elemento"><X className="w-3 h-3" /></button></div>); })}
-                  </div>
-                )}
-                <MediaUploader accept="image/*,video/*" label="Subir Foto o Video" onUploadSuccess={(url) => { setEditingShow({ ...editingShow, fotos: [...(editingShow.fotos || []), url] }); }} />
-              </div>
               <div className="flex justify-end gap-2 pt-2">
                 <button type="button" onClick={() => setEditingShow(null)} className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-xl transition-colors cursor-pointer">Cancelar</button>
                 <button
                   type="submit"
-                  disabled={isDuplicateShowName || (editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0 || (editingShow.nombre || '').length > 30 || (editingShow.descripcion || '').length > 150}
+                  disabled={isDuplicateShowName || (editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0 || (editingShow.nombre || '').length > 100 || (editingShow.descripcion || '').length > 300}
                   className={`px-4 py-2 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1.5 ${
-                    isDuplicateShowName || (editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0 || (editingShow.nombre || '').length > 30 || (editingShow.descripcion || '').length > 150
+                    isDuplicateShowName || (editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0 || (editingShow.nombre || '').length > 100 || (editingShow.descripcion || '').length > 300
                       ? "bg-zinc-700 text-zinc-400 cursor-not-allowed border border-zinc-600"
-                      : "bg-emerald-600 hover:bg-emerald-500 text-white cursor-pointer"
+                      : "bg-fantasy-pink-600 hover:bg-fantasy-pink-500 text-white cursor-pointer"
                   }`}
                 >
                   <Save className="w-4 h-4" /> Guardar
@@ -371,18 +472,18 @@ export default function AdminShows({
                   className={`w-full border rounded-xl px-3.5 py-2 text-xs font-semibold focus:outline-none transition-colors ${
                     isDuplicateServiceName
                       ? "bg-red-950/30 border-red-500 focus:border-red-400 text-red-200"
-                      : "bg-zinc-800 border-zinc-700 text-zinc-100 placeholder-zinc-500 focus:border-emerald-500"
+                      : "bg-zinc-800 border-zinc-700 text-zinc-100 placeholder-zinc-500 focus:border-fantasy-purple-500"
                   }`}
                 />
                 <AnimatePresence>
-                {(editingService.nombre || '').length > 30 && (
+                {(editingService.nombre || '').length > 100 && (
                   <motion.p
                     initial={{ opacity: 0, y: -4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
                     className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm"
                   >
-                    <span>⚠️</span> El nombre no puede exceder los 30 caracteres.
+                    <span>⚠️</span> El nombre no puede exceder los 100 caracteres.
                   </motion.p>
                 )}
               </AnimatePresence>
@@ -400,11 +501,11 @@ export default function AdminShows({
                 </AnimatePresence>
               </div>
               <div>
-                <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Categoría / Tipo de Servicio</label>
+                <label className="block text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider mb-2">Categoría / Tipo de Servicio</label>
                 <div className="grid grid-cols-3 gap-2">
-                  <button type="button" onClick={() => setEditingService({ ...editingService, tipoCobro: 'evento', sinPrecioFijo: false })} className={`p-2.5 rounded-xl border text-xs font-bold flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${(editingService.tipoCobro || 'evento') === 'evento' && !editingService.sinPrecioFijo ? 'bg-emerald-950/90 border-emerald-500 text-emerald-300 shadow-sm' : 'bg-zinc-800 border-zinc-700 text-zinc-400 hover:bg-zinc-750'}`}><Calendar className="w-4 h-4 text-emerald-400" /><span>Por Evento</span></button>
-                  <button type="button" onClick={() => setEditingService({ ...editingService, tipoCobro: 'persona', sinPrecioFijo: false })} className={`p-2.5 rounded-xl border text-xs font-bold flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${editingService.tipoCobro === 'persona' ? 'bg-emerald-950/90 border-emerald-500 text-emerald-300 shadow-sm' : 'bg-zinc-800 border-zinc-700 text-zinc-400 hover:bg-zinc-750'}`}><Users className="w-4 h-4 text-emerald-400" /><span>Por Persona</span></button>
-                  <button type="button" onClick={() => setEditingService({ ...editingService, tipoCobro: 'cotizacion', sinPrecioFijo: true, precio: 0 })} className={`p-2.5 rounded-xl border text-xs font-bold flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${editingService.tipoCobro === 'cotizacion' || editingService.sinPrecioFijo ? 'bg-amber-950/90 border-amber-500 text-amber-300 shadow-sm' : 'bg-zinc-800 border-zinc-700 text-zinc-400 hover:bg-zinc-750'}`}><FileText className="w-4 h-4 text-amber-400" /><span>Cotización</span></button>
+                  <button type="button" onClick={() => setEditingService({ ...editingService, tipoCobro: 'evento', sinPrecioFijo: false })} className={`p-2.5 rounded-xl border text-xs font-bold flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${(editingService.tipoCobro || 'evento') === 'evento' && !editingService.sinPrecioFijo ? 'bg-fantasy-purple-950/90 border-fantasy-purple-500 text-fantasy-purple-300 shadow-sm' : 'bg-zinc-800 border-zinc-700 text-zinc-400 hover:bg-zinc-750'}`}><Calendar className="w-4 h-4 text-fantasy-purple-400" /><span>Por Evento</span></button>
+                  <button type="button" onClick={() => setEditingService({ ...editingService, tipoCobro: 'persona', sinPrecioFijo: false })} className={`p-2.5 rounded-xl border text-xs font-bold flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${editingService.tipoCobro === 'persona' ? 'bg-fantasy-purple-950/90 border-fantasy-purple-500 text-fantasy-purple-300 shadow-sm' : 'bg-zinc-800 border-zinc-700 text-zinc-400 hover:bg-zinc-750'}`}><Users className="w-4 h-4 text-fantasy-purple-400" /><span>Por Persona</span></button>
+                  <button type="button" onClick={() => setEditingService({ ...editingService, tipoCobro: 'cotizacion', sinPrecioFijo: true, precio: 0 })} className={`p-2.5 rounded-xl border text-xs font-bold flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${editingService.tipoCobro === 'cotizacion' || editingService.sinPrecioFijo ? 'bg-fantasy-pink-950/90 border-fantasy-pink-500 text-fantasy-pink-300 shadow-sm' : 'bg-zinc-800 border-zinc-700 text-zinc-400 hover:bg-zinc-750'}`}><FileText className="w-4 h-4 text-fantasy-pink-400" /><span>Cotización</span></button>
                 </div>
               </div>
               <div>
@@ -420,10 +521,10 @@ export default function AdminShows({
                   placeholder={(editingService.tipoCobro === 'cotizacion' || editingService.sinPrecioFijo) ? "A cotizar (sin precio fijo)" : "Ej. 1200"}
                   className={`w-full border rounded-xl px-3.5 py-2 text-xs font-bold transition-colors ${
                     (editingService.tipoCobro === 'cotizacion' || editingService.sinPrecioFijo)
-                      ? "bg-zinc-800/40 border-zinc-800 text-amber-300/80 cursor-not-allowed placeholder-amber-300/70"
+                      ? "bg-zinc-800/40 border-zinc-800 text-fantasy-pink-300/80 cursor-not-allowed placeholder-fantasy-pink-300/70"
                       : (editingService.precio || 0) > 10000 || (editingService.precio || 0) < 0
                       ? "bg-red-950/30 border-red-500 focus:border-red-400 text-red-200"
-                      : "bg-zinc-800 border-zinc-700 text-emerald-400 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                      : "bg-zinc-800 border-zinc-700 text-fantasy-purple-400 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
                   }`}
                 />
                 <AnimatePresence>
@@ -442,7 +543,7 @@ export default function AdminShows({
               </div>
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">Descripción / Detalles (Opcional)</label>
-                   <textarea rows={3} value={editingService.descripcion || ''} onChange={(e) => setEditingService({ ...editingService, descripcion: e.target.value })} placeholder="Ej. Servicio por 4 horas continuas con operador incluido." className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500" />
+                   <textarea rows={3} value={editingService.descripcion || ''} onChange={(e) => setEditingService({ ...editingService, descripcion: e.target.value })} placeholder="Ej. Servicio por 4 horas continuas con operador incluido." className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500" />
                
                <AnimatePresence>
                  {(editingService.descripcion || '').length > 300 && (
@@ -461,11 +562,11 @@ export default function AdminShows({
                 <button type="button" onClick={() => setEditingService(null)} className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-xl transition-colors cursor-pointer">Cancelar</button>
                  <button
                    type="submit"
-                   disabled={isDuplicateServiceName || ((editingService.tipoCobro !== 'cotizacion' && !editingService.sinPrecioFijo) && ((editingService.precio || 0) > 10000 || (editingService.precio || 0) < 0)) || (editingService.nombre || '').length > 30 || (editingService.descripcion || '').length > 300}
+                   disabled={isDuplicateServiceName || ((editingService.tipoCobro !== 'cotizacion' && !editingService.sinPrecioFijo) && ((editingService.precio || 0) > 10000 || (editingService.precio || 0) < 0)) || (editingService.nombre || '').length > 100 || (editingService.descripcion || '').length > 300}
                   className={`px-4 py-2 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1.5 ${
-                    isDuplicateServiceName || ((editingService.tipoCobro !== 'cotizacion' && !editingService.sinPrecioFijo) && ((editingService.precio || 0) > 10000 || (editingService.precio || 0) < 0)) || (editingService.nombre || '').length > 30 || (editingService.descripcion || '').length > 150
+                    isDuplicateServiceName || ((editingService.tipoCobro !== 'cotizacion' && !editingService.sinPrecioFijo) && ((editingService.precio || 0) > 10000 || (editingService.precio || 0) < 0)) || (editingService.nombre || '').length > 100 || (editingService.descripcion || '').length > 300
                       ? "bg-zinc-700 text-zinc-400 cursor-not-allowed border border-zinc-600"
-                      : "bg-emerald-600 hover:bg-emerald-500 text-white cursor-pointer"
+                      : "bg-fantasy-pink-600 hover:bg-fantasy-pink-500 text-white cursor-pointer"
                   }`}
                 >
                   <Save className="w-4 h-4" /> Guardar

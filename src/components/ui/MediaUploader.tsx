@@ -131,10 +131,10 @@ export default function MediaUploader({
           disabled={isUploading}
           onClick={triggerFileInput}
           title={label}
-          className="p-1.5 text-zinc-400 hover:text-emerald-400 hover:bg-zinc-800 rounded-md transition-all cursor-pointer disabled:opacity-50"
+          className="p-1.5 text-zinc-400 hover:text-fantasy-purple-400 hover:bg-zinc-800 rounded-md transition-all cursor-pointer disabled:opacity-50"
         >
           {isUploading ? (
-            <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-400" />
+            <Loader2 className="w-3.5 h-3.5 animate-spin text-fantasy-purple-400" />
           ) : accept.includes("video") ? (
             <FileVideo className="w-3.5 h-3.5" />
           ) : (
@@ -170,25 +170,25 @@ export default function MediaUploader({
           onClick={triggerFileInput}
           className={`border-2 border-dashed rounded-xl p-5 text-center cursor-pointer transition-all flex flex-col items-center justify-center min-h-[130px] ${
             isDragActive
-              ? "border-emerald-500 bg-emerald-950/40 text-emerald-200"
-              : "border-zinc-700/80 hover:border-emerald-500/60 bg-zinc-900/60 hover:bg-zinc-800/80"
+              ? "border-fantasy-purple-500 bg-fantasy-purple-950/40 text-fantasy-purple-200"
+              : "border-zinc-700/80 hover:border-fantasy-purple-500/60 bg-zinc-900/60 hover:bg-zinc-800/80"
           } ${isUploading ? "pointer-events-none opacity-80" : ""}`}
         >
           {isUploading ? (
             <div className="flex flex-col items-center gap-2">
-              <Loader2 className="w-7 h-7 animate-spin text-emerald-400" />
+              <Loader2 className="w-7 h-7 animate-spin text-fantasy-purple-400" />
               <p className="text-xs font-semibold text-zinc-300">Subiendo archivo...</p>
             </div>
           ) : (
             <div className="space-y-2">
-              <div className="inline-flex p-2.5 bg-zinc-800 border border-zinc-700 rounded-full text-emerald-400 shadow-xs">
-                <Upload className="w-5 h-5 text-emerald-400" />
+              <div className="inline-flex p-2.5 bg-zinc-800 border border-zinc-700 rounded-full text-fantasy-purple-400 shadow-xs">
+                <Upload className="w-5 h-5 text-fantasy-purple-400" />
               </div>
               <div>
                 <p className="text-xs font-bold text-zinc-100">{label}</p>
                 <p className="text-[10px] text-zinc-400 mt-0.5">Arrastra y suelta un archivo aquí, o haz clic para explorar</p>
               </div>
-              <span className="inline-block text-[9px] px-2 py-0.5 bg-emerald-950/60 text-emerald-400 border border-emerald-500/30 rounded font-semibold uppercase tracking-wider">
+              <span className="inline-block text-[9px] px-2 py-0.5 bg-fantasy-purple-950/60 text-fantasy-purple-400 border border-fantasy-purple-500/30 rounded font-semibold uppercase tracking-wider">
                 {accept === "image/*" ? "Solo imágenes" : accept === "video/*" ? "Solo videos" : "Imágenes o Videos"}
               </span>
             </div>
@@ -218,16 +218,16 @@ export default function MediaUploader({
         type="button"
         disabled={isUploading}
         onClick={triggerFileInput}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-zinc-800 border border-zinc-700 hover:border-emerald-500/50 hover:bg-zinc-700 text-xs font-bold text-zinc-200 hover:text-emerald-300 rounded-lg shadow-xs cursor-pointer disabled:opacity-75 transition-all"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-zinc-800 border border-zinc-700 hover:border-fantasy-purple-500/50 hover:bg-zinc-700 text-xs font-bold text-zinc-200 hover:text-fantasy-purple-300 rounded-lg shadow-xs cursor-pointer disabled:opacity-75 transition-all"
       >
         {isUploading ? (
           <>
-            <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-400" />
+            <Loader2 className="w-3.5 h-3.5 animate-spin text-fantasy-purple-400" />
             <span>Subiendo...</span>
           </>
         ) : (
           <>
-            <Upload className="w-3.5 h-3.5 text-emerald-400" />
+            <Upload className="w-3.5 h-3.5 text-fantasy-purple-400" />
             <span>{label}</span>
           </>
         )}

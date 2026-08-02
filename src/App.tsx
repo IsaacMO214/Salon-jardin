@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 import { AppData } from "./types";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -75,15 +76,17 @@ export default function App() {
     loadData();
   };
 
+  useEffect(() => {
+    if (!loading) {
+      const skel = document.getElementById("initial-skeleton");
+      if (skel) {
+        skel.remove();
+      }
+    }
+  }, [loading]);
+
   if (loading) {
-    return (
-      <div className="min-h-screen bg-[#F9FAF9] flex items-center justify-center">
-        <div className="text-center">
-          <div className="w-8 h-8 border-2 border-green-700 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-          <span className="text-[11px] font-bold text-slate-400 tracking-widest uppercase">Cargando Jardín Fantasy...</span>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   if (!data) {
@@ -94,7 +97,7 @@ export default function App() {
           <p className="text-xs text-slate-500 leading-relaxed mb-6">No se pudo cargar la base de datos de Jardín Fantasy.</p>
           <button 
             onClick={loadData}
-            className="px-6 py-2 bg-green-700 hover:bg-green-800 text-white rounded-full text-xs font-bold uppercase tracking-widest transition-colors cursor-pointer"
+            className="px-6 py-2 bg-fantasy-pink-500 hover:bg-fantasy-pink-600 text-white rounded-full text-xs font-bold uppercase tracking-widest transition-colors cursor-pointer shadow-sm"
           >
             Reintentar
           </button>
@@ -106,11 +109,20 @@ export default function App() {
   const mainPhone = data.nosotros.telefonos[0] || "55 3607 3700";
 
   if (view === "admin") {
-    return <AdminPanel data={data} onRefresh={loadData} />;
+    return (
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, ease: "easeOut" }}>
+        <AdminPanel data={data} onRefresh={loadData} />
+      </motion.div>
+    );
   }
 
   return (
-    <div className="min-h-screen text-slate-850 flex flex-col justify-between">
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="min-h-screen text-slate-850 flex flex-col justify-between"
+    >
       {/* 1. Shared Navigation Header */}
       <Navbar
         currentView={view}
@@ -129,7 +141,7 @@ export default function App() {
           imagenesUrl={data.banner?.imagenesUrl}
         />
         <Nosotros nosotros={data.nosotros} />
-        <Eventos eventos={data.eventos} />
+        <Eventos eventos={data.eventos} eventosGaleria={data.eventos_galeria} />
         <Paquetes
           paquetesSociales={data.paquetes_sociales}
           paquetesInfantiles={data.paquetes_infantiles}
@@ -139,7 +151,7 @@ export default function App() {
           telefonos={data.nosotros.telefonos}
         />
         <Menus menus={data.menus} />
-        <ShowsServicios shows={data.shows} serviciosAdicionales={data.servicios_adicionales} />
+        <ShowsServicios shows={data.shows} serviciosAdicionales={data.servicios_adicionales} galeria={data.galeria} />
         <GaleriaTestimonios galeria={data.galeria} testimonios={data.testimonios} />
         <ReglamentoContacto
           reglamento={data.reglamento}
@@ -150,32 +162,20 @@ export default function App() {
       </main>
 
       {/* 3. Clean Minimalist Footer */}
-      <footer className="bg-forest-950 border-t border-forest-900/60 py-12 text-zinc-300">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <footer className="bg-fantasy-purple-950 border-t border-fantasy-purple-900/60 py-12 text-zinc-300">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <div className="flex items-center gap-3">
-              <img src="/uploads/logo-fantasy.png" alt="Logo Operadora Fantasy" className="w-11 h-11 object-contain rounded-lg" />
               <span className="font-semibold text-lg tracking-tight text-white uppercase">Operadora Fantasy</span>
             </div>
-            <p className="text-xs text-forest-200/70 mt-3.5 leading-relaxed max-w-sm">
+            <p className="text-xs text-fantasy-purple-200/70 mt-3.5 leading-relaxed max-w-sm">
               Dedicados a cuidar cada detalle en tus eventos familiares y sociales de principio a fin, creando experiencias mágicas e inolvidables.
             </p>
           </div>
           <div>
-            <h4 className="text-xs font-bold uppercase text-emerald-400 tracking-widest mb-4">Secciones Rápidas</h4>
-            <div className="grid grid-cols-2 gap-2 text-xs text-forest-200/70">
-              <a href="#nosotros" onClick={() => setView('public')} className="hover:text-white transition-colors">Nosotros</a>
-              <a href="#eventos" onClick={() => setView('public')} className="hover:text-white transition-colors">Eventos</a>
-              <a href="#paquetes" onClick={() => setView('public')} className="hover:text-white transition-colors">Paquetes</a>
-              <a href="#menus" onClick={() => setView('public')} className="hover:text-white transition-colors">Menús</a>
-              <a href="#contacto" onClick={() => setView('public')} className="hover:text-white transition-colors">Contacto</a>
-              <button onClick={() => setView('admin')} className="text-left hover:text-white transition-colors cursor-pointer">Admin</button>
-            </div>
-          </div>
-          <div>
-            <h4 className="text-xs font-bold uppercase text-emerald-400 tracking-widest mb-4">Contacto Directo & Redes</h4>
-            <p className="text-xs text-forest-200/70 leading-relaxed mb-1">{data.nosotros.direccion}</p>
-            <p className="text-xs text-emerald-400 font-semibold mb-3">Tel: {mainPhone}</p>
+            <h4 className="text-xs font-bold uppercase text-fantasy-pink-400 tracking-widest mb-4">Contacto Directo & Redes</h4>
+            <p className="text-xs text-fantasy-purple-200/70 leading-relaxed mb-1">{data.nosotros.direccion}</p>
+            <p className="text-xs text-fantasy-pink-400 font-semibold mb-3">Tel: {mainPhone}</p>
             
             <div className="flex items-center gap-3">
               {data.redesSociales?.facebook && (
@@ -183,7 +183,7 @@ export default function App() {
                   href={data.redesSociales.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-forest-900/60 text-forest-200 hover:bg-emerald-600 hover:text-white transition-all border border-forest-800/40"
+                  className="p-2 rounded-full bg-fantasy-purple-900/60 text-fantasy-purple-200 hover:bg-fantasy-purple-600 hover:text-white transition-all border border-fantasy-purple-800/40"
                   title="Facebook Jardín Fantasy"
                 >
                   <Facebook className="w-4 h-4" />
@@ -194,7 +194,7 @@ export default function App() {
                   href={data.redesSociales.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-forest-900/60 text-forest-200 hover:bg-emerald-600 hover:text-white transition-all border border-forest-800/40"
+                  className="p-2 rounded-full bg-fantasy-purple-900/60 text-fantasy-purple-200 hover:bg-fantasy-pink-600 hover:text-white transition-all border border-fantasy-purple-800/40"
                   title="Instagram Fantasy Salón de Fiestas"
                 >
                   <Instagram className="w-4 h-4" />
@@ -203,12 +203,12 @@ export default function App() {
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-12 pt-6 border-t border-forest-900/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-forest-300/50 uppercase tracking-widest relative">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-12 pt-6 border-t border-fantasy-purple-900/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-fantasy-purple-300/50 uppercase tracking-widest relative">
           <p>© {new Date().getFullYear()} Operadora de Fiestas Fantasy. Todos los derechos reservados.</p>
           <div className="sm:absolute sm:left-1/2 sm:-translate-x-1/2">
             <button 
               onClick={() => setView('admin')} 
-              className="hover:text-emerald-400 transition-colors cursor-pointer font-bold"
+              className="hover:text-fantasy-pink-400 transition-colors cursor-pointer font-bold"
             >
               Acceso Administrador
             </button>
@@ -218,6 +218,6 @@ export default function App() {
 
       {/* 4. Floating WhatsApp Help Button (Classic Mexican business feature) */}
       <WhatsAppWidget phone={mainPhone} />
-    </div>
+    </motion.div>
   );
 }

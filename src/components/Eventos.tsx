@@ -1,20 +1,39 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import {
   Heart, Crown, GraduationCap, Droplet, Gift, Sparkles, BookOpen,
   Cake, PartyPopper, Music, Users, Briefcase, Camera, Utensils, Wine, Star,
-  X, ChevronLeft, ChevronRight, Image as ImageIcon, ShieldCheck
+  X, ChevronLeft, ChevronRight, Image as ImageIcon, ShieldCheck, Play
 } from "lucide-react";
 import { Evento } from "../types";
 import { motion, AnimatePresence } from "motion/react";
 
 interface EventosProps {
   eventos: Evento[];
+  eventosGaleria: string[];
 }
 
-export default function Eventos({ eventos }: EventosProps) {
+interface MediaItem {
+  url: string;
+  isVideo: boolean;
+}
+
+export default function Eventos({ eventos, eventosGaleria }: EventosProps) {
   const [selectedEvent, setSelectedEvent] = useState<Evento | null>(null);
-  const [currentPhotoIdx, setCurrentPhotoIdx] = useState(0);
+  const [selectedMedia, setSelectedMedia] = useState<MediaItem | null>(null);
   const detailRef = useRef<HTMLDivElement>(null);
+  const mediaViewerRef = useRef<HTMLDivElement>(null);
+  const eventsRowRef = useRef<HTMLDivElement>(null);
+  const galleryRowRef = useRef<HTMLDivElement>(null);
+
+  // Build media items from the shared events gallery
+  const allMedia = useMemo<MediaItem[]>(() => {
+    return (eventosGaleria || [])
+      .filter((url) => url && url.trim() !== "")
+      .map((url) => ({
+        url,
+        isVideo: /\.(mp4|webm|ogg|mov)$/i.test(url),
+      }));
+  }, [eventosGaleria]);
 
   // Helper to get Lucide Icon by name string
   const renderEventIcon = (iconName: string, className = "w-6 h-6") => {
@@ -44,21 +63,41 @@ export default function Eventos({ eventos }: EventosProps) {
       setSelectedEvent(null);
     } else {
       setSelectedEvent(event);
-      setCurrentPhotoIdx(0);
       setTimeout(() => {
         detailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
       }, 100);
     }
   };
 
-  const handleNextPhoto = () => {
-    if (!selectedEvent) return;
-    setCurrentPhotoIdx((prev) => (prev + 1) % selectedEvent.fotos.length);
+  const handleSelectMedia = (media: MediaItem) => {
+    if (selectedMedia?.url === media.url) {
+      setSelectedMedia(null);
+    } else {
+      setSelectedMedia(media);
+      setTimeout(() => {
+        mediaViewerRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 100);
+    }
   };
 
-  const handlePrevPhoto = () => {
-    if (!selectedEvent) return;
-    setCurrentPhotoIdx((prev) => (prev - 1 + selectedEvent.fotos.length) % selectedEvent.fotos.length);
+  // Navigate gallery thumbnails with scroll
+  const scrollGallery = (direction: "left" | "right") => {
+    if (!galleryRowRef.current) return;
+    const scrollAmount = 280;
+    galleryRowRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  // Navigate events row with scroll  
+  const scrollEvents = (direction: "left" | "right") => {
+    if (!eventsRowRef.current) return;
+    const scrollAmount = 240;
+    eventsRowRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
   };
 
   return (
@@ -66,59 +105,61 @@ export default function Eventos({ eventos }: EventosProps) {
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
 
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-12 flex flex-col items-center">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100/80 text-emerald-800 text-[11px] font-bold uppercase tracking-wider mb-3">
+        <div className="text-center max-w-3xl mx-auto mb-10 flex flex-col items-center">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fantasy-purple-100/80 text-fantasy-purple-800 text-[11px] font-bold uppercase tracking-wider mb-3">
             Lo que ofrecemos
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-light tracking-tight text-green-900 mt-2">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-fantasy-purple-900 mt-2">
             Nuestros Eventos
           </h2>
           
-          {/* Small booking badge matching the screenshot */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-green-500/25 bg-green-500/10 text-xs font-semibold text-green-800 mt-4 shadow-3xs hover:bg-green-500/15 transition-all">
-            <ShieldCheck className="w-4 h-4 text-green-600 shrink-0" />
+          {/* Small booking badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-fantasy-pink-500/25 bg-fantasy-pink-500/10 text-xs font-semibold text-fantasy-pink-800 mt-4 shadow-3xs hover:bg-fantasy-pink-500/15 transition-all">
+            <ShieldCheck className="w-4 h-4 text-fantasy-pink-600 shrink-0" />
             <span>Aparta con solo $2,500 MXN</span>
           </div>
 
-          <div className="w-16 h-0.5 bg-emerald-600 mx-auto mt-4 mb-3 rounded-full" />
+          <div className="w-16 h-0.5 bg-fantasy-purple-500 mx-auto mt-4 mb-3 rounded-full" />
           <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed mt-1">
-            Toca cualquier servicio para desplegar fotos y detalles
+            Selecciona un evento para ver su descripción
           </p>
         </div>
 
-        {/* Responsive Grid of Event Cards - Displayed across 2 lines on desktop (lg:grid-cols-4) */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-4 mb-6">
+        {/* ═══════════════════════════════════════════
+            ZONA 1 — Grid de Eventos (2 filas)
+            ═══════════════════════════════════════════ */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-4">
           {eventos.map((evt) => {
             const isSelected = selectedEvent?.id === evt.id;
             return (
               <button
                 key={evt.id}
                 onClick={() => handleSelectEvent(evt)}
-                className={`border rounded-xl p-5 flex flex-col items-center justify-center text-center group transition-all duration-300 shadow-xs cursor-pointer focus:outline-none ${
-                  isSelected 
-                    ? "bg-green-50/50 border-green-300 ring-1 ring-green-300" 
-                    : "bg-white border-slate-100 hover:border-slate-300 hover:bg-slate-50/50"
+                className={`flex items-center gap-2.5 px-4 py-3 rounded-full border transition-all duration-300 cursor-pointer focus:outline-none whitespace-nowrap ${
+                  isSelected
+                    ? "bg-fantasy-pink-500 border-fantasy-pink-500 text-white shadow-md shadow-fantasy-pink-500/25 scale-[1.03]"
+                    : "bg-white border-slate-200 hover:border-fantasy-purple-300 hover:bg-fantasy-purple-50/40 text-slate-700 hover:text-fantasy-purple-700 shadow-xs"
                 }`}
-                id={`event-card-${evt.id}`}
+                id={`event-chip-${evt.id}`}
               >
-                <div className={`p-3 rounded-full mb-3 transition-transform duration-350 ${
-                  isSelected 
-                    ? "bg-green-100 text-green-900 scale-105" 
-                    : "text-green-700 bg-green-50 group-hover:bg-white group-hover:scale-105"
+                <span className={`transition-colors ${
+                  isSelected ? "text-white/90" : "text-fantasy-purple-500"
                 }`}>
                   {renderEventIcon(evt.icono, "w-4 h-4")}
-                </div>
-                <h3 className={`font-semibold text-[11px] uppercase tracking-wider transition-colors ${
-                  isSelected ? "text-green-900" : "text-slate-700 group-hover:text-green-800"
+                </span>
+                <span className={`font-semibold text-[11px] uppercase tracking-wider ${
+                  isSelected ? "text-white" : ""
                 }`}>
                   {evt.nombre}
-                </h3>
+                </span>
               </button>
             );
           })}
         </div>
 
-        {/* Smooth Expandable Detail Panel */}
+        {/* ═══════════════════════════════════════════════
+            ZONA 2 — Panel Desplegable (solo descripción)
+            ═══════════════════════════════════════════════ */}
         <AnimatePresence mode="wait">
           {selectedEvent && (
             <motion.div
@@ -130,7 +171,7 @@ export default function Eventos({ eventos }: EventosProps) {
               transition={{ duration: 0.35, ease: "easeInOut" }}
               className="overflow-hidden w-full"
             >
-              <div className="bg-white border border-slate-100 rounded-2xl p-6 sm:p-8 mt-4 shadow-xs relative">
+              <div className="bg-white border border-slate-100 rounded-2xl p-6 sm:p-8 mb-6 shadow-xs relative">
                 
                 {/* Close Button */}
                 <button
@@ -140,107 +181,209 @@ export default function Eventos({ eventos }: EventosProps) {
                   <X className="w-4 h-4" />
                 </button>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
-                  
-                  {/* Left: Image Gallery */}
-                  <div className="md:col-span-6 flex flex-col justify-center min-h-[240px] sm:min-h-[300px] relative rounded-xl overflow-hidden border border-slate-100 bg-slate-950">
-                    {selectedEvent.fotos && selectedEvent.fotos.length > 0 ? (
-                      <div className="relative w-full h-full min-h-[240px] sm:min-h-[300px]">
-                        {selectedEvent.fotos[currentPhotoIdx]?.match(/\.(mp4|webm|ogg)$/i) ? (
-                          <video
-                            src={selectedEvent.fotos[currentPhotoIdx]}
-                            className="w-full h-full object-cover absolute inset-0 bg-black"
-                            controls
-                            controlsList="nodownload"
-                            preload="metadata"
-                          />
-                        ) : (
-                          <img
-                            src={selectedEvent.fotos[currentPhotoIdx]}
-                            alt={`${selectedEvent.nombre} gallery`}
-                            className="w-full h-full object-cover absolute inset-0"
-                            referrerPolicy="no-referrer"
-                          />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-
-                        {/* Navigation Controls */}
-                        {selectedEvent.fotos.length > 1 && (
-                          <>
-                            <button
-                              onClick={handlePrevPhoto}
-                              className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full border border-slate-100 shadow-xs transition-all cursor-pointer"
-                            >
-                              <ChevronLeft className="w-3.5 h-3.5" />
-                            </button>
-                            <button
-                              onClick={handleNextPhoto}
-                              className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full border border-slate-100 shadow-xs transition-all cursor-pointer"
-                            >
-                              <ChevronRight className="w-3.5 h-3.5" />
-                            </button>
-                            
-                            {/* Dot Indicators */}
-                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 bg-black/40 px-2.5 py-1 rounded-full">
-                              {selectedEvent.fotos.map((_, idx) => (
-                                <button
-                                  key={idx}
-                                  onClick={() => setCurrentPhotoIdx(idx)}
-                                  className={`w-1.5 h-1.5 rounded-full transition-all ${
-                                    idx === currentPhotoIdx ? "bg-white scale-110" : "bg-white/50"
-                                  }`}
-                                />
-                              ))}
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    ) : (
-                      <div className="flex flex-col items-center justify-center p-8 text-slate-400">
-                        <ImageIcon className="w-10 h-10 mb-2 text-slate-500" />
-                        <span className="text-xs">No hay fotos en la galería de este evento</span>
-                      </div>
-                    )}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="bg-fantasy-purple-50 text-fantasy-purple-600 p-2.5 rounded-xl">
+                    {renderEventIcon(selectedEvent.icono, "w-5 h-5")}
                   </div>
-
-                  {/* Right: Description & Info */}
-                  <div className="md:col-span-6 flex flex-col justify-center py-2 pr-2">
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="bg-green-50 text-green-700 p-2.5 rounded-xl">
-                        {renderEventIcon(selectedEvent.icono, "w-4 h-4")}
-                      </div>
-                      <div>
-                        <span className="text-[9px] font-bold text-green-750 uppercase tracking-widest leading-none block mb-1">
-                          Especialistas en
-                        </span>
-                        <h3 className="text-lg font-light text-slate-900 leading-none">
-                          {selectedEvent.nombre}
-                        </h3>
-                      </div>
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-slate-650 leading-relaxed font-light mb-6">
-                      {selectedEvent.descripcion}
-                    </p>
-
-                    <div className="border-t border-slate-100 pt-5 flex items-center justify-between">
-                      <div></div>
-                      <button
-                        onClick={() => setSelectedEvent(null)}
-                        className="text-[10px] font-bold text-green-800 hover:text-green-950 uppercase tracking-wider cursor-pointer"
-                      >
-                        Ocultar detalles
-                      </button>
-                    </div>
+                  <div>
+                    <span className="text-[9px] font-bold text-fantasy-purple-700 uppercase tracking-widest leading-none block mb-1">
+                      Especialistas en
+                    </span>
+                    <h3 className="text-lg font-bold text-slate-900 leading-none">
+                      {selectedEvent.nombre}
+                    </h3>
                   </div>
+                </div>
 
+                <p className="text-xs sm:text-sm text-slate-650 leading-relaxed font-light mb-4 max-w-3xl">
+                  {selectedEvent.descripcion}
+                </p>
+
+                <div className="border-t border-slate-100 pt-4 flex items-center justify-end">
+                  <button
+                    onClick={() => setSelectedEvent(null)}
+                    className="text-[10px] font-bold text-fantasy-purple-700 hover:text-fantasy-purple-900 uppercase tracking-wider cursor-pointer"
+                  >
+                    Ocultar detalles
+                  </button>
                 </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
+        {/* ═══════════════════════════════════════════════
+            ZONA 3 — Galería General Unificada
+            ═══════════════════════════════════════════════ */}
+        {allMedia.length > 0 && (
+          <div className="mt-2">
+            {/* Gallery header */}
+            <div className="flex items-center gap-2 mb-4">
+              <div className="bg-fantasy-purple-50 text-fantasy-purple-600 p-2 rounded-lg">
+                <Camera className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider">
+                  Galería de Eventos
+                </h3>
+                <p className="text-[10px] text-slate-500">
+                  {allMedia.length} {allMedia.length === 1 ? "archivo" : "archivos"} · Selecciona para ampliar
+                </p>
+              </div>
+            </div>
 
+            <div className={`grid grid-cols-1 ${selectedMedia ? 'lg:grid-cols-12 gap-6' : 'gap-4'} transition-all duration-500`}>
+              
+              {/* Media Viewer (Left Side) */}
+              <AnimatePresence>
+                {selectedMedia && (
+                  <motion.div
+                    ref={mediaViewerRef}
+                    key="media-viewer"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20, width: 0, overflow: 'hidden' }}
+                    transition={{ duration: 0.35, ease: "easeInOut" }}
+                    className="lg:col-span-7 w-full order-1"
+                  >
+                    <div className="bg-slate-950 rounded-2xl relative overflow-hidden shadow-lg border border-slate-800">
+                      {/* Close button */}
+                      <button
+                        onClick={() => setSelectedMedia(null)}
+                        className="absolute top-3 right-3 bg-white/15 hover:bg-white/25 text-white p-2 rounded-full transition-colors cursor-pointer z-20 backdrop-blur-sm"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+
+                      {/* Gallery label badge */}
+                      <div className="absolute top-3 left-3 z-20">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider">
+                          <ImageIcon className="w-3 h-3" />
+                          Galería de Eventos
+                        </span>
+                      </div>
+
+                      {/* Navigation buttons */}
+                      {allMedia.length > 1 && (
+                        <>
+                          <button
+                            onClick={() => {
+                              const currentIdx = allMedia.findIndex(m => m.url === selectedMedia.url);
+                              const prevIdx = (currentIdx - 1 + allMedia.length) % allMedia.length;
+                              setSelectedMedia(allMedia[prevIdx]);
+                            }}
+                            className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/15 hover:bg-white/25 text-white p-2.5 rounded-full transition-all cursor-pointer z-20 backdrop-blur-sm"
+                          >
+                            <ChevronLeft className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={() => {
+                              const currentIdx = allMedia.findIndex(m => m.url === selectedMedia.url);
+                              const nextIdx = (currentIdx + 1) % allMedia.length;
+                              setSelectedMedia(allMedia[nextIdx]);
+                            }}
+                            className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/15 hover:bg-white/25 text-white p-2.5 rounded-full transition-all cursor-pointer z-20 backdrop-blur-sm"
+                          >
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        </>
+                      )}
+
+                      {/* Content */}
+                      <div className="relative w-full aspect-[4/3] max-h-[400px]">
+                        {selectedMedia.isVideo ? (
+                          <video
+                            key={selectedMedia.url}
+                            src={selectedMedia.url}
+                            className="w-full h-full object-contain"
+                            controls
+                            autoPlay
+                            controlsList="nodownload"
+                            preload="metadata"
+                          />
+                        ) : (
+                          <>
+                            <img
+                              src={selectedMedia.url}
+                              alt="Galería de eventos - vista ampliada"
+                              className="w-full h-full object-contain relative z-10"
+                              referrerPolicy="no-referrer"
+                            />
+                            {/* Blurred background */}
+                            <div
+                              className="absolute inset-0 bg-cover bg-center opacity-20 blur-2xl scale-125 pointer-events-none"
+                              style={{ backgroundImage: `url(${selectedMedia.url})` }}
+                            />
+                          </>
+                        )}
+                      </div>
+
+                      {/* Bottom counter */}
+                      <div className="flex items-center justify-center py-2.5 bg-black/40">
+                        <span className="text-[10px] text-white/70 font-medium tracking-wider">
+                          {allMedia.findIndex(m => m.url === selectedMedia.url) + 1} / {allMedia.length}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Thumbnails Grid (Right Side) */}
+              <div className={`${selectedMedia ? "lg:col-span-5 order-2" : "order-1"}`}>
+                <div 
+                  className={`grid ${selectedMedia ? 'grid-cols-2 sm:grid-cols-3' : 'grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6'} gap-3 overflow-y-auto pr-2 pb-2 [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-slate-100 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-thumb]:bg-slate-300 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-slate-400`}
+                  style={{ maxHeight: "310px" }} // Allows approx 3 rows of ~90px + gaps
+                >
+                  {allMedia.map((media, idx) => {
+                    const isActive = selectedMedia?.url === media.url;
+                    return (
+                      <button
+                        key={`${media.url}-${idx}`}
+                        onClick={() => handleSelectMedia(media)}
+                        className={`w-full aspect-[4/3] relative rounded-xl overflow-hidden cursor-pointer focus:outline-none transition-all duration-300 group ${
+                          isActive
+                            ? "ring-2 ring-fantasy-pink-500 ring-offset-2 scale-[0.98] shadow-lg shadow-fantasy-pink-500/20"
+                            : "ring-1 ring-slate-200 hover:ring-fantasy-purple-300 hover:scale-[1.02] shadow-xs"
+                        }`}
+                      >
+                        {media.isVideo ? (
+                          <div className="w-full h-full bg-slate-900 flex items-center justify-center relative">
+                            <video
+                              src={media.url}
+                              className="w-full h-full object-cover opacity-70"
+                              preload="metadata"
+                              muted
+                            />
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                              <div className="bg-white/90 rounded-full p-2 shadow-md">
+                                <Play className="w-3.5 h-3.5 text-fantasy-purple-700 fill-fantasy-purple-700" />
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <img
+                            src={media.url}
+                            alt={`Galería de eventos - foto ${idx + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                            referrerPolicy="no-referrer"
+                            loading="lazy"
+                          />
+                        )}
+
+                        {/* Hover overlay */}
+                        <div className={`absolute inset-0 rounded-xl transition-all duration-200 ${
+                          isActive ? "ring-2 ring-inset ring-white/40" : ""
+                        }`} />
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

@@ -119,9 +119,9 @@ export default function AdminMenus({
       <div className="pb-2 border-b border-zinc-800 flex justify-between items-center">
         <div className="flex items-center gap-2.5">
           <h3 className="text-xl font-bold text-zinc-100">Gestionar Menús y Platillos</h3>
-          <span className="bg-emerald-950/80 text-emerald-400 border border-emerald-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold">{data.menus.length}</span>
+          <span className="bg-fantasy-purple-950/80 text-fantasy-purple-400 border border-fantasy-purple-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold">{data.menus.length}</span>
         </div>
-        <button onClick={startNewMenu} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 hover:bg-emerald-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-xs">
+        <button onClick={startNewMenu} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-fantasy-purple-950/90 border border-fantasy-purple-500/50 text-fantasy-purple-300 hover:bg-fantasy-purple-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-xs">
           <Plus className="w-4 h-4" /> Agregar Menú
         </button>
       </div>
@@ -158,11 +158,11 @@ export default function AdminMenus({
               <button
                 type="button"
                 onClick={selectTiempoMenu}
-                className="bg-zinc-800/80 border border-zinc-700 hover:border-emerald-500/50 p-5 rounded-xl text-left transition-all cursor-pointer group"
+                className="bg-zinc-800/80 border border-zinc-700 hover:border-fantasy-purple-500/50 p-5 rounded-xl text-left transition-all cursor-pointer group"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2.5 bg-emerald-950/70 border border-emerald-500/30 rounded-xl group-hover:bg-emerald-900/70 transition-colors">
-                    <Layers className="w-6 h-6 text-emerald-400" />
+                  <div className="p-2.5 bg-fantasy-purple-950/70 border border-fantasy-purple-500/30 rounded-xl group-hover:bg-fantasy-purple-900/70 transition-colors">
+                    <Layers className="w-6 h-6 text-fantasy-purple-400" />
                   </div>
                   <div>
                     <span className="text-sm font-bold text-zinc-100 block">Menú por Tiempos</span>
@@ -181,11 +181,11 @@ export default function AdminMenus({
               <button
                 type="button"
                 onClick={() => selectTradicionalMenu(false)}
-                className="bg-zinc-800/80 border border-zinc-700 hover:border-emerald-500/50 p-5 rounded-xl text-left transition-all cursor-pointer group"
+                className="bg-zinc-800/80 border border-zinc-700 hover:border-fantasy-purple-500/50 p-5 rounded-xl text-left transition-all cursor-pointer group"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2.5 bg-amber-950/70 border border-amber-500/30 rounded-xl group-hover:bg-amber-900/70 transition-colors">
-                    <ChefHat className="w-6 h-6 text-amber-400" />
+                  <div className="p-2.5 bg-fantasy-pink-950/70 border border-fantasy-pink-500/30 rounded-xl group-hover:bg-fantasy-pink-900/70 transition-colors">
+                    <ChefHat className="w-6 h-6 text-fantasy-pink-400" />
                   </div>
                   <div>
                     <span className="text-sm font-bold text-zinc-100 block">Menú Tradicional</span>
@@ -197,7 +197,7 @@ export default function AdminMenus({
                 </p>
                 <div className="mt-3 flex flex-wrap gap-2">
                   <span className="text-[11px] px-2 py-0.5 bg-zinc-700/60 text-zinc-300 rounded font-semibold">Sin categorías</span>
-                  <span className="text-[11px] px-2 py-0.5 bg-amber-950/60 text-amber-300 border border-amber-500/30 rounded font-semibold">Con categorías</span>
+                  <span className="text-[11px] px-2 py-0.5 bg-fantasy-pink-950/60 text-fantasy-pink-300 border border-fantasy-pink-500/30 rounded font-semibold">Con categorías</span>
                 </div>
               </button>
             </div>
@@ -248,7 +248,7 @@ export default function AdminMenus({
                             items: []
                           });
                         }}
-                        className="bg-zinc-800 border border-zinc-700 rounded-lg px-2 py-1 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500 cursor-pointer"
+                        className="bg-zinc-800 border border-zinc-700 rounded-lg px-2 py-1 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500 cursor-pointer"
                       >
                         {[2, 3, 4, 5].map(n => (
                           <option key={n} value={n}>{n} Tiempos</option>
@@ -269,7 +269,7 @@ export default function AdminMenus({
                               items: []
                             });
                           }}
-                          className="w-3.5 h-3.5 text-emerald-500 rounded border-zinc-600 focus:ring-emerald-500 bg-zinc-900 cursor-pointer"
+                          className="w-3.5 h-3.5 text-fantasy-purple-500 rounded border-zinc-600 focus:ring-fantasy-purple-500 bg-zinc-900 cursor-pointer"
                         />
                         <span className="text-[11px] text-zinc-300 font-semibold">Incluir categorías</span>
                       </label>
@@ -289,7 +289,7 @@ export default function AdminMenus({
                   className={`w-full border rounded-xl px-3.5 py-2.5 text-xs font-semibold focus:outline-none transition-colors ${
                     isDuplicateMenuName
                       ? "bg-red-950/30 border-red-500 focus:border-red-400 text-red-200"
-                      : "bg-zinc-800 border-zinc-700 text-zinc-100 placeholder-zinc-500 focus:border-emerald-500"
+                      : "bg-zinc-800 border-zinc-700 text-zinc-100 placeholder-zinc-500 focus:border-fantasy-purple-500"
                   }`}
                 />
                 <AnimatePresence>
@@ -319,18 +319,26 @@ export default function AdminMenus({
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider mb-2">Fotos de la Galería del Menú (Subida directa)</label>
+                <label className="block text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider mb-2">Fotos de la Galería del Menú (Subida directa)</label>
                 {(editingMenu.fotos || []).length > 0 && (
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-3">
                     {editingMenu.fotos.map((foto, idx) => (
                       <div key={idx} className="relative group border border-zinc-700 rounded-xl overflow-hidden h-24 bg-zinc-950 flex items-center justify-center">
-                        <img src={foto} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
-                        <button type="button" onClick={() => { onRequestConfirmation("Eliminar archivo", "¿Seguro que deseas eliminar este archivo?", () => { setEditingMenu({ ...editingMenu, fotos: editingMenu.fotos.filter((_, i) => i !== idx) }); }); }} className="absolute top-1.5 right-1.5 bg-red-600 hover:bg-red-700 text-white p-1 rounded-md shadow-md transition-opacity cursor-pointer" title="Eliminar foto"><Trash2 className="w-3.5 h-3.5" /></button>
+                        {foto.match(/\.(mp4|webm|ogg)$/i) ? (
+                          <video src={foto} className="w-full h-full object-cover" controls />
+                        ) : (
+                          <img src={foto} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                        )}
+                        <button type="button" onClick={() => { onRequestConfirmation("Eliminar archivo", "¿Seguro que deseas eliminar este archivo?", () => { setEditingMenu({ ...editingMenu, fotos: editingMenu.fotos.filter((_, i) => i !== idx) }); }); }} className="absolute top-1.5 right-1.5 bg-red-600 hover:bg-red-700 text-white p-1 rounded-md shadow-md transition-opacity cursor-pointer" title="Eliminar archivo"><Trash2 className="w-3.5 h-3.5" /></button>
                       </div>
                     ))}
                   </div>
                 )}
-                <MediaUploader onUploadSuccess={(url) => { setEditingMenu({ ...editingMenu, fotos: [...(editingMenu.fotos || []), url] }); showStatus("¡Foto subida y agregada con éxito!"); }} accept="image/*,video/*" mode="dropzone" label="Subir nueva foto para este menú" token={token} />
+                {(editingMenu.fotos || []).length < 3 ? (
+                  <MediaUploader onUploadSuccess={(url) => { setEditingMenu({ ...editingMenu, fotos: [...(editingMenu.fotos || []), url] }); showStatus("¡Foto subida y agregada con éxito!"); }} accept="image/*,video/*" mode="dropzone" label="Subir nueva foto para este menú" token={token} />
+                ) : (
+                  <p className="text-xs font-bold text-fantasy-pink-400 mt-2 bg-fantasy-pink-950/40 p-2 rounded-lg border border-fantasy-pink-900/50">Límite de 3 fotos/videos alcanzado por menú.</p>
+                )}
               </div>
 
               {editingMenu.tipo === 'tiempo' ? (
@@ -369,10 +377,10 @@ export default function AdminMenus({
               {/* Salseado Configuration for tiempo menus */}
               {editingMenu.tipo === 'tiempo' && hasSalseados && (
                 <div className="bg-zinc-800/80 border border-zinc-700/80 p-3.5 rounded-xl text-xs text-zinc-300">
-                  <span className="font-bold text-emerald-400 block mb-0.5">Salseado por Opción</span>
+                  <span className="font-bold text-fantasy-purple-400 block mb-0.5">Salseado por Opción</span>
                   <span className="text-[11px] text-zinc-400 block leading-relaxed">
                     En los menús por tiempos, la casilla de Salseado se activa individualmente en cada opción. Las opciones marcadas mostrarán en la página principal la leyenda:
-                    <span className="italic font-semibold text-emerald-400 block mt-1">"Salseado a elegir: BBQ, Nuez, Champiñón, Chipotle o 3 Chiles"</span>
+                    <span className="italic font-semibold text-fantasy-purple-400 block mt-1">"Salseado a elegir: BBQ, Nuez, Champiñón, Chipotle o 3 Chiles"</span>
                   </span>
                 </div>
               )}
@@ -385,11 +393,9 @@ export default function AdminMenus({
                   className={`px-5 py-2 text-xs font-bold rounded-xl transition-all shadow-md ${
                     isDuplicateMenuName || (editingMenu.nombre || '').length > 30
                       ? "bg-zinc-700 text-zinc-400 border border-zinc-600 opacity-60 cursor-not-allowed"
-                      : "bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-950/40 cursor-pointer"
+                      : "bg-fantasy-pink-600 hover:bg-fantasy-pink-500 text-white shadow-fantasy-purple-950/40 cursor-pointer"
                   }`}
-                >
-                  Guardar Menú
-                </button>
+                > Guardar </button>
               </div>
             </form>
           </div>

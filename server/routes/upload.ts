@@ -19,7 +19,7 @@ router.post("/api/admin/upload", (req, res) => {
         console.error("Multer upload error:", err);
         if (err instanceof multer.MulterError) {
           if (err.code === "LIMIT_FILE_SIZE") {
-            return res.status(400).json({ success: false, message: "El archivo es demasiado grande (máximo 100MB)" });
+            return res.status(400).json({ success: false, message: "El archivo es demasiado grande (máximo 50MB)" });
           }
           return res.status(400).json({ success: false, message: `Error al subir archivo: ${err.message}` });
         }
@@ -30,14 +30,14 @@ router.post("/api/admin/upload", (req, res) => {
         return res.status(400).json({ success: false, message: "No se seleccionó ningún archivo" });
       }
 
-      if (req.file.mimetype && req.file.mimetype.startsWith("image/") && req.file.size > 5 * 1024 * 1024) {
+      if (req.file.mimetype && req.file.mimetype.startsWith("image/") && req.file.size > 20 * 1024 * 1024) {
         fsSync.unlink(req.file.path, () => {});
-        return res.status(400).json({ success: false, message: "Las imágenes no pueden superar los 5MB" });
+        return res.status(400).json({ success: false, message: "Las imágenes no pueden superar los 20MB" });
       }
 
-      if (req.file.mimetype && !req.file.mimetype.startsWith("image/") && req.file.size > 10 * 1024 * 1024) {
+      if (req.file.mimetype && !req.file.mimetype.startsWith("image/") && req.file.size > 50 * 1024 * 1024) {
         fsSync.unlink(req.file.path, () => {});
-        return res.status(400).json({ success: false, message: "Los videos no pueden superar los 10MB" });
+        return res.status(400).json({ success: false, message: "Los videos no pueden superar los 50MB" });
       }
 
       const fileUrl = `/uploads/${req.file.filename}`;

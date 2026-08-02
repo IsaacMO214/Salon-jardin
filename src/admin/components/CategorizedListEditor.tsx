@@ -138,7 +138,7 @@ export default function CategorizedListEditor({
     <div className="bg-zinc-800/80 border border-zinc-700/80 p-4 rounded-xl space-y-5">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-zinc-700/70">
         <div>
-          <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider">
             {title} ({categories.length}/{maxCategories} categorías)
           </label>
           <p className="text-[11px] text-zinc-400 mt-0.5">
@@ -149,7 +149,7 @@ export default function CategorizedListEditor({
           <button
             type="button"
             onClick={addCategory}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 hover:bg-emerald-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer self-start sm:self-auto shrink-0 shadow-sm"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-fantasy-purple-950/90 border border-fantasy-purple-500/50 text-fantasy-purple-300 hover:bg-fantasy-purple-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer self-start sm:self-auto shrink-0 shadow-sm"
           >
             <Plus className="w-3.5 h-3.5" />
             Agregar Categoría
@@ -162,7 +162,7 @@ export default function CategorizedListEditor({
           <div key={cIdx} className="bg-zinc-900/50 border border-zinc-700/50 rounded-xl p-4 space-y-4">
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-bold text-emerald-400 min-w-[80px] shrink-0">
+                <span className="text-xs font-bold text-fantasy-purple-400 min-w-[80px] shrink-0">
                   Categoría {cIdx + 1}:
                 </span>
                 <input
@@ -170,7 +170,7 @@ export default function CategorizedListEditor({
                   value={cat.category}
                   onChange={(e) => handleCatNameChange(cIdx, e.target.value)}
                   placeholder="Ej. Pollo, Cerdo, Res..."
-                  className="flex-1 bg-zinc-800 border border-zinc-600 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-emerald-500 font-bold"
+                  className="flex-1 bg-zinc-800 border border-zinc-600 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-400 focus:outline-none focus:border-fantasy-purple-500 font-bold"
                 />
                 <button
                   type="button"
@@ -200,7 +200,7 @@ export default function CategorizedListEditor({
                       value={opt}
                       onChange={(e) => handleOptionChange(cIdx, oIdx, e.target.value)}
                       placeholder="Ej. Pollo Pibil..."
-                      className="flex-1 bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                      className="flex-1 bg-zinc-900 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
                     />
                     {cat.options.length > 1 && (
                       <button
@@ -223,7 +223,7 @@ export default function CategorizedListEditor({
                 <button
                   type="button"
                   onClick={() => addOption(cIdx)}
-                  className="ml-[68px] inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-400 hover:text-emerald-300 mt-1 cursor-pointer"
+                  className="ml-[68px] inline-flex items-center gap-1 text-[11px] font-semibold text-fantasy-purple-400 hover:text-fantasy-purple-300 mt-1 cursor-pointer"
                 >
                   <Plus className="w-3 h-3" /> Añadir Opción a {cat.category || `Categoría ${cIdx + 1}`}
                 </button>
@@ -238,8 +238,8 @@ export default function CategorizedListEditor({
           Nota Adicional (Opcional)
         </label>
           <div className="flex items-start gap-2">
-            <div className="p-2 bg-amber-950/30 border border-amber-900/30 rounded-lg mt-0.5">
-              <Info className="w-4 h-4 text-amber-500" />
+            <div className="p-2 bg-fantasy-pink-950/30 border border-fantasy-pink-900/30 rounded-lg mt-0.5">
+              <Info className="w-4 h-4 text-fantasy-pink-500" />
             </div>
             <div className="flex-1 space-y-1">
               <textarea
@@ -247,7 +247,7 @@ export default function CategorizedListEditor({
                 value={note}
                 onChange={(e) => handleNoteChange(e.target.value)}
                 placeholder={notePlaceholder}
-                className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-emerald-500 italic"
+                className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-3 py-2.5 text-xs text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-fantasy-purple-500 italic"
               />
               {note.length > 200 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">

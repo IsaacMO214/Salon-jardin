@@ -110,7 +110,7 @@ export default function MenuCoursesEditor({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {opt.tiempos.map((tiempo, tIdx) => (
           <div key={tIdx} className="bg-zinc-900/90 p-3 rounded-lg border border-zinc-700/60 space-y-2">
-            <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block">
+            <span className="text-[10px] font-bold text-fantasy-purple-400 uppercase tracking-widest block">
               {getCourseLabel(tIdx)} Tiempo
             </span>
             <div>
@@ -120,7 +120,7 @@ export default function MenuCoursesEditor({
                 placeholder={`Ej. Plato principal ${tIdx + 1}`}
                 value={tiempo.nombre}
                 onChange={(e) => handleFieldChange(optIdx, 'tiempo', tIdx, 'nombre', e.target.value)}
-                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
               />
               {tiempo.nombre.length > 30 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -135,9 +135,9 @@ export default function MenuCoursesEditor({
                 placeholder="Ej. ingredientes y estilo de preparación"
                 value={tiempo.descripcion}
                 onChange={(e) => handleFieldChange(optIdx, 'tiempo', tIdx, 'descripcion', e.target.value)}
-                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
               />
-              {tiempo.descripcion.length > 150 && (
+              {tiempo.descripcion.length > 300 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
                   <span>⚠️</span> La descripción del {getCourseLabel(tIdx)} Tiempo no puede exceder los 300 caracteres.
                 </p>
@@ -147,7 +147,7 @@ export default function MenuCoursesEditor({
         ))}
 
         <div className="bg-zinc-900/90 p-3 rounded-lg border border-zinc-700/60 space-y-2">
-          <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest block">
+          <span className="text-[10px] font-bold text-fantasy-purple-400 uppercase tracking-widest block">
             Guarnición
           </span>
           <div>
@@ -157,7 +157,7 @@ export default function MenuCoursesEditor({
               placeholder="Ej. Arroz blanco, Verduras salteadas"
               value={opt.guarnicion.nombre}
               onChange={(e) => handleFieldChange(optIdx, 'guarnicion', null, 'nombre', e.target.value)}
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
             />
             {opt.guarnicion.nombre.length > 30 && (
               <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -172,9 +172,9 @@ export default function MenuCoursesEditor({
               placeholder="Ej. acompañamiento fresco de verduras"
               value={opt.guarnicion.descripcion}
               onChange={(e) => handleFieldChange(optIdx, 'guarnicion', null, 'descripcion', e.target.value)}
-              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-2.5 py-1.5 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
             />
-            {opt.guarnicion.descripcion.length > 150 && (
+            {opt.guarnicion.descripcion.length > 300 && (
               <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
                 <span>⚠️</span> La descripción de la Guarnición no puede exceder los 300 caracteres.
               </p>
@@ -190,7 +190,7 @@ export default function MenuCoursesEditor({
       <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-1">
         {Array.from({ length: numTiempos }, (_, tIdx) => (
           <div key={tIdx} className="bg-zinc-800/60 p-3.5 rounded-xl border border-zinc-700/60 space-y-2">
-            <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider block">
+            <span className="text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider block">
               {getCourseLabel(tIdx)} Tiempo <span className="text-red-400">*</span>
             </span>
             <div>
@@ -204,7 +204,7 @@ export default function MenuCoursesEditor({
                   tiempos[tIdx] = { ...tiempos[tIdx], nombre: e.target.value };
                   setNewOptionData({ ...newOptionData, tiempos });
                 }}
-                className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
               />
               {(newOptionData.tiempos[tIdx]?.nombre || "").length > 30 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -223,9 +223,9 @@ export default function MenuCoursesEditor({
                   tiempos[tIdx] = { ...tiempos[tIdx], descripcion: e.target.value };
                   setNewOptionData({ ...newOptionData, tiempos });
                 }}
-                className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
               />
-              {(newOptionData.tiempos[tIdx]?.descripcion || "").length > 150 && (
+              {(newOptionData.tiempos[tIdx]?.descripcion || "").length > 300 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
                   <span>⚠️</span> La descripción del {getCourseLabel(tIdx)} Tiempo no puede exceder los 300 caracteres.
                 </p>
@@ -235,7 +235,7 @@ export default function MenuCoursesEditor({
         ))}
 
         <div className="bg-zinc-800/60 p-3.5 rounded-xl border border-zinc-700/60 space-y-2">
-          <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider block">
+          <span className="text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider block">
             Guarnición <span className="text-red-400">*</span>
           </span>
           <div>
@@ -248,7 +248,7 @@ export default function MenuCoursesEditor({
                 ...newOptionData,
                 guarnicion: { ...newOptionData.guarnicion, nombre: e.target.value }
               })}
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
             />
             {newOptionData.guarnicion.nombre.length > 30 && (
               <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -266,9 +266,9 @@ export default function MenuCoursesEditor({
                 ...newOptionData,
                 guarnicion: { ...newOptionData.guarnicion, descripcion: e.target.value }
               })}
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
             />
-            {newOptionData.guarnicion.descripcion.length > 150 && (
+            {newOptionData.guarnicion.descripcion.length > 300 && (
               <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
                 <span>⚠️</span> La descripción de la Guarnición no puede exceder los 300 caracteres.
               </p>
@@ -285,7 +285,7 @@ export default function MenuCoursesEditor({
                 ...newOptionData,
                 tieneSalseado: e.target.checked
               })}
-              className="w-4 h-4 text-emerald-500 rounded border-zinc-600 focus:ring-emerald-500 bg-zinc-900 cursor-pointer"
+              className="w-4 h-4 text-fantasy-purple-500 rounded border-zinc-600 focus:ring-fantasy-purple-500 bg-zinc-900 cursor-pointer"
             />
             <span className="text-xs font-semibold text-zinc-200">
               Incluir Salseado a elegir para esta opción
@@ -300,7 +300,7 @@ export default function MenuCoursesEditor({
     <div className="space-y-4 bg-zinc-900/60 p-4 border border-zinc-800 rounded-2xl">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pb-2 border-b border-zinc-800">
         <div>
-          <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider">
             Platillos del Menú ({numTiempos} Tiempos)
           </label>
           <p className="text-[11px] text-zinc-400">
@@ -310,7 +310,7 @@ export default function MenuCoursesEditor({
         <button
           type="button"
           onClick={openAddModal}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 hover:bg-emerald-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm"
+          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-fantasy-purple-950/90 border border-fantasy-purple-500/50 text-fantasy-purple-300 hover:bg-fantasy-purple-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm"
         >
           <Plus className="w-3.5 h-3.5" />
           Agregar Opción
@@ -324,7 +324,7 @@ export default function MenuCoursesEditor({
             <div
               key={idx}
               className={`bg-zinc-800/80 border rounded-xl transition-all duration-200 overflow-hidden ${
-                isExpanded ? "border-emerald-500/60 ring-1 ring-emerald-500/30" : "border-zinc-700/80 hover:border-zinc-600"
+                isExpanded ? "border-fantasy-purple-500/60 ring-1 ring-fantasy-purple-500/30" : "border-zinc-700/80 hover:border-zinc-600"
               }`}
             >
               <div className="p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -333,11 +333,11 @@ export default function MenuCoursesEditor({
                   onClick={() => setExpandedIdx(isExpanded ? null : idx)}
                 >
                   <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-500/30">
+                    <span className="text-xs font-bold uppercase tracking-wider text-fantasy-purple-400 bg-fantasy-purple-950/80 px-2 py-0.5 rounded border border-fantasy-purple-500/30">
                       Opción {idx + 1}
                     </span>
                     {opt.tieneSalseado && (
-                      <span className="text-[10px] font-semibold text-amber-300 bg-amber-950/70 px-2 py-0.5 rounded border border-amber-500/30">
+                      <span className="text-[10px] font-semibold text-fantasy-pink-300 bg-fantasy-pink-950/70 px-2 py-0.5 rounded border border-fantasy-pink-500/30">
                         Salseado incluido
                       </span>
                     )}
@@ -353,7 +353,7 @@ export default function MenuCoursesEditor({
                     onClick={() => setExpandedIdx(isExpanded ? null : idx)}
                     className="px-3 py-1.5 bg-zinc-700/90 hover:bg-zinc-700 text-zinc-100 text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors cursor-pointer"
                   >
-                    <Edit3 className="w-3.5 h-3.5 text-emerald-400" />
+                    <Edit3 className="w-3.5 h-3.5 text-fantasy-purple-400" />
                     {isExpanded ? "Plegar" : "Editar"}
                   </button>
                   {options.length > 1 && (
@@ -385,7 +385,7 @@ export default function MenuCoursesEditor({
                           });
                           updateOptions(updated);
                         }}
-                        className="w-4 h-4 text-emerald-500 rounded border-zinc-600 focus:ring-emerald-500 bg-zinc-900 cursor-pointer"
+                        className="w-4 h-4 text-fantasy-purple-500 rounded border-zinc-600 focus:ring-fantasy-purple-500 bg-zinc-900 cursor-pointer"
                       />
                       <span className="text-xs font-semibold text-zinc-200">
                         Incluir Salseado a elegir para esta opción
@@ -394,9 +394,9 @@ export default function MenuCoursesEditor({
                     <button
                       type="button"
                       onClick={() => setExpandedIdx(null)}
-                      className="px-3 py-1.5 bg-emerald-950 hover:bg-emerald-900 text-emerald-300 border border-emerald-500/40 text-xs font-bold rounded-lg self-end sm:self-auto cursor-pointer transition-colors"
+                      className="px-3 py-1.5 bg-fantasy-purple-950 hover:bg-fantasy-purple-900 text-fantasy-purple-300 border border-fantasy-purple-500/40 text-xs font-bold rounded-lg self-end sm:self-auto cursor-pointer transition-colors"
                     >
-                      Listo / Guardar
+                      Guardar
                     </button>
                   </div>
                 </div>
@@ -411,7 +411,7 @@ export default function MenuCoursesEditor({
           <div className="bg-zinc-900 border border-zinc-700/80 rounded-2xl w-full max-w-xl p-5 sm:p-6 shadow-2xl space-y-4 my-8 animate-in fade-in zoom-in-95 max-h-[90vh] overflow-y-auto custom-scrollbar">
             <div className="flex justify-between items-center pb-3 border-b border-zinc-800">
               <div>
-                <h3 className="text-base font-bold text-emerald-400">
+                <h3 className="text-base font-bold text-fantasy-purple-400">
                   Agregar Nueva Opción ({numTiempos} Tiempos)
                 </h3>
                 <p className="text-xs text-zinc-400 mt-0.5">
@@ -447,7 +447,7 @@ export default function MenuCoursesEditor({
               <button
                 type="button"
                 onClick={handleConfirmAddOption}
-                className="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl transition-colors shadow-lg shadow-emerald-900/30 cursor-pointer"
+                className="px-4 py-2 bg-fantasy-purple-600 hover:bg-fantasy-purple-500 text-white text-xs font-bold rounded-xl transition-colors shadow-lg shadow-fantasy-purple-900/30 cursor-pointer"
               >
                 Aceptar
               </button>

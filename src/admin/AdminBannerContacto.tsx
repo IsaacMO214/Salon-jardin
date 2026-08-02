@@ -126,7 +126,7 @@ export default function AdminBannerContacto({
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-zinc-800 gap-4">
         <div>
           <h3 className="text-xl font-bold text-zinc-100 flex items-center gap-2">
-            <ImageIcon className="w-5 h-5 text-emerald-400" />
+            <ImageIcon className="w-5 h-5 text-fantasy-purple-400" />
             <span>Banner, Slogan, Redes Sociales y Teléfonos</span>
           </h3>
           <p className="text-xs text-zinc-400 mt-1">
@@ -140,15 +140,15 @@ export default function AdminBannerContacto({
       <div className="bg-zinc-800/40 border border-zinc-800 rounded-2xl p-6 space-y-6">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-zinc-800 pb-4">
           <div>
-            <h4 className="text-sm font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-emerald-400" />
+            <h4 className="text-sm font-bold text-fantasy-purple-400 uppercase tracking-wider flex items-center gap-2">
+              <Sparkles className="w-4 h-4 text-fantasy-purple-400" />
               Carrusel de Banner (5 Imágenes) & Slogan
             </h4>
             <p className="text-xs text-zinc-400 mt-1">
               Sube directamente las fotos de tu salón. Cambiarán automáticamente cada 10 segundos en la página de inicio.
             </p>
           </div>
-          <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-500/30 px-3 py-1 rounded-full">
+          <span className="text-[10px] font-bold text-fantasy-purple-400 bg-fantasy-purple-950/80 border border-fantasy-purple-500/30 px-3 py-1 rounded-full">
             {bannerForm.imagenesUrl.length} / 5 Imágenes
           </span>
         </div>
@@ -164,7 +164,7 @@ export default function AdminBannerContacto({
             value={bannerForm.slogan}
             onChange={(e) => setBannerForm({ ...bannerForm, slogan: e.target.value })}
             placeholder="Ej: Una fiesta mágica, única e inolvidable"
-            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500 font-medium"
+            className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500 font-medium"
           />
               {bannerForm.slogan.length > 50 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -175,7 +175,7 @@ export default function AdminBannerContacto({
 
         {/* 5 Banner Images Upload Slots (Subida Directa) */}
         <div className="space-y-4">
-          <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider">
             FOTOS DEL CARRUSEL DE BANNER (SUBIDA DIRECTA)
           </label>
 
@@ -244,8 +244,8 @@ export default function AdminBannerContacto({
 
       {/* Section 2: Redes Sociales */}
       <div className="bg-zinc-800/40 border border-zinc-800 rounded-2xl p-6 space-y-6">
-        <h4 className="text-sm font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-          <Share2 className="w-4 h-4 text-emerald-400" />
+        <h4 className="text-sm font-bold text-fantasy-purple-400 uppercase tracking-wider flex items-center gap-2">
+          <Share2 className="w-4 h-4 text-fantasy-purple-400" />
           Redes Sociales
         </h4>
 
@@ -263,7 +263,7 @@ export default function AdminBannerContacto({
               value={redesForm.instagram}
               onChange={(e) => setRedesForm({ ...redesForm, instagram: e.target.value })}
               placeholder="https://www.instagram.com/fantasysalonde_fiestas/"
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500 font-medium"
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500 font-medium"
             />
             {redesForm.instagram.length > 200 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -275,7 +275,7 @@ export default function AdminBannerContacto({
           {/* Facebook */}
           <div>
             <label className="block text-xs font-bold text-zinc-300 uppercase tracking-wider mb-2 flex items-center gap-2">
-              <span className="p-1 rounded bg-blue-950 text-blue-400 border border-blue-500/30">
+              <span className="p-1 rounded bg-fantasy-purple-950 text-fantasy-purple-400 border border-fantasy-purple-500/30">
                 <Facebook className="w-3.5 h-3.5" />
               </span>
               Facebook
@@ -285,7 +285,7 @@ export default function AdminBannerContacto({
               value={redesForm.facebook}
               onChange={(e) => setRedesForm({ ...redesForm, facebook: e.target.value })}
               placeholder="https://www.facebook.com/Fantasysalonjardin"
-              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500 font-medium"
+              className="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500 font-medium"
             />
             {redesForm.facebook.length > 200 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -298,8 +298,8 @@ export default function AdminBannerContacto({
 
       {/* Section 3: Números de Teléfono / WhatsApp */}
       <div className="bg-zinc-800/40 border border-zinc-800 rounded-2xl p-6 space-y-6">
-        <h4 className="text-sm font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-          <Phone className="w-4 h-4 text-emerald-400" />
+        <h4 className="text-sm font-bold text-fantasy-purple-400 uppercase tracking-wider flex items-center gap-2">
+          <Phone className="w-4 h-4 text-fantasy-purple-400" />
           Números Telefónicos y WhatsApp de Atención
         </h4>
 
@@ -311,7 +311,7 @@ export default function AdminBannerContacto({
         <div className="space-y-3">
           {telefonosList.map((tel, idx) => (
             <div key={idx} className="flex items-center gap-3">
-              <span className="text-xs font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-500/30 px-3 py-2 rounded-xl shrink-0">
+              <span className="text-xs font-bold text-fantasy-purple-400 bg-fantasy-purple-950/80 border border-fantasy-purple-500/30 px-3 py-2 rounded-xl shrink-0">
                 Teléfono {idx + 1} {idx === 0 ? "(Principal/WhatsApp)" : ""}
               </span>
               <input
@@ -324,7 +324,7 @@ export default function AdminBannerContacto({
                   setTelefonosList(updated);
                 }}
                 placeholder="Ej: 5536073700"
-                className="flex-1 bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500 font-medium"
+                className="flex-1 bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500 font-medium"
               />
               {telefonosList.length > 1 && (
                 <button
@@ -349,7 +349,7 @@ export default function AdminBannerContacto({
               value={newPhoneInput}
               onChange={(e) => setNewPhoneInput(e.target.value.replace(/\D/g, ''))}
               placeholder="Añadir nuevo número (Ej: 5512345678)"
-              className="flex-1 bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500"
+              className="flex-1 bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500"
             />
             <button
               type="button"
@@ -361,7 +361,7 @@ export default function AdminBannerContacto({
                   alert("El teléfono debe tener exactamente 10 dígitos numéricos.");
                 }
               }}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-900/80 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-fantasy-purple-950/80 border border-fantasy-purple-500/40 text-fantasy-purple-300 hover:bg-fantasy-purple-900/80 rounded-xl text-xs font-bold transition-all cursor-pointer shrink-0"
             >
               <Plus className="w-4 h-4" />
               <span>Agregar Teléfono</span>
@@ -376,10 +376,10 @@ export default function AdminBannerContacto({
         <button
           type="submit"
           disabled={isLoading}
-          className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-emerald-950/50 cursor-pointer transition-all"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-fantasy-pink-600 hover:bg-fantasy-pink-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-fantasy-purple-950/50 cursor-pointer transition-all"
         >
           <Save className="w-4 h-4" />
-          {isLoading ? "Guardando..." : "Guardar Toda la Configuración"}
+          {isLoading ? "Guardando..." : "Guardar"}
         </button>
       </div>
     </form>

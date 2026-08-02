@@ -44,7 +44,7 @@ export default function AdminPassword({ token }: AdminPasswordProps) {
     <div className="max-w-md bg-zinc-800/40 border border-zinc-700/80 p-6 rounded-2xl space-y-6">
       <div className="pb-3 border-b border-zinc-800">
         <h3 className="text-lg font-bold text-zinc-100 flex items-center gap-2">
-          <Lock className="w-5 h-5 text-emerald-400" /> Cambiar Contraseña
+          <Lock className="w-5 h-5 text-fantasy-purple-400" /> Cambiar Contraseña
         </h3>
         <p className="text-xs text-zinc-400 mt-1">Actualiza las credenciales de acceso para el usuario administrador.</p>
       </div>
@@ -57,7 +57,7 @@ export default function AdminPassword({ token }: AdminPasswordProps) {
             required
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500"
           />
               {currentPassword.length > 50 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -72,7 +72,7 @@ export default function AdminPassword({ token }: AdminPasswordProps) {
             required
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500"
           />
               {newPassword.length > 50 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -87,7 +87,7 @@ export default function AdminPassword({ token }: AdminPasswordProps) {
             required
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2 text-xs text-zinc-100 focus:outline-none focus:border-emerald-500"
+            className="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-3.5 py-2 text-xs text-zinc-100 focus:outline-none focus:border-fantasy-purple-500"
           />
               {confirmPassword.length > 50 && (
                 <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">
@@ -99,7 +99,7 @@ export default function AdminPassword({ token }: AdminPasswordProps) {
         {passwordMsg.text && (
           <p className={`text-xs p-2.5 rounded-lg text-center font-medium ${
             passwordMsg.type === "success"
-              ? "bg-emerald-950/80 border border-emerald-500/30 text-emerald-300"
+              ? "bg-fantasy-purple-950/80 border border-fantasy-purple-500/30 text-fantasy-purple-300"
               : "bg-red-950/80 border border-red-500/30 text-red-300"
           }`}>
             {passwordMsg.text}
@@ -108,7 +108,7 @@ export default function AdminPassword({ token }: AdminPasswordProps) {
 
         <button
           type="submit"
-          className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs transition-all shadow-md shadow-emerald-950/40 cursor-pointer"
+          className="w-full py-2.5 bg-fantasy-pink-600 hover:bg-fantasy-pink-500 text-white font-bold rounded-xl text-xs transition-all shadow-md shadow-fantasy-purple-950/40 cursor-pointer"
         >
           Actualizar Contraseña
         </button>

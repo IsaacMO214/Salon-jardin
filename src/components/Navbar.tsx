@@ -26,23 +26,23 @@ export default function Navbar({ currentView, setView, isAdmin, onLogout, telefo
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/75 backdrop-blur-md border-b border-green-100/30">
+    <nav className="sticky top-0 z-50 bg-white border-b border-fantasy-purple-100/30">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="flex justify-between h-20 relative">
           {/* Logo */}
           <div className="flex items-center">
-            <a 
-              href="#" 
+            <a
+              href="#"
               onClick={() => setView('public')}
-              className="flex flex-col items-start leading-none cursor-pointer group"
+              className="flex items-center cursor-pointer group"
               id="navbar-logo"
             >
-              <span className="font-serif text-2xl sm:text-3xl font-semibold tracking-wide text-green-800 transition-colors group-hover:text-green-900">
-                Fantasy
-              </span>
-              <span className="text-[7.5px] sm:text-[9px] font-bold text-slate-500 tracking-[0.25em] uppercase mt-0.5">
-                SALÓN Y JARDÍN
-              </span>
+              <img 
+                src="/uploads/logo-fantasy.png" 
+                alt="Logo Salón Jardín Fantasy" 
+                className="h-14 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105 mix-blend-multiply" 
+                style={{ filter: 'brightness(1.5) contrast(1.5)' }}
+              />
             </a>
           </div>
 
@@ -54,7 +54,7 @@ export default function Navbar({ currentView, setView, isAdmin, onLogout, telefo
                   <a
                     key={link.label}
                     href={link.href}
-                    className="text-[13px] font-semibold text-slate-700 hover:text-green-800 transition-colors whitespace-nowrap"
+                    className="text-[13px] font-semibold text-slate-700 hover:text-fantasy-purple-700 transition-colors whitespace-nowrap"
                   >
                     {link.label}
                   </a>
@@ -62,12 +62,12 @@ export default function Navbar({ currentView, setView, isAdmin, onLogout, telefo
               </>
             ) : (
               <>
-                <span className="text-[10px] uppercase tracking-wider bg-green-50 text-green-800 px-3 py-1 rounded-full font-bold">
+                <span className="text-[10px] uppercase tracking-wider bg-fantasy-purple-50 text-fantasy-purple-800 px-3 py-1 rounded-full font-bold">
                   Panel de Control Activo
                 </span>
                 <button
                   onClick={() => setView('public')}
-                  className="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-green-700 transition-colors cursor-pointer"
+                  className="text-xs font-semibold uppercase tracking-wider text-slate-600 hover:text-fantasy-purple-700 transition-colors cursor-pointer"
                 >
                   Ver Sitio Público
                 </button>
@@ -89,7 +89,7 @@ export default function Navbar({ currentView, setView, isAdmin, onLogout, telefo
           <div className="flex items-center lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-slate-500 hover:bg-slate-50 hover:text-slate-800"
+              className="p-2 rounded-md text-slate-500 hover:bg-fantasy-purple-50 hover:text-fantasy-purple-800"
               aria-label="Menú principal"
               id="mobile-menu-toggle"
             >
@@ -101,7 +101,7 @@ export default function Navbar({ currentView, setView, isAdmin, onLogout, telefo
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-slate-100 px-6 pt-2 pb-6 space-y-2">
+        <div className="lg:hidden bg-white/95 backdrop-blur-md border-b border-fantasy-purple-100/30 px-6 pt-2 pb-6 space-y-2">
           {currentView === 'public' ? (
             <>
               {navLinks.map((link) => (
@@ -109,7 +109,7 @@ export default function Navbar({ currentView, setView, isAdmin, onLogout, telefo
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-2 rounded-md text-sm font-semibold text-slate-700 hover:bg-slate-50 hover:text-green-800 transition-all"
+                  className="block px-3 py-2 rounded-md text-sm font-semibold text-slate-700 hover:bg-fantasy-purple-50 hover:text-fantasy-purple-800 transition-all"
                 >
                   {link.label}
                 </a>
@@ -123,7 +123,7 @@ export default function Navbar({ currentView, setView, isAdmin, onLogout, telefo
                   setView('public');
                   setIsOpen(false);
                 }}
-                className="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-slate-50 transition-all"
+                className="w-full text-left px-3 py-2 rounded-md text-sm font-medium text-slate-600 hover:bg-fantasy-purple-50 transition-all"
               >
                 Ver Sitio Público
               </button>

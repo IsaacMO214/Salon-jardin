@@ -61,7 +61,8 @@ CREATE TABLE IF NOT EXISTS paquetes_sociales (
   horas INT DEFAULT 6,
   servicios JSON,
   menus JSON,
-  fotos JSON
+  fotos JSON,
+  orden INT DEFAULT 0
 ) ENGINE=InnoDB;
 
 -- Paquetes Infantiles
@@ -73,7 +74,8 @@ CREATE TABLE IF NOT EXISTS paquetes_infantiles (
   tipoServicio VARCHAR(100),
   servicios JSON,
   menus JSON,
-  fotos JSON
+  fotos JSON,
+  orden INT DEFAULT 0
 ) ENGINE=InnoDB;
 
 -- Shows
@@ -116,6 +118,12 @@ CREATE TABLE IF NOT EXISTS galeria (
   id VARCHAR(100) PRIMARY KEY,
   url VARCHAR(500) NOT NULL,
   categoria VARCHAR(100) DEFAULT 'general'
+) ENGINE=InnoDB;
+
+-- Galería de Eventos (single row, shared gallery for all events)
+CREATE TABLE IF NOT EXISTS eventos_galeria (
+  id INT PRIMARY KEY DEFAULT 1,
+  urls JSON
 ) ENGINE=InnoDB;
 
 -- Usuarios (admin)

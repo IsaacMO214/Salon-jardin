@@ -18,7 +18,6 @@ export interface Evento {
   nombre: string;
   descripcion: string;
   icono: string; // Lucide icon name
-  fotos: string[]; // Own gallery
 }
 
 export interface Menu {
@@ -40,6 +39,7 @@ export interface Paquete {
   servicios: string[];
   menus: string[]; // references to Menu ids
   tipoServicio?: 'salon' | 'salon_alimentos';
+  orden?: number;
 }
 
 export interface Show {
@@ -95,6 +95,7 @@ export interface AppData {
   redesSociales?: RedesSociales;
   nosotros: Nosotros;
   eventos: Evento[];
+  eventos_galeria: string[]; // Shared gallery for all events (photo/video URLs)
   menus: Menu[];
   paquetes_sociales: Paquete[];
   paquetes_infantiles: Paquete[];
@@ -103,4 +104,6 @@ export interface AppData {
   testimonios: Testimonio[];
   reglamento: Reglamento;
   galeria: GaleriaItem[];
+  master_servicios_sociales?: string[];
+  master_servicios_infantiles?: string[];
 }

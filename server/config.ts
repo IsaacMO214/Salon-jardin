@@ -31,7 +31,7 @@ const storage = multer.diskStorage({
 export const upload = multer({
   storage,
   limits: {
-    fileSize: 10 * 1024 * 1024 // 10MB limit
+    fileSize: 50 * 1024 * 1024 // 50MB limit
   },
   fileFilter: (req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase();
@@ -41,8 +41,8 @@ export const upload = multer({
     if (!ALLOWED_MIMES.includes(file.mimetype)) {
       return cb(new Error("Tipo MIME no permitido."));
     }
-    if (file.mimetype.startsWith("image/") && file.size > 5 * 1024 * 1024) {
-      return cb(new Error("Las imágenes no pueden superar los 5MB."));
+    if (file.mimetype.startsWith("image/") && file.size > 20 * 1024 * 1024) {
+      return cb(new Error("Las imágenes no pueden superar los 20MB."));
     }
     cb(null, true);
   }

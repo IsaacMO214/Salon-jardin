@@ -75,6 +75,18 @@ router.post("/api/admin/eventos/delete/:id", async (req, res) => {
   res.json({ success });
 });
 
+// CRUD: Eventos Galería (shared gallery for all events)
+router.post("/api/admin/eventos-galeria/save", async (req, res) => {
+  const { token, urls } = req.body;
+  if (!isTokenValid(token)) return res.status(401).json({ success: false, message: "No autorizado o sesión expirada" });
+
+  const db = await readDB();
+  db.eventos_galeria = urls || [];
+
+  const success = await writeDB(db);
+  res.json({ success });
+});
+
 // CRUD: Menús
 router.post("/api/admin/menus/save", async (req, res) => {
   const { token, menu } = req.body;

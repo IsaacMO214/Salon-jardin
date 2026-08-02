@@ -67,15 +67,26 @@ export default function Hero({ slogan, imagenUrl, imagenesUrl }: HeroProps) {
               index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
             }`}
           >
-            <img
-              src={imgUrl}
-              alt={`Jardín Fantasy - Banner ${index + 1}`}
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
+            {imgUrl.match(/\.(mp4|webm|ogg|mov)$/i) ? (
+              <video
+                src={imgUrl}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            ) : (
+              <img
+                src={imgUrl}
+                alt={`Salón Jardín Fantasy - Banner ${index + 1}`}
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+              />
+            )}
           </div>
         ))}
-        <div className="absolute inset-0 z-20 bg-black/60 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 z-20 bg-gradient-to-b from-fantasy-purple-950/70 via-black/50 to-fantasy-purple-950/60 backdrop-blur-[1px]" />
       </div>
 
       {/* Navigation Buttons on Left & Right Edges */}
@@ -84,7 +95,7 @@ export default function Hero({ slogan, imagenUrl, imagenesUrl }: HeroProps) {
           <button
             onClick={goToPrev}
             aria-label="Imagen anterior"
-            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3.5 rounded-full bg-black/40 hover:bg-black/75 text-white/80 hover:text-white border border-white/20 backdrop-blur-md transition-all shadow-xl hover:scale-110 cursor-pointer"
+            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3.5 rounded-full bg-fantasy-purple-900/40 hover:bg-fantasy-purple-800/75 text-white/80 hover:text-white border border-white/20 backdrop-blur-md transition-all shadow-xl hover:scale-110 cursor-pointer"
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
@@ -92,7 +103,7 @@ export default function Hero({ slogan, imagenUrl, imagenesUrl }: HeroProps) {
           <button
             onClick={goToNext}
             aria-label="Siguiente imagen"
-            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3.5 rounded-full bg-black/40 hover:bg-black/75 text-white/80 hover:text-white border border-white/20 backdrop-blur-md transition-all shadow-xl hover:scale-110 cursor-pointer"
+            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 p-2.5 sm:p-3.5 rounded-full bg-fantasy-purple-900/40 hover:bg-fantasy-purple-800/75 text-white/80 hover:text-white border border-white/20 backdrop-blur-md transition-all shadow-xl hover:scale-110 cursor-pointer"
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
@@ -101,25 +112,31 @@ export default function Hero({ slogan, imagenUrl, imagenesUrl }: HeroProps) {
 
       {/* Content Overlay */}
       <div className="relative z-20 max-w-5xl mx-auto px-6 sm:px-8 text-center text-white">
-        {/* Soft Tag */}
-        <span className="inline-flex items-center rounded-full bg-white/10 px-3.5 py-1 text-[10px] font-bold text-white tracking-widest uppercase mb-6 border border-white/20 backdrop-blur-md">
-          Salón con Jardín Multieventos
-        </span>
 
         {/* Hero Title */}
-        <h1 className="text-4xl sm:text-6xl font-light tracking-tight text-white mb-6 leading-tight drop-shadow-sm">
+        <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 leading-tight drop-shadow-sm">
           Crea Momentos Mágicos en <br />
-          <span className="text-green-300 italic font-medium">Jardín Fantasy</span>
+          <span className="text-fantasy-pink-300 italic font-medium title-font">Salón Jardín Fantasy</span>
         </h1>
 
         {/* Slogan */}
-        <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-100 font-light leading-relaxed drop-shadow-xs italic">
+        <p className="max-w-2xl mx-auto text-base sm:text-lg text-slate-100 font-light leading-relaxed drop-shadow-xs italic title-font">
           &ldquo;{slogan}&rdquo;
         </p>
 
+        {/* CTA Button */}
+        <div className="mt-8">
+          <a
+            href="#nosotros"
+            className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-fantasy-pink-500 hover:bg-fantasy-pink-600 text-white text-sm font-bold uppercase tracking-wider transition-all shadow-lg hover:shadow-xl hover:scale-105"
+          >
+            Conocer Más
+          </a>
+        </div>
+
         {/* Indicators Dots */}
         {bannerList.length > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-10">
+          <div className="flex items-center justify-center gap-2 mt-12">
             {bannerList.map((_, i) => (
               <button
                 key={i}
@@ -127,7 +144,7 @@ export default function Hero({ slogan, imagenUrl, imagenesUrl }: HeroProps) {
                 aria-label={`Ir a imagen ${i + 1}`}
                 className={`h-2 rounded-full transition-all cursor-pointer ${
                   i === currentIndex
-                    ? "w-8 bg-emerald-400"
+                    ? "w-8 bg-fantasy-pink-400"
                     : "w-2 bg-white/40 hover:bg-white/70"
                 }`}
               />

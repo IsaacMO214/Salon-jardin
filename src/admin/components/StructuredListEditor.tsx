@@ -87,7 +87,7 @@ export default function StructuredListEditor({
     <div className="bg-zinc-800/80 border border-zinc-700/80 p-4 rounded-xl space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-zinc-700/70">
         <div>
-          <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider">
+          <label className="block text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider">
             {title} ({dishes.length}/{maxLimit} registrados)
           </label>
           <p className="text-[11px] text-zinc-400 mt-0.5">
@@ -98,7 +98,7 @@ export default function StructuredListEditor({
           <button
             type="button"
             onClick={addDish}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-950/90 border border-emerald-500/50 text-emerald-300 hover:bg-emerald-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer self-start sm:self-auto shrink-0 shadow-sm"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-fantasy-purple-950/90 border border-fantasy-purple-500/50 text-fantasy-purple-300 hover:bg-fantasy-purple-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer self-start sm:self-auto shrink-0 shadow-sm"
           >
             <Plus className="w-3.5 h-3.5" />
             Agregar {itemLabel}
@@ -107,8 +107,8 @@ export default function StructuredListEditor({
       </div>
 
       {dishes.length >= maxLimit && (
-        <div className="p-2.5 bg-amber-950/60 border border-amber-500/40 rounded-lg text-amber-200 text-xs font-medium flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 text-amber-400 shrink-0" />
+        <div className="p-2.5 bg-fantasy-pink-950/60 border border-fantasy-pink-500/40 rounded-lg text-fantasy-pink-200 text-xs font-medium flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 text-fantasy-pink-400 shrink-0" />
           <span>Has alcanzado el límite máximo de {maxLimit} {itemLabel.toLowerCase()}s.</span>
         </div>
       )}
@@ -126,7 +126,7 @@ export default function StructuredListEditor({
                 value={dish}
                 onChange={(e) => handleDishChange(idx, e.target.value)}
                 placeholder={`Escribe el/la ${itemLabel.toLowerCase()} ${idx + 1}...`}
-                className="flex-1 bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+                className="flex-1 bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
               />
               {dishes.length > 1 && (
                 <button
@@ -150,7 +150,7 @@ export default function StructuredListEditor({
 
       {/* Recuadro de Nota */}
       <div className="pt-3 border-t border-zinc-700/70 space-y-1.5">
-        <label className="block text-xs font-bold text-emerald-400 uppercase tracking-wider">
+        <label className="block text-xs font-bold text-fantasy-purple-400 uppercase tracking-wider">
           Recuadro de Nota / Leyenda Aclaratoria
         </label>
         <p className="text-[11px] text-zinc-400">
@@ -161,7 +161,7 @@ export default function StructuredListEditor({
           value={note}
           onChange={(e) => handleNoteChange(e.target.value)}
           placeholder={notePlaceholder}
-          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl p-3 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500"
+          className="w-full bg-zinc-900 border border-zinc-700 rounded-xl p-3 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500"
         />
         {note.length > 200 && (
           <p className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm">

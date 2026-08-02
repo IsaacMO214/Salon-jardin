@@ -119,14 +119,14 @@ export default function Menus({ menus }: MenusProps) {
 
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100/80 text-emerald-800 text-[11px] font-bold uppercase tracking-wider mb-3">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fantasy-purple-100/80 text-fantasy-purple-800 text-[11px] font-bold uppercase tracking-wider mb-3">
             <ChefHat className="w-3.5 h-3.5" />
             Nuestra Propuesta Gastronómica
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif font-light tracking-tight text-slate-850">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-fantasy-purple-900">
             Menús y Banquetes de Alta Calidad
           </h2>
-          <div className="w-16 h-0.5 bg-emerald-600 mx-auto mt-3 mb-3 rounded-full" />
+          <div className="w-16 h-0.5 bg-fantasy-purple-500 mx-auto mt-3 mb-3 rounded-full" />
           <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
             Platillos elaborados el mismo día de tu evento con insumos 100% frescos y el sazón casero gourmet que nos distingue
           </p>
@@ -134,19 +134,19 @@ export default function Menus({ menus }: MenusProps) {
 
         {/* Category Navigation Tabs */}
         <div className="flex justify-center mb-12">
-          <div className="inline-flex flex-wrap justify-center p-1.5 bg-emerald-900/5 backdrop-blur-md rounded-2xl border border-emerald-100 shadow-xs gap-1.5 max-w-full">
+          <div className="inline-flex flex-wrap justify-center p-1.5 bg-fantasy-purple-900/5 backdrop-blur-md rounded-2xl border border-fantasy-purple-100 shadow-xs gap-1.5 max-w-full">
             <button
               onClick={() => setActiveCategory('tiempos')}
               className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeCategory === 'tiempos'
-                  ? 'bg-emerald-800 text-white shadow-sm font-bold'
-                  : 'text-slate-700 hover:text-slate-900 hover:bg-emerald-50/60'
+                  ? 'bg-fantasy-pink-500 text-white shadow-sm font-bold'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-fantasy-purple-50/60'
               }`}
               id="cat-tab-tiempos"
             >
               <Award className="w-3.5 h-3.5" />
               <span>Menús de Tiempos</span>
-              <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${activeCategory === 'tiempos' ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-700'}`}>
+              <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${activeCategory === 'tiempos' ? 'bg-fantasy-pink-500 text-white' : 'bg-slate-200 text-slate-700'}`}>
                 {counts.tiempos}
               </span>
             </button>
@@ -155,14 +155,14 @@ export default function Menus({ menus }: MenusProps) {
               onClick={() => setActiveCategory('taquiza')}
               className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeCategory === 'taquiza'
-                  ? 'bg-emerald-800 text-white shadow-sm font-bold'
-                  : 'text-slate-700 hover:text-slate-900 hover:bg-emerald-50/60'
+                  ? 'bg-fantasy-pink-500 text-white shadow-sm font-bold'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-fantasy-purple-50/60'
               }`}
               id="cat-tab-taquiza"
             >
               <Flame className="w-3.5 h-3.5 text-amber-500" />
               <span>Taquiza y Parrillada</span>
-              <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${activeCategory === 'taquiza' ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-700'}`}>
+              <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${activeCategory === 'taquiza' ? 'bg-fantasy-pink-500 text-white' : 'bg-slate-200 text-slate-700'}`}>
                 {counts.taquiza}
               </span>
             </button>
@@ -171,14 +171,14 @@ export default function Menus({ menus }: MenusProps) {
               onClick={() => setActiveCategory('infantil')}
               className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                 activeCategory === 'infantil'
-                  ? 'bg-emerald-800 text-white shadow-sm font-bold'
-                  : 'text-slate-700 hover:text-slate-900 hover:bg-emerald-50/60'
+                  ? 'bg-fantasy-pink-500 text-white shadow-sm font-bold'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-fantasy-purple-50/60'
               }`}
               id="cat-tab-infantil"
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <Sparkles className="w-3.5 h-3.5 text-fantasy-pink-400" />
               <span>Menús Infantiles y Buffet</span>
-              <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${activeCategory === 'infantil' ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-700'}`}>
+              <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${activeCategory === 'infantil' ? 'bg-fantasy-pink-500 text-white' : 'bg-slate-200 text-slate-700'}`}>
                 {counts.infantil}
               </span>
             </button>
@@ -188,23 +188,25 @@ export default function Menus({ menus }: MenusProps) {
         {/* Menus Layout */}
         <div className="space-y-12">
           {activeCategory === 'taquiza' && (
-            <div className="p-4 sm:p-5 rounded-2xl bg-emerald-50/90 border border-emerald-200/80 shadow-2xs flex items-start gap-3 sm:gap-4">
-              <div className="p-2.5 rounded-xl bg-emerald-100/80 border border-emerald-200/60 shrink-0">
-                <Flame className="w-5 h-5 text-emerald-700" />
+            <div className="p-4 sm:p-5 rounded-2xl bg-fantasy-purple-50/90 border border-fantasy-purple-200/80 shadow-2xs flex items-start gap-3 sm:gap-4">
+              <div className="p-2.5 rounded-xl bg-fantasy-purple-100/80 border border-fantasy-purple-200/60 shrink-0">
+                <Flame className="w-5 h-5 text-fantasy-purple-700" />
               </div>
               <div>
-                <span className="text-xs sm:text-sm font-bold text-emerald-900 block leading-snug">
+                <span className="text-xs sm:text-sm font-bold text-fantasy-purple-900 block leading-snug">
                   No hagas fila, ¡te servimos en tu mesa!
                 </span>
-                <p className="text-[11px] sm:text-xs text-emerald-700 mt-1 leading-relaxed font-medium">
+                <p className="text-[11px] sm:text-xs text-fantasy-purple-700 mt-1 leading-relaxed font-medium">
                   Todas nuestras taquizas y parrilladas se sirven en un plato que nuestro equipo te lleva directamente hasta tu mesa. Tú solo disfruta.
                 </p>
               </div>
             </div>
           )}
           {filteredMenus.map((menu) => {
+            const displayFotos = menu.fotos ? menu.fotos.slice(0, 3) : [];
             const currentPhotoIdx = galleryIndexes[menu.id] || 0;
-            const hasPhotos = menu.fotos && menu.fotos.length > 0;
+            const safePhotoIdx = currentPhotoIdx < displayFotos.length ? currentPhotoIdx : 0;
+            const hasPhotos = displayFotos.length > 0;
             const category = getMenuCategory(menu);
 
             // Separate items that are multi-course options vs plain items
@@ -218,33 +220,44 @@ export default function Menus({ menus }: MenusProps) {
             return (
               <div
                 key={menu.id}
-                className="bg-white/95 backdrop-blur-xs rounded-3xl border border-emerald-100/60 hover:border-emerald-300/80 overflow-hidden transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-sm hover:shadow-md"
+                className="bg-white/95 backdrop-blur-xs rounded-3xl border border-fantasy-purple-100/60 hover:border-fantasy-purple-300/80 overflow-hidden transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-0 shadow-sm hover:shadow-md"
                 id={`menu-card-${menu.id}`}
               >
                 {/* Menu Own Gallery Column */}
                 <div className="lg:col-span-4 relative bg-slate-900 min-h-72 lg:min-h-full flex flex-col justify-between overflow-hidden group/gallery">
                   {hasPhotos ? (
                     <>
-                      <img
-                        src={menu.fotos[currentPhotoIdx]}
-                        alt={`${menu.nombre} fotografía`}
-                        className="w-full h-full object-cover absolute inset-0 group-hover/gallery:scale-105 transition-transform duration-500"
-                        referrerPolicy="no-referrer"
-                      />
+                      {displayFotos[safePhotoIdx].match(/\.(mp4|webm|ogg|mov)$/i) ? (
+                        <video
+                          src={displayFotos[safePhotoIdx]}
+                          className="w-full h-full object-cover absolute inset-0 group-hover/gallery:scale-105 transition-transform duration-500"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                        />
+                      ) : (
+                        <img
+                          src={displayFotos[safePhotoIdx]}
+                          alt={`${menu.nombre} fotografía`}
+                          className="w-full h-full object-cover absolute inset-0 group-hover/gallery:scale-105 transition-transform duration-500"
+                          referrerPolicy="no-referrer"
+                        />
+                      )}
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent pointer-events-none" />
                       
                       {/* Nav Buttons */}
-                      {menu.fotos.length > 1 && (
+                      {displayFotos.length > 1 && (
                         <>
                           <button
-                            onClick={() => handlePrevPhoto(menu.id, menu.fotos.length)}
+                            onClick={() => handlePrevPhoto(menu.id, displayFotos.length)}
                             className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow-md transition-all cursor-pointer z-10 hover:scale-110"
                             aria-label="Anterior foto"
                           >
                             <ChevronLeft className="w-4 h-4" />
                           </button>
                           <button
-                            onClick={() => handleNextPhoto(menu.id, menu.fotos.length)}
+                            onClick={() => handleNextPhoto(menu.id, displayFotos.length)}
                             className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 p-2 rounded-full shadow-md transition-all cursor-pointer z-10 hover:scale-110"
                             aria-label="Siguiente foto"
                           >
@@ -255,8 +268,8 @@ export default function Menus({ menus }: MenusProps) {
 
                       {/* Photo Count Tag */}
                       <div className="absolute bottom-3 left-3 bg-slate-900/85 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-bold text-white uppercase tracking-wider flex items-center gap-1.5 z-10 border border-white/10 shadow-sm">
-                        <ImageIcon className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>Galería ({currentPhotoIdx + 1}/{menu.fotos.length})</span>
+                        <ImageIcon className="w-3.5 h-3.5 text-fantasy-pink-400" />
+                        <span>Galería ({safePhotoIdx + 1}/{displayFotos.length})</span>
                       </div>
                     </>
                   ) : (
@@ -275,11 +288,11 @@ export default function Menus({ menus }: MenusProps) {
                     {/* Header */}
                     <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
                       <div className="flex items-center gap-3">
-                        <div className="bg-emerald-50 text-emerald-800 p-3 rounded-2xl border border-emerald-100 shadow-2xs">
+                        <div className="bg-fantasy-purple-50 text-fantasy-purple-700 p-3 rounded-2xl border border-fantasy-purple-100 shadow-2xs">
                           <Utensils className="w-6 h-6" />
                         </div>
                         <div>
-                          <h3 className="text-xl sm:text-2xl font-serif font-medium tracking-tight text-slate-850">
+                          <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-fantasy-purple-900">
                             {menu.nombre}
                           </h3>
                           <p className="text-xs text-slate-500 font-sans mt-0.5">
@@ -293,8 +306,8 @@ export default function Menus({ menus }: MenusProps) {
                       </div>
 
                       {/* Freshness guarantee badge */}
-                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200/60">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fantasy-purple-50 text-fantasy-purple-800 text-[11px] font-semibold border border-fantasy-purple-200/60">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-fantasy-purple-600" />
                         <span>Insumos 100% Frescos</span>
                       </div>
                     </div>
@@ -319,8 +332,8 @@ export default function Menus({ menus }: MenusProps) {
                                 }
                                 className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                                   selectedOptIdx === idx
-                                    ? 'bg-emerald-800 text-white shadow-xs font-bold scale-102'
-                                    : 'bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-900 border border-slate-200/60'
+                                    ? 'bg-fantasy-pink-500 text-white shadow-sm font-bold'
+                                    : 'bg-white text-slate-600 hover:bg-fantasy-purple-50 hover:text-fantasy-purple-700 border border-slate-200 hover:border-fantasy-purple-200'
                                 }`}
                               >
                                 {opt.title || `Opción ${idx + 1}`}
@@ -331,12 +344,12 @@ export default function Menus({ menus }: MenusProps) {
 
                         {/* Active Selected Option Content */}
                         {parsedCoursesList[selectedOptIdx] && (
-                          <div className="p-5 sm:p-6 rounded-2xl bg-slate-50/80 border border-emerald-100 shadow-2xs space-y-4">
+                          <div className="p-5 sm:p-6 rounded-2xl bg-slate-50/80 border border-fantasy-purple-100 shadow-2xs space-y-4">
                             <div className="flex items-center justify-between pb-2 border-b border-slate-200/60">
-                              <span className="font-serif font-bold text-emerald-900 text-sm sm:text-base">
+                              <span className="font-bold text-fantasy-purple-900 text-sm sm:text-base">
                                 {parsedCoursesList[selectedOptIdx].title || `Opción ${selectedOptIdx + 1}`}
                               </span>
-                              <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
+                              <span className="text-[10px] uppercase font-bold tracking-wider px-2.5 py-0.5 rounded-full bg-fantasy-purple-100 text-fantasy-purple-800">
                                 {parsedCoursesList[selectedOptIdx].courses.length} Tiempos / Platos
                               </span>
                             </div>
@@ -352,10 +365,10 @@ export default function Menus({ menus }: MenusProps) {
                                 return (
                                   <div
                                     key={cIdx}
-                                    className="bg-white p-4 rounded-xl border border-slate-200/70 shadow-2xs flex flex-col justify-between hover:border-emerald-300 transition-colors"
+                                    className="bg-white p-4 rounded-xl border border-slate-200/70 shadow-2xs flex flex-col justify-between hover:border-fantasy-purple-300 transition-colors"
                                   >
                                     <div>
-                                      <span className="inline-block px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-800 font-extrabold text-[10px] uppercase tracking-wider mb-2">
+                                      <span className="inline-block px-2 py-0.5 rounded-md bg-fantasy-purple-50 text-fantasy-purple-800 font-extrabold text-[10px] uppercase tracking-wider mb-2">
                                         {c.label}
                                       </span>
                                       <h4 className="text-slate-850 font-bold text-xs sm:text-sm leading-snug">
@@ -375,12 +388,12 @@ export default function Menus({ menus }: MenusProps) {
                             {/* Salseados disponibles display only when this option has salseado */}
                             {parsedCoursesList[selectedOptIdx].tieneSalseado && (
                               <div className="mt-4 pt-3.5 border-t border-slate-200/80 text-slate-600 text-xs font-medium flex flex-wrap items-center gap-2">
-                                <span className="font-bold text-emerald-800 uppercase text-[10px] tracking-wider">
+                                <span className="font-bold text-fantasy-purple-800 uppercase text-[10px] tracking-wider">
                                   Salseados disponibles:
                                 </span>
                                 <div className="flex flex-wrap gap-1.5">
                                   {(menu.salseados && menu.salseados.length > 0 ? menu.salseados : ["BBQ", "Nuez", "Champiñón", "Chipotle", "3 Chiles"]).map((s, sIdx) => (
-                                    <span key={sIdx} className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200/60">
+                                    <span key={sIdx} className="px-2.5 py-0.5 rounded-full bg-fantasy-purple-50 text-fantasy-purple-800 text-[11px] font-semibold border border-fantasy-purple-200/60">
                                       {s}
                                     </span>
                                   ))}
@@ -402,9 +415,9 @@ export default function Menus({ menus }: MenusProps) {
                               ? listStr.split(",").map((d) => d.trim().replace(/\.$/, "")).filter(Boolean)
                               : [item];
 
-                            let accentBg = "bg-emerald-50/70 border-emerald-200/80 text-emerald-900";
-                            let headerBadge = "bg-emerald-800 text-white";
-                            let dotColor = "bg-emerald-600";
+                            let accentBg = "bg-fantasy-purple-50/70 border-fantasy-purple-200/80 text-fantasy-purple-900";
+                            let headerBadge = "bg-fantasy-purple-700 text-white";
+                            let dotColor = "bg-fantasy-purple-600";
                             let isNote = header.toLowerCase().startsWith("nota");
 
                             if (header.toLowerCase().includes("pollo")) {
@@ -473,7 +486,7 @@ export default function Menus({ menus }: MenusProps) {
                               className={
                                 isNote
                                   ? "sm:col-span-2 p-3.5 rounded-2xl bg-amber-50/90 border border-amber-200 text-xs sm:text-sm text-amber-900 font-medium italic flex items-start gap-2.5 shadow-2xs"
-                                  : "p-4 rounded-2xl bg-slate-50 border border-slate-200/70 text-xs sm:text-sm text-slate-800 flex items-start gap-3 shadow-2xs hover:border-emerald-300 transition-colors"
+                                  : "p-4 rounded-2xl bg-slate-50 border border-slate-200/70 text-xs sm:text-sm text-slate-800 flex items-start gap-3 shadow-2xs hover:border-fantasy-purple-300 transition-colors"
                               }
                             >
                               {isNote ? (
@@ -483,7 +496,7 @@ export default function Menus({ menus }: MenusProps) {
                                 </>
                               ) : (
                                 <>
-                                  <Salad className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                  <Salad className="w-4 h-4 text-fantasy-purple-600 shrink-0 mt-0.5" />
                                   <span className="font-medium text-slate-800">{item}</span>
                                 </>
                               )}
@@ -496,12 +509,12 @@ export default function Menus({ menus }: MenusProps) {
                     {/* Salseados display legend */}
                     {!isMultiCourseMenu && menu.salseados && menu.salseados.length > 0 && (
                       <div className="mt-5 pt-3.5 border-t border-slate-150 text-slate-600 text-xs font-medium flex flex-wrap items-center gap-2">
-                        <span className="font-bold text-emerald-800 uppercase text-[10px] tracking-wider">
+                        <span className="font-bold text-fantasy-purple-800 uppercase text-[10px] tracking-wider">
                           Salseados disponibles:
                         </span>
                         <div className="flex flex-wrap gap-1.5">
                           {menu.salseados.map((s, sIdx) => (
-                            <span key={sIdx} className="px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200/60">
+                            <span key={sIdx} className="px-2.5 py-0.5 rounded-full bg-fantasy-purple-50 text-fantasy-purple-800 text-[11px] font-semibold border border-fantasy-purple-200/60">
                               {s}
                             </span>
                           ))}
@@ -513,7 +526,7 @@ export default function Menus({ menus }: MenusProps) {
                   {/* Footer note */}
                   <div className="mt-6 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
                     <span className="flex items-center gap-1 font-semibold text-slate-500">
-                      <Info className="w-3.5 h-3.5 text-emerald-600" />
+                      <Info className="w-3.5 h-3.5 text-fantasy-purple-600" />
                       Preparación higiénica y personalizada
                     </span>
 
