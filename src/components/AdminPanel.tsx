@@ -12,6 +12,7 @@ import {
   Loader2
 } from "lucide-react";
 import { AppData } from "../types";
+import { API_BASE_URL } from "../config";
 import { apiCall } from "../api/client";
 import AdminLogin from "../admin/AdminLogin";
 import AdminDashboard, { AdminTabType } from "../admin/AdminDashboard";
@@ -55,7 +56,7 @@ export default function AdminPanel() {
   const loadData = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch("/api/data");
+      const res = await fetch(`${API_BASE_URL}/api/data`);
       const result = await res.json();
       if (result) {
         setData(result);

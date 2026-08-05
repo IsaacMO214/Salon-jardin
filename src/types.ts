@@ -45,7 +45,7 @@ export interface Paquete {
 export interface Show {
   id: string;
   nombre: string;
-  precio: number;
+  precio?: number;
   descripcion: string;
   fotos?: string[];
   videoUrl?: string;
@@ -106,4 +106,5 @@ export interface AppData {
   galeria: GaleriaItem[];
   master_servicios_sociales?: string[];
   master_servicios_infantiles?: string[];
+  precio_shows?: number;
 }

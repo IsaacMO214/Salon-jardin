@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import { API_BASE_URL } from "./config";
 import { AppData } from "./types";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -39,7 +40,7 @@ export default function App() {
   // Fetch all initial data
   const loadData = async () => {
     try {
-      const res = await fetch("/api/data");
+      const res = await fetch(`${API_BASE_URL}/api/data`);
       const result = await res.json();
       setData(result);
     } catch (err) {
@@ -151,7 +152,7 @@ export default function App() {
           telefonos={data.nosotros.telefonos}
         />
         <Menus menus={data.menus} />
-        <ShowsServicios shows={data.shows} serviciosAdicionales={data.servicios_adicionales} galeria={data.galeria} />
+        <ShowsServicios shows={data.shows} serviciosAdicionales={data.servicios_adicionales} galeria={data.galeria} precioShows={data.precio_shows} />
         <GaleriaTestimonios galeria={data.galeria} testimonios={data.testimonios} />
         <ReglamentoContacto
           reglamento={data.reglamento}
@@ -166,7 +167,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <div className="flex items-center gap-3">
-              <span className="font-semibold text-lg tracking-tight text-white uppercase">Operadora Fantasy</span>
+              <span className="font-semibold text-lg tracking-tight text-white uppercase">Fantasy Salon Jardin</span>
             </div>
             <p className="text-xs text-fantasy-purple-200/70 mt-3.5 leading-relaxed max-w-sm">
               Dedicados a cuidar cada detalle en tus eventos familiares y sociales de principio a fin, creando experiencias mágicas e inolvidables.
@@ -204,7 +205,7 @@ export default function App() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 mt-12 pt-6 border-t border-fantasy-purple-900/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-fantasy-purple-300/50 uppercase tracking-widest relative">
-          <p>© {new Date().getFullYear()} Operadora de Fiestas Fantasy. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Fantasy Salon Jardin. Todos los derechos reservados.</p>
           <div className="sm:absolute sm:left-1/2 sm:-translate-x-1/2">
             <button 
               onClick={() => setView('admin')} 

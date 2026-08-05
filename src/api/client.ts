@@ -1,3 +1,5 @@
+import { API_BASE_URL } from '../config';
+
 // Centralized API client for admin operations
 export async function apiCall(
   token: string,
@@ -11,7 +13,7 @@ export async function apiCall(
 ): Promise<boolean> {
   callbacks.setIsLoading(true);
   try {
-    const res = await fetch(url, {
+    const res = await fetch(`${API_BASE_URL}${url}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token, ...payload })

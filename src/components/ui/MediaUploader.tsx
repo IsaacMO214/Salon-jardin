@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { Upload, Loader2, FileImage, FileVideo } from "lucide-react";
+import { API_BASE_URL } from "../../config";
 
 interface MediaUploaderProps {
   onUploadSuccess: (url: string) => void;
@@ -33,7 +34,7 @@ export default function MediaUploader({
     const activeToken = token || sessionStorage.getItem("admin_token") || localStorage.getItem("admin_token") || "";
 
     try {
-      const response = await fetch(`/api/admin/upload?token=${encodeURIComponent(activeToken)}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/upload?token=${encodeURIComponent(activeToken)}`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${activeToken}`

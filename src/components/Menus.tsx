@@ -127,7 +127,7 @@ export default function Menus({ menus }: MenusProps) {
             Menús y Banquetes de Alta Calidad
           </h2>
           <div className="w-16 h-0.5 bg-fantasy-purple-500 mx-auto mt-3 mb-3 rounded-full" />
-          <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-700 max-w-lg mx-auto leading-relaxed font-normal">
             Platillos elaborados el mismo día de tu evento con insumos 100% frescos y el sazón casero gourmet que nos distingue
           </p>
         </div>
@@ -196,7 +196,7 @@ export default function Menus({ menus }: MenusProps) {
                 <span className="text-xs sm:text-sm font-bold text-fantasy-purple-900 block leading-snug">
                   No hagas fila, ¡te servimos en tu mesa!
                 </span>
-                <p className="text-[11px] sm:text-xs text-fantasy-purple-700 mt-1 leading-relaxed font-medium">
+                <p className="text-sm sm:text-base text-fantasy-purple-800 mt-1 leading-relaxed font-normal">
                   Todas nuestras taquizas y parrilladas se sirven en un plato que nuestro equipo te lleva directamente hasta tu mesa. Tú solo disfruta.
                 </p>
               </div>
@@ -295,7 +295,7 @@ export default function Menus({ menus }: MenusProps) {
                           <h3 className="text-xl sm:text-2xl font-medium tracking-tight text-fantasy-purple-900">
                             {menu.nombre}
                           </h3>
-                          <p className="text-xs text-slate-500 font-sans mt-0.5">
+                          <p className="text-sm text-slate-700 font-sans mt-0.5">
                             {isMultiCourseMenu
                               ? `${parsedCoursesList.length} Opciones disponibles — ${menu.tipo === 'tiempo' ? `${menu.numTiempos || 2} Tiempos` : ''}`
                               : category === 'taquiza'
@@ -308,7 +308,7 @@ export default function Menus({ menus }: MenusProps) {
                       {/* Freshness guarantee badge */}
                       <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fantasy-purple-50 text-fantasy-purple-800 text-[11px] font-semibold border border-fantasy-purple-200/60">
                         <CheckCircle2 className="w-3.5 h-3.5 text-fantasy-purple-600" />
-                        <span>Insumos 100% Frescos</span>
+                        <span>Ingredientes 100% Frescos</span>
                       </div>
                     </div>
 
@@ -375,7 +375,7 @@ export default function Menus({ menus }: MenusProps) {
                                         {namePart}
                                       </h4>
                                       {hasDesc && descPart && (
-                                        <p className="text-slate-500 text-[11px] mt-1.5 leading-tight font-normal">
+                                        <p className="text-slate-700 text-xs sm:text-sm mt-1.5 leading-relaxed font-normal">
                                           {descPart}
                                         </p>
                                       )}
@@ -460,7 +460,7 @@ export default function Menus({ menus }: MenusProps) {
                                       </span>
                                       <ul className="space-y-2">
                                         {dishes.map((dish, dIdx) => (
-                                          <li key={dIdx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-800 font-medium leading-snug">
+                                          <li key={dIdx} className="flex items-start gap-2.5 text-sm text-slate-800 font-normal leading-relaxed">
                                             <span className={`w-1.5 h-1.5 rounded-full ${dotColor} shrink-0 mt-1.5`} />
                                             <span>{dish}</span>
                                           </li>
@@ -485,8 +485,8 @@ export default function Menus({ menus }: MenusProps) {
                               key={index}
                               className={
                                 isNote
-                                  ? "sm:col-span-2 p-3.5 rounded-2xl bg-amber-50/90 border border-amber-200 text-xs sm:text-sm text-amber-900 font-medium italic flex items-start gap-2.5 shadow-2xs"
-                                  : "p-4 rounded-2xl bg-slate-50 border border-slate-200/70 text-xs sm:text-sm text-slate-800 flex items-start gap-3 shadow-2xs hover:border-fantasy-purple-300 transition-colors"
+                                  ? "sm:col-span-2 p-3.5 rounded-2xl bg-amber-50/90 border border-amber-200 text-sm sm:text-base text-amber-900 font-medium italic flex items-start gap-2.5 shadow-2xs"
+                                  : "p-4 rounded-2xl bg-slate-50 border border-slate-200/70 text-sm sm:text-base text-slate-800 flex items-start gap-3 shadow-2xs hover:border-fantasy-purple-300 transition-colors"
                               }
                             >
                               {isNote ? (

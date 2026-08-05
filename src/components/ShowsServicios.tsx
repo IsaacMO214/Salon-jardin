@@ -13,7 +13,9 @@ import {
   Film,
   Calendar,
   Users,
-  FileText
+  FileText,
+  PartyPopper,
+  Gift
 } from "lucide-react";
 import { Show, ServicioAdicional, GaleriaItem } from "../types";
 
@@ -21,9 +23,10 @@ interface ShowsServiciosProps {
   shows: Show[];
   serviciosAdicionales: ServicioAdicional[];
   galeria?: GaleriaItem[];
+  precioShows?: number;
 }
 
-export default function ShowsServicios({ shows, serviciosAdicionales, galeria = [] }: ShowsServiciosProps) {
+export default function ShowsServicios({ shows, serviciosAdicionales, galeria = [], precioShows = 5500 }: ShowsServiciosProps) {
   const [opcionalesTab, setOpcionalesTab] = useState<'evento' | 'persona' | 'cotizacion'>('evento');
   
   // Shared Gallery items for Shows
@@ -82,9 +85,40 @@ export default function ShowsServicios({ shows, serviciosAdicionales, galeria = 
             Espectáculos Infantiles y Shows de Magia
           </h2>
           <div className="w-16 h-0.5 bg-fantasy-purple-500 mx-auto mt-3 mb-3 rounded-full" />
-          <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-700 max-w-lg mx-auto leading-relaxed font-normal">
             Sorprende a tus invitados con espectáculos profesionales llenos de magia, personajes favoritos, música y momentos inolvidables
           </p>
+        </div>
+
+        {/* Inclusions Box */}
+        <div className="max-w-4xl mx-auto mb-16 bg-gradient-to-r from-fantasy-pink-500/10 via-fantasy-purple-500/10 to-fantasy-blue-500/10 rounded-3xl p-6 md:p-8 border border-white/50 shadow-lg backdrop-blur-md relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-fantasy-pink-400/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-fantasy-blue-400/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+          
+          <div className="flex flex-col md:flex-row items-center gap-6 relative z-10">
+            <div className="bg-white/80 p-4 rounded-2xl shadow-sm shrink-0 border border-fantasy-purple-100">
+              <PartyPopper className="w-10 h-10 text-fantasy-pink-500" />
+            </div>
+            <div className="flex-1">
+              <h4 className="text-xl md:text-2xl font-extrabold text-fantasy-purple-900 mb-4 text-center md:text-left">
+                ¡Todos nuestros shows incluyen!
+              </h4>
+              <div className="flex flex-wrap justify-center md:justify-start gap-2.5">
+                {[
+                  "Lluvia de dulces",
+                  "Lluvia de juguetes luminosos",
+                  "Bazuca con papeles de colores",
+                  "Batucada",
+                  "Amenización del pastel"
+                ].map((item, idx) => (
+                  <span key={idx} className="inline-flex items-center gap-1.5 bg-white/80 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold text-fantasy-purple-800 border border-fantasy-purple-200/50 shadow-sm hover:scale-105 transition-transform cursor-default">
+                    <Gift className="w-4 h-4 text-fantasy-pink-500" />
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 2-Column Layout for Shows and Gallery */}
@@ -93,18 +127,20 @@ export default function ShowsServicios({ shows, serviciosAdicionales, galeria = 
           {/* Left Column: Shows List */}
           <div className="lg:w-1/3 flex flex-col gap-4">
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl p-6 border border-fantasy-purple-100/80 shadow-xs h-full max-h-[800px] flex flex-col">
-              <h3 className="text-xl font-bold text-fantasy-purple-900 mb-4 shrink-0">
-                Catálogo de Shows
-              </h3>
+              <div className="flex items-center justify-between mb-4 shrink-0">
+                <h3 className="text-xl font-bold text-fantasy-purple-900">
+                  Catálogo de Shows
+                </h3>
+                <span className="shrink-0 text-sm font-extrabold text-fantasy-pink-600 bg-fantasy-pink-50/80 border border-fantasy-pink-100 px-3 py-1.5 rounded-xl shadow-sm">
+                  ${precioShows.toLocaleString("es-MX")} MXN
+                </span>
+              </div>
               
               <div className="space-y-4 overflow-y-auto custom-scrollbar pr-2 flex-1">
                 {shows.map((show) => (
                   <div key={show.id} className="bg-fantasy-purple-50/40 rounded-2xl p-4 border border-fantasy-purple-100 hover:border-fantasy-purple-300 transition-colors">
                     <div className="flex justify-between items-start mb-2">
                       <h4 className="font-bold text-base text-fantasy-purple-900">{show.nombre}</h4>
-                      <span className="shrink-0 text-[10px] font-extrabold text-fantasy-pink-600 bg-fantasy-pink-50/80 px-2 py-1 rounded-md">
-                        ${show.precio ? show.precio.toLocaleString("es-MX") : "5,500"}
-                      </span>
                     </div>
                     {show.duracion && (
                       <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-500 mb-2">
@@ -112,7 +148,7 @@ export default function ShowsServicios({ shows, serviciosAdicionales, galeria = 
                         <span>Duración: {show.duracion}</span>
                       </div>
                     )}
-                    <p className="text-xs text-slate-600 leading-relaxed">
+                    <p className="text-sm text-slate-700 leading-relaxed font-normal">
                       {show.descripcion}
                     </p>
                   </div>
@@ -128,9 +164,6 @@ export default function ShowsServicios({ shows, serviciosAdicionales, galeria = 
                 <h3 className="text-xl font-bold text-fantasy-purple-900">
                   Galería de Momentos Mágicos
                 </h3>
-                <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
-                  {showsGaleria.length} elementos
-                </span>
               </div>
 
               {showsGaleria.length > 0 ? (
@@ -183,46 +216,57 @@ export default function ShowsServicios({ shows, serviciosAdicionales, galeria = 
             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight text-fantasy-purple-900">
               Servicios Opcionales
             </h3>
-            <p className="text-xs sm:text-sm text-slate-600 mt-1.5">
+            <p className="text-sm sm:text-base text-slate-700 mt-1.5 font-normal">
               Personaliza la experiencia de tu fiesta con nuestros adicionales organizados por tipo de contratación
             </p>
           </div>
 
           {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mb-10 max-w-4xl mx-auto">
-            <button
-              onClick={() => setOpcionalesTab('evento')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer inline-flex items-center gap-1.5 ${
-                opcionalesTab === 'evento'
-                  ? 'bg-fantasy-pink-500 text-white shadow-2xs'
-                  : 'bg-white text-slate-700 hover:bg-fantasy-purple-50 border border-slate-200/80'
-              }`}
-            >
-              <Calendar className="w-3.5 h-3.5 text-fantasy-purple-400" />
-              Por Evento ({serviciosPorEvento.length})
-            </button>
-            <button
-              onClick={() => setOpcionalesTab('persona')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer inline-flex items-center gap-1.5 ${
-                opcionalesTab === 'persona'
-                  ? 'bg-fantasy-pink-500 text-white shadow-2xs'
-                  : 'bg-white text-slate-700 hover:bg-fantasy-purple-50 border border-slate-200/80'
-              }`}
-            >
-              <Users className="w-3.5 h-3.5 text-fantasy-purple-400" />
-              Por Persona ({serviciosPorPersona.length})
-            </button>
-            <button
-              onClick={() => setOpcionalesTab('cotizacion')}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer inline-flex items-center gap-1.5 ${
-                opcionalesTab === 'cotizacion'
-                  ? 'bg-fantasy-pink-500 text-white shadow-2xs'
-                  : 'bg-white text-slate-700 hover:bg-fantasy-purple-50 border border-slate-200/80'
-              }`}
-            >
-              <FileText className="w-3.5 h-3.5 text-fantasy-purple-400" />
-              Cotización ({serviciosCotizacion.length})
-            </button>
+          <div className="flex justify-center mb-10">
+            <div className="inline-flex flex-wrap justify-center p-1.5 bg-fantasy-purple-900/5 backdrop-blur-md rounded-2xl border border-fantasy-purple-100 shadow-xs gap-1.5 max-w-full">
+              <button
+                onClick={() => setOpcionalesTab('evento')}
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  opcionalesTab === 'evento'
+                    ? 'bg-fantasy-pink-500 text-white shadow-sm font-bold'
+                    : 'text-slate-700 hover:text-slate-900 hover:bg-fantasy-purple-50/60'
+                }`}
+              >
+                <Calendar className="w-3.5 h-3.5" />
+                <span>Por Evento</span>
+                <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${opcionalesTab === 'evento' ? 'bg-fantasy-pink-500 text-white' : 'bg-slate-200 text-slate-700'}`}>
+                  {serviciosPorEvento.length}
+                </span>
+              </button>
+              <button
+                onClick={() => setOpcionalesTab('persona')}
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  opcionalesTab === 'persona'
+                    ? 'bg-fantasy-pink-500 text-white shadow-sm font-bold'
+                    : 'text-slate-700 hover:text-slate-900 hover:bg-fantasy-purple-50/60'
+                }`}
+              >
+                <Users className="w-3.5 h-3.5" />
+                <span>Por Persona</span>
+                <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${opcionalesTab === 'persona' ? 'bg-fantasy-pink-500 text-white' : 'bg-slate-200 text-slate-700'}`}>
+                  {serviciosPorPersona.length}
+                </span>
+              </button>
+              <button
+                onClick={() => setOpcionalesTab('cotizacion')}
+                className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                  opcionalesTab === 'cotizacion'
+                    ? 'bg-fantasy-pink-500 text-white shadow-sm font-bold'
+                    : 'text-slate-700 hover:text-slate-900 hover:bg-fantasy-purple-50/60'
+                }`}
+              >
+                <FileText className="w-3.5 h-3.5" />
+                <span>Cotización</span>
+                <span className={`ml-0.5 px-1.5 py-0.2 rounded-full text-[10px] ${opcionalesTab === 'cotizacion' ? 'bg-fantasy-pink-500 text-white' : 'bg-slate-200 text-slate-700'}`}>
+                  {serviciosCotizacion.length}
+                </span>
+              </button>
+            </div>
           </div>
 
           <div className="space-y-12 max-w-6xl mx-auto">
@@ -253,7 +297,7 @@ export default function ShowsServicios({ shows, serviciosAdicionales, galeria = 
                       </div>
 
                       {item.descripcion && (
-                        <p className="text-xs text-slate-500 mb-3 pl-4 leading-relaxed">
+                        <p className="text-sm text-slate-700 mb-3 pl-4 leading-relaxed font-normal">
                           {item.descripcion}
                         </p>
                       )}
@@ -299,7 +343,7 @@ export default function ShowsServicios({ shows, serviciosAdicionales, galeria = 
                       </div>
 
                       {item.descripcion && (
-                        <p className="text-xs text-slate-500 mb-3 pl-4 leading-relaxed">
+                        <p className="text-sm text-slate-700 mb-3 pl-4 leading-relaxed font-normal">
                           {item.descripcion}
                         </p>
                       )}
@@ -345,7 +389,7 @@ export default function ShowsServicios({ shows, serviciosAdicionales, galeria = 
                       </div>
 
                       {item.descripcion && (
-                        <p className="text-xs text-slate-500 mb-3 pl-4 leading-relaxed">
+                        <p className="text-sm text-slate-700 mb-3 pl-4 leading-relaxed font-normal">
                           {item.descripcion}
                         </p>
                       )}

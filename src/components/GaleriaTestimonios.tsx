@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Play, Star, X, Image as ImageIcon, Video, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, Star, X, Image as ImageIcon, Video, ChevronLeft, ChevronRight, Home, Palette, Baby, Sparkles } from "lucide-react";
 import { GaleriaItem, Testimonio } from "../types";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -21,9 +21,9 @@ export default function GaleriaTestimonios({ galeria, testimonios }: GaleriaTest
   );
 
   const categories = [
-    { value: "salon", label: "El Salón" },
-    { value: "decoracion", label: "Decoración" },
-    { value: "infantil", label: "Área Infantil" }
+    { value: "salon", label: "El Salón", icon: <Home className="w-3.5 h-3.5" /> },
+    { value: "decoracion", label: "Decoración", icon: <Palette className="w-3.5 h-3.5" /> },
+    { value: "infantil", label: "Área Infantil", icon: <Baby className="w-3.5 h-3.5" /> }
   ];
 
   const isVideoUrl = (url: string) => {
@@ -46,7 +46,8 @@ export default function GaleriaTestimonios({ galeria, testimonios }: GaleriaTest
         </div>
 
         {/* Categories Filtering */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex flex-wrap justify-center p-1.5 bg-fantasy-purple-900/5 backdrop-blur-md rounded-2xl border border-fantasy-purple-100 shadow-xs gap-1.5 max-w-full">
           {categories.map(cat => (
             <button
               key={cat.value}
@@ -54,15 +55,17 @@ export default function GaleriaTestimonios({ galeria, testimonios }: GaleriaTest
                 setSelectedCategory(cat.value);
                 setActiveImage(null);
               }}
-              className={`px-4 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer border ${
+              className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                 selectedCategory === cat.value
-                  ? "bg-fantasy-pink-500 border-fantasy-pink-500 text-white shadow-xs"
-                  : "bg-white/90 border-fantasy-blue-100/40 text-fantasy-blue-700 hover:border-fantasy-blue-300/60 hover:text-fantasy-blue-800"
+                  ? 'bg-fantasy-pink-500 text-white shadow-sm font-bold'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-fantasy-purple-50/60'
               }`}
             >
-              {cat.label}
+              {cat.icon}
+              <span>{cat.label}</span>
             </button>
           ))}
+          </div>
         </div>
 
         {/* Gallery Content - Dynamic Layout: Full Grid when empty, Side by Side when selected */}
@@ -178,9 +181,12 @@ export default function GaleriaTestimonios({ galeria, testimonios }: GaleriaTest
             className={`${activeImage ? "lg:col-span-7" : "lg:col-span-12"} space-y-4`}
           >
             <div className="flex justify-between items-center pb-2 border-b border-slate-200/60">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                Mostrando {filteredGaleria.length} {filteredGaleria.length === 1 ? "Elemento" : "Elementos"}
-              </span>
+              <div className="flex items-center gap-2.5 bg-fantasy-purple-50/60 text-fantasy-purple-900 px-4 py-2.5 rounded-2xl border border-fantasy-purple-100/60 shadow-xs max-w-xl">
+                <Sparkles className="w-4 h-4 text-fantasy-purple-500 shrink-0" />
+                <p className="text-sm font-medium leading-snug">
+                  Explora nuestros diferentes espacios diseñados para hacer de tu evento un momento mágico e inolvidable.
+                </p>
+              </div>
               <span className="text-[11px] text-fantasy-blue-600 font-semibold">
                 {activeImage ? "Haz clic para cambiar de archivo ↗" : "Selecciona una foto o video para abrir el reproductor visual ↗"}
               </span>
@@ -377,9 +383,12 @@ export default function GaleriaTestimonios({ galeria, testimonios }: GaleriaTest
             className={`${activeVideo ? "lg:col-span-7" : "lg:col-span-12"} space-y-4`}
           >
             <div className="flex justify-between items-center pb-2 border-b border-slate-200/60">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                {testimonios.length} {testimonios.length === 1 ? "Testimonio" : "Testimonios"}
-              </span>
+              <div className="flex items-center gap-2.5 bg-fantasy-purple-50/60 text-fantasy-purple-900 px-4 py-2.5 rounded-2xl border border-fantasy-purple-100/60 shadow-xs max-w-lg mb-6">
+                <Sparkles className="w-4 h-4 text-fantasy-purple-500 shrink-0" />
+                <p className="text-sm font-medium leading-snug">
+                  Descubre lo que dicen nuestros clientes sobre la magia de celebrar sus eventos más importantes en Jardín Fantasy.
+                </p>
+              </div>
               <span className="text-[11px] text-fantasy-purple-600 font-semibold">
                 {activeVideo ? "Haz clic en otro video para cambiar ↗" : "Selecciona un video para reproducirlo ↗"}
               </span>

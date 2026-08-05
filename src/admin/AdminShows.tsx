@@ -24,6 +24,7 @@ export default function AdminShows({
   const [editingShow, setEditingShow] = useState<Show | null>(null);
   const [editingService, setEditingService] = useState<{ index?: number; nombre: string; precio: number; descripcion?: string; sinPrecioFijo?: boolean; tipoCobro?: 'evento' | 'persona' | 'cotizacion' } | null>(null);
   const [activeView, setActiveView] = useState<"menu" | "shows" | "galeria">("menu");
+  const [globalPrecioShows, setGlobalPrecioShows] = useState<number>(data.precio_shows || 5500);
 
   const isDuplicateShowName = Boolean(
     editingShow &&
@@ -48,17 +49,25 @@ export default function AdminShows({
   useEffect(() => {
     setShowsList([...data.shows]);
     setAdditionalList([...data.servicios_adicionales]);
-  }, [data.shows, data.servicios_adicionales]);
+    setGlobalPrecioShows(data.precio_shows || 5500);
+  }, [data.shows, data.servicios_adicionales, data.precio_shows]);
+
+  const handleSaveGlobalPrecio = async () => {
+    if (globalPrecioShows < 0 || globalPrecioShows > 50000) {
+      showStatus("Error: El precio global debe estar entre $0 y $50,000 MXN.");
+      return;
+    }
+    const ok = await apiCall("/api/admin/save-section", { section: "precio_shows", data: globalPrecioShows });
+    if (ok) {
+      showStatus("¡Precio global de shows actualizado con éxito!");
+    }
+  };
 
     const handleSaveShowItem = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!editingShow) return;
     if (isDuplicateShowName) {
       showStatus("Error: Este show ya existe. Elige un nombre diferente.");
-      return;
-    }
-    if ((editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0) {
-      showStatus("Error: El precio del show debe estar entre $0 y $10,000 MXN.");
       return;
     }
     if (editingShow.nombre && editingShow.nombre.length > 100) {
@@ -205,10 +214,36 @@ export default function AdminShows({
             <span className="bg-fantasy-purple-950/80 text-fantasy-purple-400 border border-fantasy-purple-500/40 px-2.5 py-0.5 rounded-full text-xs font-bold">{showsList.length}</span>
           </div>
           {!editingShow && !editingService && (
-            <button type="button" onClick={() => setEditingShow({ id: "show-" + Date.now(), nombre: "", precio: 5500, duracion: "1 Hora", descripcion: "", fotos: [], videoUrl: "" })} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-fantasy-purple-950/90 border border-fantasy-purple-500/50 text-fantasy-purple-300 hover:bg-fantasy-purple-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm self-start sm:self-auto">
+            <button type="button" onClick={() => setEditingShow({ id: "show-" + Date.now(), nombre: "", duracion: "1 Hora", descripcion: "", fotos: [], videoUrl: "" })} className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-fantasy-purple-950/90 border border-fantasy-purple-500/50 text-fantasy-purple-300 hover:bg-fantasy-purple-900/90 rounded-xl text-xs font-bold transition-colors cursor-pointer shadow-sm self-start sm:self-auto">
               <Plus className="w-3.5 h-3.5" /> Agregar Show
             </button>
           )}
+        </div>
+
+        {/* Global Config for Shows Price */}
+        <div className="bg-zinc-800/40 border border-zinc-700/80 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <h5 className="font-bold text-sm text-zinc-100">Precio Único para Shows</h5>
+            <p className="text-xs text-zinc-400 mt-1">Este precio se aplicará de forma global a todos los shows de esta sección.</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="relative">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 font-bold text-xs">$</span>
+              <input
+                type="number"
+                min="0"
+                value={globalPrecioShows}
+                onChange={(e) => setGlobalPrecioShows(parseInt(e.target.value) || 0)}
+                className="w-32 bg-zinc-900 border border-zinc-700 rounded-xl pl-7 pr-3 py-2 text-xs font-bold text-fantasy-purple-400 focus:outline-none focus:border-fantasy-purple-500 transition-colors"
+              />
+            </div>
+            <button
+              onClick={handleSaveGlobalPrecio}
+              className="px-4 py-2 bg-fantasy-pink-600 hover:bg-fantasy-pink-500 text-white font-bold text-xs rounded-xl transition-colors shadow-sm flex items-center gap-1.5 cursor-pointer"
+            >
+              <Save className="w-4 h-4" /> Guardar
+            </button>
+          </div>
         </div>
         {showsList.length === 0 ? (<p className="text-xs text-zinc-500 italic py-4">No hay espectáculos infantiles registrados.</p>) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
@@ -217,7 +252,6 @@ export default function AdminShows({
                 <div className="space-y-1.5 min-w-0 flex-1">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
                     <h5 className="font-bold text-sm text-zinc-100 leading-snug break-words flex-1">{show.nombre}</h5>
-                    <span className="font-extrabold text-xs text-fantasy-purple-400 shrink-0 bg-fantasy-purple-950/60 border border-fantasy-purple-500/30 px-2.5 py-1 rounded-md self-start">${show.precio.toLocaleString("es-MX")} MXN</span>
                   </div>
                   {show.descripcion && (<p className="text-xs text-zinc-400 leading-relaxed">{show.descripcion}</p>)}
                 </div>
@@ -387,36 +421,6 @@ export default function AdminShows({
                 </AnimatePresence>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-zinc-300 mb-1">Precio ($ MXN)</label>
-                <input
-                  type="number"
-                  required
-                  min="0"
-                  max="10000"
-                  value={editingShow.precio || ''}
-                  onChange={(e) => setEditingShow({ ...editingShow, precio: parseInt(e.target.value) || 0 })}
-                  placeholder="Ej. 1800"
-                  className={`w-full border rounded-xl px-3.5 py-2 text-xs font-bold transition-colors focus:outline-none ${
-                    (editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0
-                      ? "bg-red-950/30 border-red-500 focus:border-red-400 text-red-200"
-                      : "bg-zinc-800 border-zinc-700 text-fantasy-purple-400 placeholder-zinc-500 focus:border-fantasy-purple-500"
-                  }`}
-                />
-                <AnimatePresence>
-                  {((editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0) && (
-                    <motion.p
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -4 }}
-                      className="text-xs font-bold text-red-400 mt-1.5 flex items-center gap-1.5 bg-red-950/80 border border-red-800/80 px-2.5 py-1 rounded-lg shadow-sm"
-                    >
-                      <span>⚠️</span> Error: El precio excede el límite máximo permitido de $10,000 MXN.
-                    </motion.p>
-                  )}
-                </AnimatePresence>
-                
-              </div>
-              <div>
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">Descripción Breve</label>
                 <textarea rows={3} value={editingShow.descripcion || ''} onChange={(e) => setEditingShow({ ...editingShow, descripcion: e.target.value })} placeholder="Ej. Incluye animación interactiva, personajes caracterizados y regalos para el festejado." className="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-fantasy-purple-500" />
                 
@@ -437,9 +441,9 @@ export default function AdminShows({
                 <button type="button" onClick={() => setEditingShow(null)} className="px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold rounded-xl transition-colors cursor-pointer">Cancelar</button>
                 <button
                   type="submit"
-                  disabled={isDuplicateShowName || (editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0 || (editingShow.nombre || '').length > 100 || (editingShow.descripcion || '').length > 300}
+                  disabled={isDuplicateShowName || (editingShow.nombre || '').length > 100 || (editingShow.descripcion || '').length > 300}
                   className={`px-4 py-2 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center gap-1.5 ${
-                    isDuplicateShowName || (editingShow.precio || 0) > 10000 || (editingShow.precio || 0) < 0 || (editingShow.nombre || '').length > 100 || (editingShow.descripcion || '').length > 300
+                    isDuplicateShowName || (editingShow.nombre || '').length > 100 || (editingShow.descripcion || '').length > 300
                       ? "bg-zinc-700 text-zinc-400 cursor-not-allowed border border-zinc-600"
                       : "bg-fantasy-pink-600 hover:bg-fantasy-pink-500 text-white cursor-pointer"
                   }`}

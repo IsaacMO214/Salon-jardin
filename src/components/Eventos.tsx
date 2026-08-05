@@ -120,7 +120,7 @@ export default function Eventos({ eventos, eventosGaleria }: EventosProps) {
           </div>
 
           <div className="w-16 h-0.5 bg-fantasy-purple-500 mx-auto mt-4 mb-3 rounded-full" />
-          <p className="text-xs sm:text-sm text-slate-600 max-w-lg mx-auto leading-relaxed mt-1">
+          <p className="text-sm sm:text-base text-slate-700 max-w-lg mx-auto leading-relaxed mt-1 font-normal">
             Selecciona un evento para ver su descripción
           </p>
         </div>
@@ -195,7 +195,7 @@ export default function Eventos({ eventos, eventosGaleria }: EventosProps) {
                   </div>
                 </div>
 
-                <p className="text-xs sm:text-sm text-slate-650 leading-relaxed font-light mb-4 max-w-3xl">
+                <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal mb-4 max-w-3xl">
                   {selectedEvent.descripcion}
                 </p>
 
@@ -227,7 +227,7 @@ export default function Eventos({ eventos, eventosGaleria }: EventosProps) {
                   Galería de Eventos
                 </h3>
                 <p className="text-[10px] text-slate-500">
-                  {allMedia.length} {allMedia.length === 1 ? "archivo" : "archivos"} · Selecciona para ampliar
+                  Selecciona para ampliar
                 </p>
               </div>
             </div>

@@ -31,7 +31,7 @@ export default function CategorizedListEditor({
     let n = "";
     rawItems.forEach((item) => {
       if (item.toLowerCase().startsWith("nota:")) {
-        n = item.replace(/^nota:\s*/i, "").trim();
+        n = item.replace(/^nota:\s*/i, "");
       } else {
         const parts = item.split(":");
         if (parts.length > 1) {
@@ -75,7 +75,7 @@ export default function CategorizedListEditor({
       }
     });
     if (updatedNote.trim().length > 0) {
-      result.push(`Nota: ${updatedNote.trim()}`);
+      result.push(`Nota: ${updatedNote}`);
     }
     onChange(result);
   };

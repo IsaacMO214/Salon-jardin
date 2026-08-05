@@ -31,6 +31,9 @@ export async function initDB(): Promise<void> {
       // Auto-migrate: create eventos_galeria table if it doesn't exist
       try { await pool.execute("CREATE TABLE IF NOT EXISTS eventos_galeria (id INT PRIMARY KEY DEFAULT 1, urls JSON) ENGINE=InnoDB"); } catch (e) { /* ignore */ }
 
+      // Auto-migrate: create configuracion table if it doesn't exist
+      try { await pool.execute("CREATE TABLE IF NOT EXISTS configuracion (id INT PRIMARY KEY DEFAULT 1, precio_shows INT DEFAULT 5500) ENGINE=InnoDB"); } catch (e) { /* ignore */ }
+
       // One-time migration: transfer existing event fotos to shared gallery
       try {
         const [egRows] = await pool.execute("SELECT urls FROM eventos_galeria WHERE id = 1");
@@ -110,6 +113,10 @@ export async function readDB(): Promise<any> {
   db.master_servicios_sociales = masterRow?.sociales || [];
   db.master_servicios_infantiles = masterRow?.infantiles || [];
 
+  // configuracion
+  const configRow = await loadSingle("configuracion");
+  db.precio_shows = configRow?.precio_shows || 5500;
+
   return db;
 }
 
@@ -139,6 +146,9 @@ export async function writeDB(data: any): Promise<boolean> {
       sociales: data.master_servicios_sociales || [], 
       infantiles: data.master_servicios_infantiles || [] 
     });
+
+    // configuracion
+    await saveSingle("configuracion", { precio_shows: data.precio_shows || 5500 });
 
     return true;
   } catch (e) {

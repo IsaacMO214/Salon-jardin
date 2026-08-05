@@ -51,7 +51,7 @@ export default function Nosotros({ nosotros }: NosotrosProps) {
               </div>
               <h3 className="text-base font-semibold text-slate-800">Nuestra Historia</h3>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed whitespace-pre-line">
+            <p className="text-sm sm:text-base text-slate-700 leading-relaxed font-normal whitespace-pre-line">
               {nosotros.descripcion}
             </p>
           </div>

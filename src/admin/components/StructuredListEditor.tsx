@@ -27,7 +27,7 @@ export default function StructuredListEditor({
     let n = "";
     rawItems.forEach((item) => {
       if (item.toLowerCase().startsWith("nota:")) {
-        n = item.replace(/^nota:\s*/i, "").trim();
+        n = item.replace(/^nota:\s*/i, "");
       } else {
         d.push(item);
       }
@@ -50,7 +50,7 @@ export default function StructuredListEditor({
   const emitChange = (updatedDishes: string[], updatedNote: string) => {
     const result: string[] = [...updatedDishes];
     if (updatedNote.trim().length > 0) {
-      result.push(`Nota: ${updatedNote.trim()}`);
+      result.push(`Nota: ${updatedNote}`);
     }
     onChange(result);
   };
