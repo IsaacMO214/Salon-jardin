@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Lock } from "lucide-react";
-import { API_BASE_URL } from "../config";
 
 interface AdminPasswordProps {
   token: string;
@@ -19,7 +18,7 @@ export default function AdminPassword({ token }: AdminPasswordProps) {
       return;
     }
     try {
-      const res = await fetch(`${API_BASE_URL}/api/admin/change-password`, {
+      const res = await fetch("/api/admin/change-password", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

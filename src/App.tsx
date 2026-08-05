@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
-import { API_BASE_URL } from "./config";
 import { AppData } from "./types";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -40,7 +39,7 @@ export default function App() {
   // Fetch all initial data
   const loadData = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/api/data`);
+      const res = await fetch("/api/data");
       const result = await res.json();
       setData(result);
     } catch (err) {

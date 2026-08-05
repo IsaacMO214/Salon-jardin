@@ -3,7 +3,6 @@ import express from "express";
 import path from "path";
 import fs from "fs";
 import https from "https";
-import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import { createServer as createViteServer } from "vite";
@@ -18,25 +17,8 @@ async function startServer() {
   await ensureDB();
   const app = express();
 
-  // Trust the first proxy (Hostinger/Passenger/Render) so rate limiting works behind it
+  // Trust the first proxy (Hostinger/Passenger) so rate limiting works behind it
   app.set("trust proxy", 1);
-
-  // CORS — allow frontend on Hostinger to call this API
-  const allowedOrigins = process.env.ALLOWED_ORIGINS
-    ? process.env.ALLOWED_ORIGINS.split(",").map(o => o.trim())
-    : ["http://localhost:5173", "http://localhost:3000"];
-
-  app.use(cors({
-    origin: (origin, callback) => {
-      // Allow requests with no origin (mobile apps, curl, etc.)
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(null, true); // In production, allow all for now — tighten later
-      }
-    },
-    credentials: true,
-  }));
 
   // Security headers
   app.use(helmet({
@@ -98,8 +80,7 @@ async function startServer() {
     });
   });
 
-  // Vite middleware integration for Hot Module Replacement in dev
-  // In production, frontend is served from Hostinger — this server only handles API
+  // Vite middleware integration for Hot Module Replacement in dev, static serving in prod
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
@@ -107,9 +88,10 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    // Health check endpoint for Render
-    app.get("/", (req, res) => {
-      res.json({ status: "ok", service: "salon-jardin-api" });
+    const distPath = path.join(process.cwd(), "dist");
+    app.use(express.static(distPath));
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(distPath, "index.html"));
     });
   }
 
